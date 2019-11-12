@@ -31,7 +31,8 @@
     "classnames": "^2.2.6"
   },
   "devDependencies": {
-    "@viewar/config-eslint": "1.7.0",
+    "@viewar/config-eslint": "^1.7.0",
+    "prettier": "^1.19.1",
     "puppeteer": "^2.0.0"
   }
 }

@@ -4,6 +4,32 @@ import cx from 'classnames';
 
 import styles from './Input.scss';
 
+const handleChange = (onChange) => ({ currentTarget: { value }}) => {
+  onChange(value);
+};
+
+function Input({
+  value, label, onChange, nativeProps, className,
+}) {
+  // extend defaultProps.nativeProps
+  nativeProps = Object.assign({}, Input.defaultProps.nativeProps, nativeProps);
+
+  return (
+    <div className={cx(styles.Input, className)}>
+      {label && <div className={styles.label}>{label}:</div>}
+      <div className={styles.inputWrapper}>
+        <input
+          value={value}
+          className={styles.input}
+          onChange={handleChange(onChange)}
+          // eslint-disable-next-line react/jsx-props-no-spreading
+          {...nativeProps}
+        />
+      </div>
+    </div>
+  );
+}
+
 Input.propTypes = {
   value:      PropTypes.oneOfType([
     PropTypes.string,
@@ -27,30 +53,5 @@ Input.defaultProps = {
     type: 'textfield',
   },
 };
-
-const handleChange = (onChange) => ({ currentTarget: { value }}) => {
-  onChange(value);
-};
-
-function Input({
-  value, label, onChange, nativeProps, className,
-}) {
-  // extend defaultProps.nativeProps
-  nativeProps = Object.assign({}, Input.defaultProps.nativeProps, nativeProps);
-
-  return (
-    <div className={cx(styles.Input, className)}>
-      {label && <div className={styles.label}>{label}:</div>}
-      <div className={styles.inputWrapper}>
-        <input
-          value={value}
-          className={styles.input}
-          onChange={handleChange(onChange)}
-          {...nativeProps}
-        />
-      </div>
-    </div>
-  );
-}
 
 export default Input;

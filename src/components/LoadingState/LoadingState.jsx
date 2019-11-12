@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import cx from 'classnames';
 
 // TODO: copy assets on build or fix file-loader
@@ -20,6 +21,14 @@ const LoadingState = ({ isVisible }) => {
       <div className={styles.text}>Loading ...</div>
     </div>
   );
+};
+
+LoadingState.propTypes = {
+  isVisible: PropTypes.bool,
+};
+
+LoadingState.defaultProps = {
+  isVisible: false,
 };
 
 export default LoadingState;

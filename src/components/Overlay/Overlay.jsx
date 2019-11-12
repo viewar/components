@@ -1,6 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import cx from 'classnames';
-import { SceneStore } from 'app/store';
 
 import styles from './Overlay.scss';
 
@@ -19,5 +19,16 @@ const Overlay = ({ isOpen, content, onClose }) => (
     </div>
   </div>
 );
+
+Overlay.propTypes = {
+  content: PropTypes.node.isRequired,
+  isOpen:  PropTypes.bool,
+  onClose: PropTypes.func,
+};
+
+Overlay.defaultProps = {
+  isOpen:  false,
+  onClose: () => {},
+};
 
 export default Overlay;

@@ -20,5 +20,11 @@
   "bugs": {
     "url": "https://github.com/viewar/components/issues"
   },
-  "homepage": "https://github.com/viewar/components#readme"
+  "homepage": "https://github.com/viewar/components#readme",
+  "dependencies": {
+    "@viewar/webpack": "^1.5.4"
+  },
+  "devDependencies": {
+    "@viewar/config-eslint": "1.7.0"
+  }
 }

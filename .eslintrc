@@ -1,0 +1,3 @@
+{
+  "extends": ["./node_modules/@viewar/config-eslint/env/react.js"]
+}

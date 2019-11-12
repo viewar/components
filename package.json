@@ -4,6 +4,9 @@
   "description": "ViewAR's reusable react components",
   "main": "./src/index.js",
   "scripts": {
+    "start": "cross-env DEBUG=true webpack-dev-server --open --mode development --env development_core",
+    "start:mock": "cross-env DEBUG=true webpack-dev-server --open --mode development --env development_mock",
+    "build": "webpack -p --mode production --env production",
     "test": "npm run karma",
     "karma": "karma start ./node_modules/@viewar/webpack/karma",
     "lint": "prettier **/*.{css,scss,md,json} --write && eslint --fix \"**/*.*{js,jsx}\" --format pretty"

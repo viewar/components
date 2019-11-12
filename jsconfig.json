@@ -1,0 +1,26 @@
+/**
+ * config for VsCode's TypeScript resolver
+ * enables features like peek or goto of imported modules
+ *
+ * if you have an alternate WEBPACK_PATH you'll have to add it manually
+ */
+{
+  "compilerOptions": {
+    "module": "esnext",
+    "moduleResolution": "node",
+    "checkJs": true,
+    "target": "esnext",
+    "jsx": "react",
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    // This must be specified if "paths" is set
+    "rootDirs": ["src"],
+    "baseUrl": "src",
+    // Relative to "baseUrl"
+    "paths": {
+      "*": ["./*"]
+    },
+    "experimentalDecorators": true
+  },
+  "exclude": ["node_modules"]
+}

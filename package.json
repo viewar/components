@@ -1,0 +1,24 @@
+{
+  "name": "@viewar/components",
+  "version": "1.0.0",
+  "description": "ViewAR's reusable react components",
+  "main": "./src/index.js",
+  "scripts": {
+    "test": "npm run karma"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/viewar/components.git"
+  },
+  "keywords": [
+    "viewar",
+    "react",
+    "components"
+  ],
+  "author": "Stefan Friedl <sf@viewar.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/viewar/components/issues"
+  },
+  "homepage": "https://github.com/viewar/components#readme"
+}

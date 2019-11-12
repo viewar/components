@@ -1,0 +1,43 @@
+{
+  /**
+   * LINTER CONFIG
+   * for eslint and prettier
+   */
+  // disable integrated linter and formater
+  "javascript.validate.enable": false,
+  "javascript.format.enable": false,
+  // set formatters for eslint and prettier
+  "editor.defaultFormatter": "teeLang.vsprettier",
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  },
+  // shared
+  "editor.formatOnPaste": false,
+  "editor.formatOnSave": true,
+  "editor.formatOnType": true,
+  "editor.formatOnSaveTimeout": 500,
+  // eslint
+  "eslint.alwaysShowStatus": true,
+  "eslint.autoFixOnSave": true,
+  "eslint.run": "onType",
+  "eslint.lintTask.enable": true,
+  // prettier
+  "vsprettier.packageManager": "npm",
+  "vsprettier.useEsLint": true,
+  "vsprettier.useStyleLint": true,
+  "vsprettier.requireConfig": true,
+  //
+  "files.associations": {
+    "*.js": "javascriptreact",
+    "*.jsx": "javascriptreact"
+  },
+  "editor.renderWhitespace": "all",
+  "javascript.preferences.quoteStyle": "single",
+  "typescript.preferences.quoteStyle": "single",
+  "javascript.implicitProjectConfig.experimentalDecorators": true,
+  "javascript.implicitProjectConfig.checkJs": true,
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "typescript.preferences.importModuleSpecifier": "non-relative",
+  "javascript.preferences.importModuleSpecifier": "non-relative"
+}

@@ -11,6 +11,41 @@
     "karma": "karma start ./node_modules/@viewar/webpack/karma",
     "lint": "prettier **/*.{css,scss,md,json} --write && eslint --fix \"**/*.*{js,jsx}\" --format pretty"
   },
+  "babel": {
+    "presets": [
+      [
+        "@babel/preset-env",
+        {
+          "modules": "commonjs",
+          "targets": {
+            "esmodules": true,
+            "browsers": [
+              "> 1%",
+              "last 2 versions",
+              "not ie <= 8"
+            ]
+          }
+        }
+      ],
+      "@babel/preset-react"
+    ],
+    "plugins": [
+      "@babel/plugin-proposal-export-default-from",
+      [
+        "@babel/plugin-proposal-decorators",
+        {
+          "legacy": true
+        }
+      ],
+      [
+        "@babel/plugin-proposal-class-properties",
+        {
+          "loose": true
+        }
+      ],
+      "@babel/plugin-transform-react-constant-elements"
+    ]
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/viewar/components.git"
@@ -27,9 +62,20 @@
   },
   "homepage": "https://github.com/viewar/components#readme",
   "dependencies": {
-    "@viewar/webpack": "^1.5.4"
+    "@viewar/webpack": "^1.5.4",
+    "classnames": "^2.2.6"
   },
   "devDependencies": {
-    "@viewar/config-eslint": "1.7.0"
+    "@babel/plugin-proposal-class-properties": "^7.7.0",
+    "@babel/plugin-proposal-decorators": "^7.7.0",
+    "@babel/plugin-proposal-export-default-from": "^7.5.2",
+    "@babel/plugin-proposal-export-namespace-from": "^7.5.2",
+    "@babel/plugin-transform-react-constant-elements": "^7.6.3",
+    "@babel/preset-env": "^7.7.1",
+    "@babel/preset-react": "^7.7.0",
+    "@viewar/config-eslint": "^1.7.0",
+    "cross-env": "^6.0.3",
+    "prettier": "^1.19.1",
+    "puppeteer": "^2.0.0"
   }
 }

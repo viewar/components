@@ -8,18 +8,6 @@ import styles from './Icon.scss';
 
 const iconNamesShort = Object.keys(iconList).map((iconName) => iconName.replace('button_', ''));
 
-Icon.propTypes = {
-  icon:  PropTypes.oneOf(iconNamesShort).isRequired,
-  color: PropTypes.string,
-  size:  PropTypes.oneOf([ 'big', 'small', 'xsmall' ]),
-  style: PropTypes.object,
-};
-
-Icon.defaultProps = {
-  color:  null,
-  size:   null,
-  style:  {},
-};
 // TODO: add variant without mask!?
 function Icon({
   icon, color, size, style,
@@ -42,5 +30,18 @@ function Icon({
     />
   );
 }
+
+Icon.propTypes = {
+  icon:  PropTypes.oneOf(iconNamesShort).isRequired,
+  color: PropTypes.string,
+  size:  PropTypes.oneOf([ 'big', 'small', 'xsmall' ]),
+  style: PropTypes.object,
+};
+
+Icon.defaultProps = {
+  color:  null,
+  size:   null,
+  style:  {},
+};
 
 export default Icon;

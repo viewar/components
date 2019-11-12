@@ -1,0 +1,53 @@
+@import '../../styles/';
+
+.Overlay {
+  z-index: 888;
+  display: none;
+  position: fixed;
+
+  height: 100%;
+  width: 100%;
+  background-color: #fefefe;
+
+  &.isOpen {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+}
+
+.close {
+  cursor: pointer;
+  position: absolute;
+  right: 3rem;
+  top: 5rem;
+
+  display: block;
+  height: 3.5rem;
+  width: 3.5rem;
+
+  border-radius: 1.75rem;
+  &:hover {
+    background-color: #eee;
+  }
+
+  &:before {
+    text-align: center;
+    display: block;
+    content: '❌';
+    font-size: 3rem;
+  }
+}
+
+.content {
+  min-height: 100%;
+  max-height: 100%;
+  overflow-y: scroll;
+  /*
+    TODO: use $comp-AppBar-height
+  */
+  padding-top: 100px;
+  &.isCentered {
+    margin: 0 auto;
+  }
+}

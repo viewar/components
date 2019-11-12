@@ -1,0 +1,27 @@
+@import '../../styles/index.scss';
+
+.Icon {
+  width: 3rem;
+  height: 3rem;
+
+  background-color: $color-primary;
+}
+
+/*
+* size modifiers
+*   according to 'props.size'
+*/
+.big {
+  width: 5rem;
+  height: 5rem;
+}
+
+.small {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.xsmall {
+  width: 1.2rem;
+  height: 1.2rem;
+}

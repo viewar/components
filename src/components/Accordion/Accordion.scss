@@ -1,0 +1,57 @@
+@import '../../styles';
+
+.title {
+  @extend .padded;
+  color: white;
+  font-size: 1rem;
+  position: relative;
+  cursor: pointer;
+  .isOpen & {
+    font-weight: normal;
+  }
+
+  &.left {
+    background-color: #282f39;
+    color: white;
+  }
+
+  &.right {
+    background-color: #e8e8e8;
+    color: #282f39;
+    font-weight: normal;
+    .isOpen & {
+      font-weight: normal;
+    }
+  }
+
+  .trigger {
+    @extend .padded;
+    padding: 0.6rem 0.4rem;
+    position: absolute;
+    top: 0;
+    right: 1rem;
+    border: 0;
+    transition: transform 500ms ease-out;
+    .isOpen & {
+      transition: transform 100ms ease-out;
+      transform: rotate(90deg);
+    }
+  }
+}
+
+.content {
+  .contentWrapper {
+    @extend .padded;
+  }
+  overflow-y: hidden;
+  max-height: 0;
+  padding: 0;
+  opacity: 0;
+
+  transition: max-height 300ms ease-out, opacity 500ms ease-out;
+
+  .isOpen & {
+    opacity: 1;
+    max-height: 1000px;
+  }
+}

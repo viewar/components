@@ -4,7 +4,9 @@
   "description": "ViewAR's reusable react components",
   "main": "./src/index.js",
   "scripts": {
-    "test": "npm run karma"
+    "test": "npm run karma",
+    "karma": "karma start ./node_modules/@viewar/webpack/karma",
+    "lint": "prettier **/*.{css,scss,md,json} --write && eslint --fix \"**/*.*{js,jsx}\" --format pretty"
   },
   "repository": {
     "type": "git",

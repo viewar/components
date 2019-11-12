@@ -30,6 +30,6 @@
     "@viewar/webpack": "^1.5.4"
   },
   "devDependencies": {
-    "@viewar/config-eslint": "1.7.0"
+    "puppeteer": "^2.0.0"
   }
 }

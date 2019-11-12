@@ -8,6 +8,7 @@ class Accordion extends PureComponent {
   static propTypes = {
     children:     PropTypes.node.isRequired,
     title:        PropTypes.string.isRequired,
+    className:    PropTypes.string,
     onChange:     PropTypes.func,
     isOpen:       PropTypes.bool,
     initialState: PropTypes.shape({
@@ -20,6 +21,7 @@ class Accordion extends PureComponent {
 
   static defaultProps = {
     isOpen:       null,
+    className:    '',
     onChange:     () => {},
     initialState: {},
     // boolean modifiers

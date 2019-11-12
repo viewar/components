@@ -1,6 +1,5 @@
 import React from 'react';
 import cx from 'classnames';
-
 import { SceneStore } from 'app/store';
 
 import styles from './Overlay.scss';

@@ -27,7 +27,7 @@
 
       &:hover {
         &::after {
-          content: "";
+          content: '';
           position: absolute;
           background-color: #666;
           opacity: 0.3;
@@ -85,7 +85,7 @@
 
         &:hover {
           &::after {
-            content: "";
+            content: '';
             position: absolute;
             background-color: #666;
             opacity: 0.3;

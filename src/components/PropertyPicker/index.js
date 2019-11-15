@@ -1,3 +1,3 @@
-import PropertyPicker from './PropertyPicker.jsx';
+import PropertyPicker from './PropertyPicker';
 
 export default PropertyPicker;

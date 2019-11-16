@@ -38,7 +38,7 @@
       "@semantic-release/changelog",
       {
         "changelogFile": "CHANGELOG.md",
-        "changelogTitle": "# Changelog\n> generated with [@semantic-release/changelog](https://github.com/semantic-release/changelog)"
+        "changelogTitle": "# Changelog\n\n> generated with [@semantic-release/changelog](https://github.com/semantic-release/changelog)"
       }
     ],
     ["@semantic-release/npm", {

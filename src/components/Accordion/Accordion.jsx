@@ -6,7 +6,7 @@ import styles from './Accordion.scss';
 
 class Accordion extends PureComponent {
   static propTypes = {
-    children:     PropTypes.node.isRequired,
+    children:     PropTypes.oneOfType([ PropTypes.node, PropTypes.string ]).isRequired,
     title:        PropTypes.string.isRequired,
     className:    PropTypes.string,
     onChange:     PropTypes.func,
@@ -48,8 +48,8 @@ class Accordion extends PureComponent {
 
   render() {
     const {
-      isOpen, children, title, className, left, right,
-    } = this.props;
+ isOpen, children, title, className, left, right 
+} = this.props;
 
     const classNames = cx(
       styles.Accordion,
@@ -58,7 +58,7 @@ class Accordion extends PureComponent {
         [styles.left]:  left,
         [styles.right]: right,
       },
-      className,
+      className
     );
 
     return (

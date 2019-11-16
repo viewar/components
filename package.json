@@ -63,7 +63,9 @@
   "homepage": "https://github.com/viewar/components#readme",
   "dependencies": {
     "@viewar/webpack": "^1.5.4",
-    "classnames": "^2.2.6"
+    "classnames": "^2.2.6",
+    "viewar-api": "^0.56.6",
+    "viewar-core": "^11.41.1"
   },
   "devDependencies": {
     "@babel/plugin-proposal-class-properties": "^7.7.0",

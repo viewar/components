@@ -16,7 +16,7 @@ class Button extends PureComponent {
     className: PropTypes.string,
     tooltip:   PropTypes.string,
     onClick:   PropTypes.func,
-    type:      PropTypes.oneOf([ 'icon' ]),
+    type:      PropTypes.oneOf([ '', 'icon' ]),
     // boolean modifiers
     flat:      PropTypes.bool,
     bold:      PropTypes.bool,
@@ -54,8 +54,18 @@ class Button extends PureComponent {
 
   render() {
     const {
-      text, className, type, tooltip,
-      flat, filled, inverted, bold, light, right, small, wide,
+      text,
+      className,
+      type,
+      tooltip,
+      flat,
+      filled,
+      inverted,
+      bold,
+      light,
+      right,
+      small,
+      wide,
     } = this.props;
 
     const classNames = cx(
@@ -71,7 +81,7 @@ class Button extends PureComponent {
         [styles.filled]:   filled,
         [styles.inverted]: inverted,
       },
-      className,
+      className
     );
 
     return (

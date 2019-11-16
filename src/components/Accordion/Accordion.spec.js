@@ -3,16 +3,18 @@ import React from 'react';
 
 import Accordion from 'components/Accordion';
 
+const {
+  chai: { expect },
+  enzyme: { mount },
+} = global;
+
+const mounted = mount(
+  <Accordion title="<Accordion /> spec test" initialState={{ isOpen: true }}>
+    {'required prop \'children\''}
+  </Accordion>
+);
+
 describe('<Accordion />', function() {
-  const {
-    chai: { expect },
-    enzyme: { mount },
-  } = global;
-
-  const mounted = mount(
-    <Accordion initialState={{ isOpen: true }}>{'required prop \'children\''}</Accordion>
-  );
-
   it('mounts without errors', function() {
     expect(mounted).to.exist;
   });

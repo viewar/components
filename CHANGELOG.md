@@ -2,6 +2,13 @@
 
 > generated with [@semantic-release/changelog](https://github.com/semantic-release/changelog)
 
+## [1.2.1](https://github.com/viewar/components/compare/v1.2.0...v1.2.1) (2019-11-17)
+
+
+### Bug Fixes
+
+* **CHANGELOG:** add initial components to log and fix duplicate entries ([5317612](https://github.com/viewar/components/commit/5317612be72918611ae8831a0797e7a5efe652e5))
+
 # [1.2.0](https://github.com/viewar/components/compare/v1.1.0...v1.2.0) (2019-11-16)
 
 ### Bug Fixes

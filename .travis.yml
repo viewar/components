@@ -1,6 +1,7 @@
 dist: trusty # needed for headles chrome
 language: node_js
 cache:
+  yarn: true
   directories:
     - $HOME/.npm
     - $HOME/build/$TRAVIS_REPO_SLUG/components/node_modules/
@@ -19,8 +20,8 @@ branches:
     - next
     - develop
 
-install: npm install
-script: npm run lint && npm run karma && NODE_ENV=production npm run build
+install: yarn install
+script: yarn lint && yarn karma && NODE_ENV=production yarn build
 
 stages:
   - test
@@ -29,14 +30,14 @@ stages:
 jobs:
   include:
     - stage: build
-      script: npm run build
+      script: yarn build
       node_js: 12
     - node_js: 11
     - node_js: 10
     - stage: release
       if: branch = next AND type IN (push)
       node_js: 12
-      script: true
+      script: skip
       install: skip
       before_deploy:
         - npm i -g semantic-release
@@ -47,5 +48,7 @@ jobs:
         skip_cleanup: true
         script: npx semantic-release
         on:
-          branch: next
+          branch:
+            - next
+            - /^!\d\.\d\.\d/
           tags: false

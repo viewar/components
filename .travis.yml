@@ -20,22 +20,21 @@ branches:
     - develop
 
 install: npm install
-script: npm run lint && npm run karma
+script: npm run lint && npm run karma && npm run build
 
 stages:
   - test
-  - build
   - release
 
 jobs:
   include:
-    - stage: build
-      script: npm run build
-      node_js: 12
-    - script: npm run build
-      node_js: 11
-    - script: npm run build
-      node_js: 10
+    # - stage: build
+    #   script: npm run build
+    #   node_js: 12
+    # - script: npm run build
+    #   node_js: 11
+    # - script: npm run build
+    #   node_js: 10
     - stage: release
       if: branch = next AND type IN (push)
       node_js: 12

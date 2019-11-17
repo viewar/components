@@ -1,20 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <meta charset="UTF-8" />
     <meta
       name="viewport"
       content="initial-scale=1, shrink-to-fit=no, minimum-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover"
     />
-    <meta name="format-detection" content="telephone=no" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-    <meta charset="UTF-8" />
-    <title>ViewAR Base</title>
+    <title>ViewAR SDK App</title>
   </head>
   <body>
-    <div id="modal-root"></div>
-    <div id="app-root"></div>
+    <div id="app"></div>
+    <script type="text/javascript">
+      window.bundleIdentifier = window.bundleIdentifier || <%= JSON.stringify(htmlWebpackPlugin.options.bundleIdentifier) %>
+      window.bundleVersion = window.bundleVersion || <%= JSON.stringify(htmlWebpackPlugin.options.bundleVersion) %>
+    </script>
+    <script src="./viewar-core.js"></script>
   </body>
-  <link rel="stylesheet" type="text/css" href="//CustomUI/index.css" />
+
   <link rel="stylesheet" type="text/css" href="/CustomUI/index.css" />
 </html>

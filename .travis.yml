@@ -31,10 +31,8 @@ jobs:
     - stage: build
       script: npm run build
       node_js: 12
-    - script: npm run build
-      node_js: 11
-    - script: npm run build
-      node_js: 10
+    - node_js: 11
+    - node_js: 10
     - stage: release
       if: branch = next AND type IN (push)
       node_js: 12

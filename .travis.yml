@@ -41,10 +41,13 @@ jobs:
   include:
     - stage: build
       script: npm run build
+      env: NODE_ENV=production
       node_js: 12
     - script: npm run build
+      env: NODE_ENV=production
       node_js: 11
     - script: npm run build
+      env: NODE_ENV=production
       node_js: 10
     - stage: release
       if: branch = next AND type IN (push)

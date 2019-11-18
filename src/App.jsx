@@ -17,7 +17,7 @@ class App extends PureComponent {
       window.api = await API.init();
       // eslint-disable-line indent
     }
- catch (err) {
+    catch (err) {
       // eslint-disable-next-line no-console
       console.warn('[Viewar API] Error: ', err);
     }

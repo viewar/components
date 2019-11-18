@@ -22,8 +22,9 @@ branches:
   except:
     - /^v[0-9]+\.[0-9]+$/
 
-install: npm install
-script: npm run lint && npm run karma && NODE_ENV=production npm run build
+# explicit use of default tasks
+install: npm ci
+script: npm test
 
 stages:
   - test

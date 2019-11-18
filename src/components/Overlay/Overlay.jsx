@@ -11,8 +11,10 @@ import styles from './Overlay.scss';
  * @uses SceneStore.state.overlay
  * @returns {JSX} <Overlay /> component
  */
-const Overlay = ({ isOpen, content, onClose }) => (
-  <div id="Overlay" className={cx(styles.Overlay, { [styles.isOpen]: isOpen })}>
+const Overlay = ({
+  isOpen, content, onClose, className,
+}) => (
+  <div id="Overlay" className={cx(styles.Overlay, { [styles.isOpen]: isOpen }, className)}>
     <div className={styles.close} onClick={onClose} />
     <div className={styles.content}>
       {content || 'CONTENT'}
@@ -21,14 +23,16 @@ const Overlay = ({ isOpen, content, onClose }) => (
 );
 
 Overlay.propTypes = {
-  content: PropTypes.node.isRequired,
-  isOpen:  PropTypes.bool,
-  onClose: PropTypes.func,
+  content:   PropTypes.node.isRequired,
+  isOpen:    PropTypes.bool,
+  onClose:   PropTypes.func,
+  className: PropTypes.string,
 };
 
 Overlay.defaultProps = {
-  isOpen:  false,
-  onClose: () => {},
+  isOpen:    false,
+  onClose:   () => {},
+  className: '',
 };
 
 export default Overlay;

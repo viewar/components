@@ -48,8 +48,8 @@ class Accordion extends PureComponent {
 
   render() {
     const {
- isOpen, children, title, className, left, right 
-} = this.props;
+      isOpen, children, title, className, left, right,
+    } = this.props;
 
     const classNames = cx(
       styles.Accordion,

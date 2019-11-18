@@ -27,15 +27,12 @@ branches:
   except:
     - /^v[0-9]+\.[0-9]+$/
 
-# explicit use of default tasks
-install: npm ci
-script: npm test
-
 stages:
   - test
   - release
 
 jobs:
+  fast_finish: true
   allow_failures:
     - node_js: 10
   include:

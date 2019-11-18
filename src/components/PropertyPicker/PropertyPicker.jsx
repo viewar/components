@@ -1,20 +1,20 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
-// eslint-disable-next-line import/no-unresolved
 import viewarApi from 'viewar-api';
 
 import styles from './PropertyPicker.scss';
 
+
 class PropertyPicker extends PureComponent {
   static propTypes = {
     item: PropTypes.shape({
-      propertyValues:     PropTypes.object.isRequired,
-      properties:         PropTypes.object.isRequired,
-      setPropertyValues:  PropTypes.func.isRequired,
-      getSceneState:      PropTypes.func.isRequired,
-      name:               PropTypes.string.isRequired,
-      key:                PropTypes.oneOfType([ PropTypes.string, PropTypes.number ]).isRequired,
+      propertyValues:    PropTypes.object.isRequired,
+      properties:        PropTypes.object.isRequired,
+      setPropertyValues: PropTypes.func.isRequired,
+      getSceneState:     PropTypes.func.isRequired,
+      name:              PropTypes.string.isRequired,
+      key:               PropTypes.oneOfType([ PropTypes.string, PropTypes.number ]).isRequired,
     }).isRequired,
     activeIcon: PropTypes.node,
     setLoading: PropTypes.func,
@@ -63,24 +63,12 @@ class PropertyPicker extends PureComponent {
 
   render() {
     const {
-      props: { item },
+      props: { item, activeIcon },
       state: { property, propertyValues },
     } = this;
 
     return (
       <div className={styles.Container}>
-        <div className={styles.Header}>
-          {Object.values(item.properties).map((item) => (
-            <div
-              className={cx(styles.Tab, item.key === property && styles.isActive)}
-              key={item.key}
-              onClick={this.handlePropertyChange(item.key)}
-            >
-              {item.name}
-            </div>
-          ))}
-        </div>
-
         <div className={styles.ScrollContainer}>
           <div className={styles.Options}>
             {item.properties[property] &&
@@ -97,13 +85,31 @@ class PropertyPicker extends PureComponent {
 
                   <div
                     className={styles.Thumbnail}
-                    style={{ backgroundImage: `url('https://dev2.viewar.com/proxy2.php?url=${option.imageUrl}')` }}
+                    style={{
+                      backgroundImage: `url('https://dev2.viewar.com/proxy2.php?url=${option.imageUrl}')`,
+                    }}
                   />
 
-                  <div className={styles.SelectionIndicator}>{this.props.activeIcon}</div>
+                  <div className={styles.SelectionIndicator}>
+                    {activeIcon}
+                  </div>
                 </div>
               ))}
           </div>
+        </div>
+        <div className={styles.Header}>
+          {Object.values(item.properties).map((item) => (
+            <div
+              className={cx(
+                styles.Tab,
+                item.key === property && styles.isActive
+              )}
+              key={item.key}
+              onClick={this.handlePropertyChange(item.key)}
+            >
+              {item.name}
+            </div>
+          ))}
         </div>
       </div>
     );

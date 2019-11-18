@@ -2,6 +2,15 @@
 
 > generated with [@semantic-release/changelog](https://github.com/semantic-release/changelog)
 
+# [1.3.0](https://github.com/viewar/components/compare/v1.2.1...v1.3.0) (2019-11-18)
+
+
+### Features
+
+* **spec:** add minimal spec test for `<Overlay />` ([b2bd667](https://github.com/viewar/components/commit/b2bd667896398213def303d5ca8b5536cedc2048))
+* **spec:** add spec test for `<Input />` ([795a643](https://github.com/viewar/components/commit/795a6434a4b6a53eeec121c393ab0f0e4e1f45d4))
+* **spec:** add spec test for `<SideBar />` ([b0fa38e](https://github.com/viewar/components/commit/b0fa38e125c345220a99d1cea2bb3103c0af811e))
+
 ## [1.2.1](https://github.com/viewar/components/compare/v1.2.0...v1.2.1) (2019-11-17)
 
 ### Bug Fixes

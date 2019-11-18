@@ -1,7 +1,7 @@
 dist: trusty # needed for headles chrome
-
 language: node_js
 cache:
+  npm: true
   directories:
     - $HOME/.npm
     - $HOME/build/$TRAVIS_REPO_SLUG/components/node_modules/
@@ -10,34 +10,26 @@ node_js:
   - 12
   - 11
   - 10
-  - 9
 
 env:
   - NODE_ENV: develop
-
-matrix:
-  fast_finish: true
-  allow_failures:
-    - node_js: 9
 
 branches:
   only:
     - master
     - next
     - develop
+  except:
+    - /^v[0-9]+\.[0-9]+$/
 
 install: npm install
-script: npm run lint && npm run karma
+script: npm run lint && npm run karma && NODE_ENV=production npm run build
 
 stages:
   - test
-  - build
   - release
 
 jobs:
-  fast_finish: true
-  allow_failures:
-    - node_js: 9
   include:
     - stage: build
       script: npm run build
@@ -50,9 +42,9 @@ jobs:
       env: NODE_ENV=production
       node_js: 10
     - stage: release
-      if: branch = next AND type IN (push)
+      if: branch = next AND type IN (push) AND !(tag !=~ ^v)
       node_js: 12
-      script: true
+      script: skip
       install: skip
       before_deploy:
         - npm i -g semantic-release

@@ -9,7 +9,7 @@
     "build": "webpack -p --mode production --env production",
     "test": "npm run lint && npm run karma && npm run build",
     "karma": "karma start ./node_modules/@viewar/webpack/karma",
-    "lint": "prettier **/*.{css,scss,md,json} --write && eslint --fix \"**/*.*{js,jsx}\" --format pretty"
+    "lint": "prettier **/*.{css,scss,md,json} --write && eslint --fix \"**/*.*{js,jsx}\" --ignore-pattern \"build/**/*\" --format pretty"
   },
   "babel": {
     "presets": [

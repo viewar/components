@@ -31,18 +31,8 @@ stages:
 
 jobs:
   include:
-    - stage: build
-      script: npm run build
-      env: NODE_ENV=production
-      node_js: 12
-    - script: npm run build
-      env: NODE_ENV=production
-      node_js: 11
-    - script: npm run build
-      env: NODE_ENV=production
-      node_js: 10
     - stage: release
-      if: branch = next AND type IN (push) AND !(tag !=~ ^v)
+      if: branch = next AND type IN (push) AND tag IS blank
       node_js: 12
       script: skip
       install: skip

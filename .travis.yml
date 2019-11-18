@@ -45,7 +45,5 @@ jobs:
         skip_cleanup: true
         script: npx semantic-release
         on:
-          branch:
-            - next
-            - /^!\d\.\d\.\d/
+          branch: next
           tags: false

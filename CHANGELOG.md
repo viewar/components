@@ -4,28 +4,25 @@
 
 # [1.4.0](https://github.com/viewar/components/compare/v1.3.0...v1.4.0) (2019-11-20)
 
-
 ### Bug Fixes
 
-* **ButtonToggle:** allow `<ButtonToggle />` to be un-controlled ([bc552bc](https://github.com/viewar/components/commit/bc552bc4ad6d566f37dafd09456c4945c66fdcca))
-* **scripts:** fix 'format' - ignore build ([c6d6919](https://github.com/viewar/components/commit/c6d691916c445f562bf40e700a926fee98a6bb98))
-
+- **ButtonToggle:** allow `<ButtonToggle />` to be un-controlled ([bc552bc](https://github.com/viewar/components/commit/bc552bc4ad6d566f37dafd09456c4945c66fdcca))
+- **scripts:** fix 'format' - ignore build ([c6d6919](https://github.com/viewar/components/commit/c6d691916c445f562bf40e700a926fee98a6bb98))
 
 ### Features
 
-* **ButtonToggle:** add `<ButtonToggle />` ([8c7f1b3](https://github.com/viewar/components/commit/8c7f1b3f84175d1e0e15199ca1fe13d57b575ddf))
-* **Slider:** add `<Slider />` component + Showcase ([#19](https://github.com/viewar/components/issues/19)) ([e22b30e](https://github.com/viewar/components/commit/e22b30e4e5f264f46ced7bbafa164457079a1037))
-* **PropertyPicker:** only show 'item.properties' filtered by 'props.shownProperties' ([891c5b5](https://github.com/viewar/components/commit/891c5b54641ba6f27f4e8642824b915f1c5659d0))
-* **componentPresenter:** render Showcases per router param ([#20](https://github.com/viewar/components/issues/20)) ([43730b5](https://github.com/viewar/components/commit/43730b56446f59d7cedf04de0f98cecb390b8ac6))
+- **ButtonToggle:** add `<ButtonToggle />` ([8c7f1b3](https://github.com/viewar/components/commit/8c7f1b3f84175d1e0e15199ca1fe13d57b575ddf))
+- **Slider:** add `<Slider />` component + Showcase ([#19](https://github.com/viewar/components/issues/19)) ([e22b30e](https://github.com/viewar/components/commit/e22b30e4e5f264f46ced7bbafa164457079a1037))
+- **PropertyPicker:** only show 'item.properties' filtered by 'props.shownProperties' ([891c5b5](https://github.com/viewar/components/commit/891c5b54641ba6f27f4e8642824b915f1c5659d0))
+- **componentPresenter:** render Showcases per router param ([#20](https://github.com/viewar/components/issues/20)) ([43730b5](https://github.com/viewar/components/commit/43730b56446f59d7cedf04de0f98cecb390b8ac6))
 
 # [1.3.0](https://github.com/viewar/components/compare/v1.2.1...v1.3.0) (2019-11-18)
 
-
 ### Features
 
-* **spec:** add minimal spec test for `<Overlay />` ([b2bd667](https://github.com/viewar/components/commit/b2bd667896398213def303d5ca8b5536cedc2048))
-* **spec:** add spec test for `<Input />` ([795a643](https://github.com/viewar/components/commit/795a6434a4b6a53eeec121c393ab0f0e4e1f45d4))
-* **spec:** add spec test for `<SideBar />` ([b0fa38e](https://github.com/viewar/components/commit/b0fa38e125c345220a99d1cea2bb3103c0af811e))
+- **spec:** add minimal spec test for `<Overlay />` ([b2bd667](https://github.com/viewar/components/commit/b2bd667896398213def303d5ca8b5536cedc2048))
+- **spec:** add spec test for `<Input />` ([795a643](https://github.com/viewar/components/commit/795a6434a4b6a53eeec121c393ab0f0e4e1f45d4))
+- **spec:** add spec test for `<SideBar />` ([b0fa38e](https://github.com/viewar/components/commit/b0fa38e125c345220a99d1cea2bb3103c0af811e))
 
 ## [1.2.1](https://github.com/viewar/components/compare/v1.2.0...v1.2.1) (2019-11-17)
 

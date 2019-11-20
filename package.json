@@ -69,7 +69,8 @@
   "dependencies": {
     "@viewar/webpack": "^1.5.4",
     "classnames": "^2.2.6",
-    "viewar-api": "^0.56.6",
+    "react-router-dom": "^5.1.2",
+    "viewar-api": "^0.57.0",
     "viewar-core": "^11.41.1"
   },
   "devDependencies": {

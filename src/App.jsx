@@ -1,6 +1,15 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import API from 'viewar-api';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+} from 'react-router-dom';
+
+import ComponentPresenter from './ComponentPresenter';
+import styles from './App.scss';
 
 // TODO: add routing for presenter
 class App extends PureComponent {
@@ -27,9 +36,19 @@ class App extends PureComponent {
     const { children } = this.props;
 
     return (
-      <div id="app_root">
+      <div id="app_root" className={styles.wrapper}>
         <h1 id="app_headline">@viewar/components</h1>
         {children && <div id="component">{children}</div>}
+
+        <Router>
+          <Link to="/Button">Button</Link>{' - '}
+          <Link to="/ButtonToggle">ButtonToggle</Link>{' - '}
+          <Link to="/Slider">Slider</Link>
+
+          <Switch>
+            <Route path="/:componentName" component={ComponentPresenter} />
+          </Switch>
+        </Router>
       </div>
     );
   }

@@ -1,0 +1,46 @@
+@import '../../styles/';
+
+$rail-height: 1.5rem !default;
+$rail-width: $rail-height;
+
+$rail-padding: 2px;
+
+.Slider {
+  margin-bottom: 1rem;
+}
+
+.slideRail {
+  width: 100%;
+  height: $rail-height;
+  background-color: $color-primary;
+  border-radius: 1.5rem;
+
+  cursor: pointer;
+
+  position: relative;
+}
+
+.slideKnob {
+  // * block definitions
+  height: calc(#{$rail-height} - #{$rail-padding * 2});
+  width: calc(#{$rail-width} - #{$rail-padding * 2});
+  margin: $rail-padding;
+
+  box-shadow: 0px 0px 10px solid #999;
+  border-radius: 50%;
+
+  // * positioning
+  transition: left 150ms ease-out;
+  position: absolute;
+  top: 0;
+  left: $rail-padding;
+
+  // * styling
+  background-color: #fff;
+
+  // * finetune
+  transform: translateX($rail-width * 0.5 * -1);
+
+  // allow click-trough!
+  pointer-events: none;
+}

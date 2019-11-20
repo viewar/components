@@ -1,39 +1,54 @@
 dist: trusty # needed for headles chrome
-
 language: node_js
+cache:
+  npm: true
+  directories:
+    - $HOME/.npm
+    - $HOME/build/$TRAVIS_REPO_SLUG/components/node_modules/
+
 node_js:
   - 12
   - 11
   - 10
-  - 9
+
+env:
+  - NODE_ENV=develop
 
 matrix:
   fast_finish: true
   allow_failures:
-    - node_js: 9
-  env:
-    NODE_ENV: test
+    - node_js: 10
 
 branches:
   only:
     - master
     - next
     - develop
+  except:
+    - /^v[0-9]+\.[0-9]+$/
 
-install: npm install
+stages:
+  - test
+  - release
 
-script:
-  - npm run lint
-  - npm run karma
-  - npm run build
-
-before_deploy:
-  - npm i -g semantic-release
-  - npm i -g @semantic-release/commit-analyzer @semantic-release/release-notes-generator @semantic-release/changelog @semantic-release/npm @semantic-release/git @semantic-release/github semantic-release-slack-bot
-
-deploy:
-  provider: script
-  skip_cleanup: true
-  script: npx semantic-release
-  on:
-    branch: next
+jobs:
+  fast_finish: true
+  allow_failures:
+    - node_js: 10
+  include:
+    - stage: release
+      if: (branch = next) AND (type IN (push)) AND (tag IS blank) AND (commit_message !~ /chore\(release\)/)
+      node_js: 12
+      script: skip
+      install: skip
+      before_deploy:
+        - npm i -g semantic-release
+        - npm i -g @semantic-release/commit-analyzer @semantic-release/release-notes-generator @semantic-release/changelog @semantic-release/npm @semantic-release/git @semantic-release/github semantic-release-slack-bot
+      deploy:
+        tags: false
+        provider: script
+        skip_cleanup: true
+        script: npx semantic-release
+        on:
+          branch: next
+          tags: false

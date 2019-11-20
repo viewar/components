@@ -1,15 +1,20 @@
 {
   "name": "@viewar/components",
-  "version": "1.2.0",
+  "version": "1.4.0",
   "description": "ViewAR's reusable react components",
   "main": "./src/index.js",
   "scripts": {
     "start": "cross-env DEBUG=true webpack-dev-server --open --mode development --env development_core",
     "start:mock": "cross-env DEBUG=true webpack-dev-server --open --mode development --env development_mock",
     "build": "webpack -p --mode production --env production",
-    "test": "npm run karma",
+    "test": "npm run lint && npm run build && npm run karma",
     "karma": "karma start ./node_modules/@viewar/webpack/karma",
-    "lint": "prettier **/*.{css,scss,md,json} --write && eslint --fix \"**/*.*{js,jsx}\" --format pretty"
+    "lint": "prettier **/*.{css,scss,md,json} --write && eslint --fix \"**/*.*{js,jsx}\" --ignore-pattern \"build/**/*\" --format pretty"
+  },
+  "husky": {
+    "hooks": {
+      "pre-push": "npm test"
+    }
   },
   "babel": {
     "presets": [
@@ -64,7 +69,8 @@
   "dependencies": {
     "@viewar/webpack": "^1.5.4",
     "classnames": "^2.2.6",
-    "viewar-api": "^0.56.6",
+    "react-router-dom": "^5.1.2",
+    "viewar-api": "^0.57.0",
     "viewar-core": "^11.41.1"
   },
   "devDependencies": {
@@ -75,9 +81,9 @@
     "@babel/plugin-transform-react-constant-elements": "^7.6.3",
     "@babel/preset-env": "^7.7.1",
     "@babel/preset-react": "^7.7.0",
-    "@viewar/config-eslint": "^1.7.0",
+    "@viewar/config-eslint": "^1.8.0",
     "cross-env": "^6.0.3",
-    "prettier": "^1.19.1",
+    "husky": "^3.1.0",
     "puppeteer": "^2.0.0"
   }
 }

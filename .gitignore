@@ -1,3 +1,7 @@
+# custom
+build
+.viewar-config
+
 # Logs
 logs
 *.log

@@ -37,7 +37,7 @@ jobs:
     - node_js: 10
   include:
     - stage: release
-      if: branch = next AND type IN (push) AND tag IS blank
+      if: (type IN (push)) AND (commit_message !~ /chore\(release\)/)
       node_js: 12
       script: skip
       install: skip

@@ -5,6 +5,7 @@ import viewarApi from 'viewar-api';
 
 import styles from './PropertyPicker.scss';
 
+// TODO: if !item -> look for selectedInstance -> look for only/first/last child in current sceneState
 class PropertyPicker extends PureComponent {
   static propTypes = {
     item: PropTypes.shape({

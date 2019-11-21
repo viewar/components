@@ -21,7 +21,7 @@ class ComponentPresenter extends PureComponent {
       return (
         <div id="ComponentPresenter" key="ComponentPresenter">
           <h3>Showcase for {`<${componentName} />`}</h3>
-          {!!ShowcaseComponent && <ShowcaseComponent /> || <div>Showcase not defined.</div>}
+          {!!ShowcaseComponent && <ShowcaseComponent {...this.props} /> || <div>Showcase not defined.</div>}
         </div>
       );
     }

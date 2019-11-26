@@ -29,6 +29,8 @@ class App extends PureComponent {
       // eslint-disable-next-line no-console
       console.warn('[Viewar API] Error: ', err);
     }
+
+    API.coreInterface.call('applyGridStageBackground', '#ffffff');
   }
 
   render() {
@@ -38,7 +40,6 @@ class App extends PureComponent {
       <div id="app_root" className={styles.wrapper}>
         <h1 id="app_headline">@viewar/components</h1>
         {children && <div id="component">{children}</div>}
-        <Icon color="red" icon="folder" />
         <Router>
           <Link to="/Button">Button</Link>
           {' - '}

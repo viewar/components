@@ -5,21 +5,19 @@ import Button from './Button';
 
 const ButtonShowcase = () => (
   <div>
-    <Button text="default variant" />
+    <Button text="default" />{' '}
+    <Button text="default bold" bold />{' '}
+    <Button text="default small" small />
     <br /><br />
-    <Button text="default variant small" small />
+    <Button text="default light" light />{' '}
+    <Button text="default light inverted" inverted light />{' '}
+    <Button text="default light filled" filled light />{' '}
     <br /><br />
-    <Button text="default variant light" light bold={false} />
+    <Button text="filled" filled />{' '}
+    <Button text="filled !bold" filled bold={false} />
     <br /><br />
-    <Button text="default variant !bold" bold={false} />
-    <br /><br />
-    <Button text="filled variant" filled bold={false} />
-    <br /><br />
-    <Button text="filled variant bold" filled />
-    <br /><br />
-    <Button text="filled variant inverted" filled inverted bold={false} />
-    <br /><br />
-    <Button text="filled variant inverted bold" filled inverted />
+    <Button text="filled inverted" filled inverted bold={false} />{' '}
+    <Button text="filled inverted bold" filled inverted bold />
   </div>
 );
 

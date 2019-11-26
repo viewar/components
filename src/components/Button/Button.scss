@@ -53,6 +53,10 @@
   &.filled {
     background-color: $color-primary;
     color: white;
+    &:not(.bold) {
+      font-weight: 600;
+    }
+
     @extend %_3d_effect;
   }
   &.inverted,

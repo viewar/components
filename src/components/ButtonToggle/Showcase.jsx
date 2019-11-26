@@ -14,11 +14,16 @@ const onChangeHandler = () => (toggleValueNew) => {
 };
 
 const Showcase = () => {
-  const [ toggleValue, setToggleValue ] = useState(null);
+  const [ toggleValue, setToggleValue ] = useState(false);
 
   return (
     <>
-      <ButtonToggle checked={toggleValue} label="controlled example" onChange={onChangeHandlerControlled(setToggleValue)} />
+      {toggleValue + ''}
+      <ButtonToggle
+        label={'controlled example'}
+        onChange={onChangeHandlerControlled(setToggleValue)}
+        checked={toggleValue}
+      />
       <br /><br />
       <ButtonToggle label="un-controlled example" onChange={onChangeHandler()} />
     </>

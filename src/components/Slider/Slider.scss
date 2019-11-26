@@ -3,27 +3,35 @@
 $rail-height: 1.5rem !default;
 $rail-width: $rail-height;
 
-$rail-padding: 2px;
+$rail-padding: 4px;
+
+$knob-width-calculated: calc(#{$rail-width} - #{$rail-padding * 2});
 
 .Slider {
   margin-bottom: 1rem;
 }
 
-.slideRail {
+.slideRailWrapper {
   width: 100%;
   height: $rail-height;
+  position: relative;
   background-color: $color-primary;
   border-radius: 1.5rem;
-
   cursor: pointer;
+}
+
+.slideRail {
+  height: $rail-height;
+  margin: 0 calc(#{$knob-width-calculated / 2});
 
   position: relative;
+  cursor: pointer;
 }
 
 .slideKnob {
   // * block definitions
   height: calc(#{$rail-height} - #{$rail-padding * 2});
-  width: calc(#{$rail-width} - #{$rail-padding * 2});
+  width: $knob-width-calculated;
   margin: $rail-padding;
 
   box-shadow: 0px 0px 10px solid #999;

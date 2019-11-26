@@ -66,21 +66,29 @@ class Slider extends PureComponent {
     }
   }
 
-  handleClick = (target) => (e) => {
+  handleClick = (target, wrapper = false) => (e) => {
+    e.stopPropagation(); // prevent bubble up
     if (target === 'rail') {
-      this.handleRailClick(e);
+      this.handleRailClick(e, wrapper);
     }
   }
 
-  handleRailClick = ({ nativeEvent: { offsetX, offsetY }}) => {
+  handleRailClick = ({ nativeEvent: { offsetX, offsetY }}, wrapper) => {
     const {
       rail: { current: railRef },
       knob: { current: knobRef },
     } = this.elements;
 
+    const railWidth = railRef.clientWidth;
+
     let newPositionLeft = offsetX;
-    if (newPositionLeft > railRef.clientWidth) {
-      newPositionLeft = railRef.clientWidth;
+    if (newPositionLeft > railWidth) {
+      newPositionLeft = railWidth;
+    }
+    if (wrapper) {
+      // wrapper click - set to max or zero
+      // only triggered on padded edges
+      newPositionLeft = offsetX < railWidth / 3 ? 0 : railWidth;
     }
 
     knobRef.style.left = `${newPositionLeft}px`;
@@ -103,11 +111,16 @@ class Slider extends PureComponent {
         {label &&
         <div className={styles.label}>{label}</div>}
         <div
-          className={styles.slideRail}
-          onClick={this.handleClick('rail')}
-          ref={this.elements.rail}
+          className={styles.slideRailWrapper}
+          onClick={this.handleClick('rail', 'wrapper')}
         >
-          <div className={styles.slideKnob} ref={this.elements.knob} style={{ left: positionLeft + 'px' }} />
+          <div
+            onClick={this.handleClick('rail')}
+            className={styles.slideRail}
+            ref={this.elements.rail}
+          >
+            <div className={styles.slideKnob} ref={this.elements.knob} style={{ left: positionLeft + 'px' }} />
+          </div>
         </div>
 
       </div>

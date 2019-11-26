@@ -1,9 +1,12 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import API from 'viewar-api';
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import {
+  BrowserRouter as Router, Switch, Route, Link,
+} from 'react-router-dom';
 
 import Icon from 'components/Icon';
+
 import ComponentPresenter from './ComponentPresenter';
 import styles from './App.scss';
 
@@ -21,7 +24,8 @@ class App extends PureComponent {
     try {
       window.api = await API.init();
       // eslint-disable-line indent
-    } catch (err) {
+    }
+    catch (err) {
       // eslint-disable-next-line no-console
       console.warn('[Viewar API] Error: ', err);
     }

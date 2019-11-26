@@ -9,13 +9,11 @@ import styles from './Icon.scss';
 const iconNamesShort = Object.keys(iconList).map((iconName) =>
   iconName.replace('button_', '')
 );
-console.log('iconNamesShort :', iconNamesShort);
 
-// TODO: add variant without mask!?
+// TODO: add variant without mask!? (see base6/EdgeButton)
 function Icon({
- icon, color, size, style 
+  icon, color, size, style,
 }) {
-  console.log('styles :', styles);
   const iconName = `button_${icon}`;
   const styleObject = Object.assign(
     {},
@@ -38,10 +36,6 @@ function Icon({
     />
   );
 }
-//       size && styles[`size-${size}`],
-//       global.BorderDark,
-//       icon && styles[`icon-${icon}`],
-//       className
 
 Icon.propTypes = {
   icon:  PropTypes.oneOf(iconNamesShort).isRequired,

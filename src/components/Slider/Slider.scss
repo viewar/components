@@ -50,5 +50,9 @@ $knob-width-calculated: calc(#{$rail-width} - #{$rail-padding * 2});
   transform: translateX($rail-width * 0.5 * -1);
 
   // allow click-trough!
-  pointer-events: none;
+  // pointer-events: none;
+
+  &:hover {
+    box-shadow: 0 0 #{$rail-padding} rgba(0, 0, 0, 1);
+  }
 }

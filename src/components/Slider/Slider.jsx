@@ -66,14 +66,15 @@ class Slider extends PureComponent {
     }
   }
 
-  handleClick = (target, wrapper = false) => (e) => {
-    e.stopPropagation(); // prevent bubble up
-    if (target === 'rail') {
-      this.handleRailClick(e, wrapper);
-    }
+  handleClick = (target) => (e) => {
+    // prevent bubble up
+    e.stopPropagation();
+    e.nativeEvent && e.nativeEvent.stopPropagation();
+
+    this.handleRailClick(e, target === 'wrapper');
   }
 
-  handleRailClick = ({ nativeEvent: { offsetX, offsetY }}, wrapper) => {
+  handleRailClick = ({ nativeEvent: { offsetX, offsetY }}, wrapper = false) => {
     const {
       rail: { current: railRef },
       knob: { current: knobRef },
@@ -97,7 +98,9 @@ class Slider extends PureComponent {
     if (newValue > this.props.max) newValue = this.props.max;
     if (newValue < this.props.min) newValue = this.props.min;
 
-    newValue = parseFloat(newValue).toFixed(this.props.decimals);
+    newValue = this.props.decimals
+      ? parseFloat(newValue).toFixed(this.props.decimals)
+      : parseFloat(newValue);
 
     this.props.onChange(newValue);
   }
@@ -112,7 +115,7 @@ class Slider extends PureComponent {
         <div className={styles.label}>{label}</div>}
         <div
           className={styles.slideRailWrapper}
-          onClick={this.handleClick('rail', 'wrapper')}
+          onClick={this.handleClick('wrapper')}
         >
           <div
             onClick={this.handleClick('rail')}

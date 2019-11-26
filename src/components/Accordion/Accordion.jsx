@@ -67,7 +67,7 @@ class Accordion extends PureComponent {
           [styles.isOpen]: isOpen || this.state.isOpen,
         })}
       >
-        <div key="accordion_trigger" className={classNames} onClick={this.handleTrigger}>
+        <div rel="trigger" key="accordion_trigger" className={classNames} onClick={this.handleTrigger}>
           {title}
           <div className={styles.trigger}>{'>'}</div>
         </div>

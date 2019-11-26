@@ -6,23 +6,31 @@ import cx from 'classnames';
 import * as iconList from './list';
 import styles from './Icon.scss';
 
-const iconNamesShort = Object.keys(iconList).map((iconName) => iconName.replace('button_', ''));
+const iconNamesShort = Object.keys(iconList).map((iconName) =>
+  iconName.replace('button_', '')
+);
+console.log('iconNamesShort :', iconNamesShort);
 
 // TODO: add variant without mask!?
 function Icon({
-  icon, color, size, style,
+ icon, color, size, style 
 }) {
+  console.log('styles :', styles);
   const iconName = `button_${icon}`;
-  const styleObject = Object.assign({}, {
-    maskImage:       `url('${iconList[iconName]}')`,
-    WebkitMaskImage: `url('${iconList[iconName]}')`,
-    backgroundColor: color,
-  }, styles);
+  const styleObject = Object.assign(
+    {},
+    {
+      maskImage:       `url('${iconList[iconName]}')`,
+      WebkitMaskImage: `url('${iconList[iconName]}')`,
+      backgroundColor: color,
+    },
+    styles
+  );
 
   return (
     <div
       style={styleObject}
-      className={cx(styles.Icon, {
+      className={cx(styles.Icon, global.BorderDark, {
         [styles.big]:    size === 'big',
         [styles.small]:  size === 'small',
         [styles.xsmall]: size === 'xsmall',
@@ -30,6 +38,10 @@ function Icon({
     />
   );
 }
+//       size && styles[`size-${size}`],
+//       global.BorderDark,
+//       icon && styles[`icon-${icon}`],
+//       className
 
 Icon.propTypes = {
   icon:  PropTypes.oneOf(iconNamesShort).isRequired,
@@ -39,9 +51,9 @@ Icon.propTypes = {
 };
 
 Icon.defaultProps = {
-  color:  null,
-  size:   null,
-  style:  {},
+  color: null,
+  size:  null,
+  style: {},
 };
 
 export default Icon;

@@ -34,8 +34,8 @@ class Button extends PureComponent {
     type:      '',
     tooltip:   null,
     // boolean modifiers
+    bold:      null,
     flat:      false,
-    bold:      false,
     small:     false,
     wide:      false,
     right:     false,
@@ -73,7 +73,7 @@ class Button extends PureComponent {
       {
         [styles.icon]:     type === 'icon',
         [styles.flat]:     flat,
-        [styles.bold]:     bold,
+        [styles.bold]:     (filled && bold !== false) || bold,
         [styles.small]:    small,
         [styles.wide]:     wide,
         [styles.right]:    right,

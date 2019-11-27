@@ -53,7 +53,14 @@ class Slider extends PureComponent {
 
     const fullWidth = railRef && railRef.clientWidth
       ? railRef.clientWidth
-      : 200; // ! fix clientWidth on first call
+      : 176; // ! fix clientWidth on first call
+
+    if (value > max) {
+      value = max;
+    }
+    else if (value < 0) {
+      value = 0;
+    }
 
     // inputType = 'pixel' | 'value'
     const onePercent = fullWidth / 100;
@@ -67,20 +74,39 @@ class Slider extends PureComponent {
   }
 
   handleClick = (target) => (e) => {
-    if (target === 'rail') {
-      this.handleRailClick(e);
-    }
+    e.stopPropagation(); // prevent bubble up to wrapper
+    e.nativeEvent && e.nativeEvent.stopPropagation();
+    this.handleRailClick(e, target === 'wrapper');
   }
 
-  handleRailClick = ({ nativeEvent: { offsetX, offsetY }}) => {
+  handleRailClick = ({ nativeEvent: { offsetX, offsetY }}, wrapper = false) => {
     const {
       rail: { current: railRef },
       knob: { current: knobRef },
     } = this.elements;
 
+    const railWidth = railRef.clientWidth;
+    console.log('railWidth :', railWidth);
+
     let newPositionLeft = offsetX;
-    if (newPositionLeft > railRef.clientWidth) {
-      newPositionLeft = railRef.clientWidth;
+    console.log('newPositionLeft :', newPositionLeft);
+    if (newPositionLeft > railWidth) {
+      newPositionLeft = railWidth;
+      console.log('newPositionLeft :', newPositionLeft);
+    }
+    else if (newPositionLeft > railWidth) {
+      newPositionLeft = 0;
+    }
+
+    if (wrapper) {
+      console.log('wrapper :', offsetX < railWidth / 3, offsetX > railWidth * 0.66, offsetX);
+      // wrapper click - set to max or zero
+      // only triggered on padded edges (due to stopPropagation
+      newPositionLeft = offsetX < railWidth / 3
+        ? 0
+        : offsetX > railWidth * 0.66
+          ? railWidth
+          : console.warn('[Viewar Slider] wrapper catched clickevent ! on edge');
     }
 
     knobRef.style.left = `${newPositionLeft}px`;
@@ -89,7 +115,9 @@ class Slider extends PureComponent {
     if (newValue > this.props.max) newValue = this.props.max;
     if (newValue < this.props.min) newValue = this.props.min;
 
-    newValue = parseFloat(newValue).toFixed(this.props.decimals);
+    newValue = this.props.decimals
+      ? parseFloat(parseFloat(newValue).toFixed(this.props.decimals))
+      : parseFloat(newValue);
 
     this.props.onChange(newValue);
   }
@@ -103,11 +131,16 @@ class Slider extends PureComponent {
         {label &&
         <div className={styles.label}>{label}</div>}
         <div
-          className={styles.slideRail}
-          onClick={this.handleClick('rail')}
-          ref={this.elements.rail}
+          className={styles.slideRailWrapper}
+          onClick={this.handleClick('wrapper')}
         >
-          <div className={styles.slideKnob} ref={this.elements.knob} style={{ left: positionLeft + 'px' }} />
+          <div
+            ref={this.elements.rail}
+            onClick={this.handleClick('rail')}
+            className={styles.slideRail}
+          >
+            <div className={styles.slideKnob} ref={this.elements.knob} style={{ left: positionLeft + 'px' }} />
+          </div>
         </div>
 
       </div>

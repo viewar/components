@@ -21,8 +21,11 @@ $knob-width-calculated: calc(#{$rail-width} - #{$rail-padding * 2});
 }
 
 .slideRail {
+  box-sizing: content-box;
   height: $rail-height;
-  margin: 0 calc(#{$knob-width-calculated / 2});
+  // removed to enable clickthrough to wrapper on edges
+  margin-right: calc(#{$knob-width-calculated} - (#{$rail-padding}));
+  margin-left: calc(#{$knob-width-calculated} - (#{$rail-padding}));
 
   position: relative;
   cursor: pointer;
@@ -32,7 +35,7 @@ $knob-width-calculated: calc(#{$rail-width} - #{$rail-padding * 2});
   // * block definitions
   height: calc(#{$rail-height} - #{$rail-padding * 2});
   width: $knob-width-calculated;
-  margin: $rail-padding;
+  margin: $rail-padding 0;
 
   box-shadow: 0px 0px 10px solid #999;
   border-radius: 50%;
@@ -46,8 +49,8 @@ $knob-width-calculated: calc(#{$rail-width} - #{$rail-padding * 2});
   // * styling
   background-color: #fff;
 
-  // * finetune
-  transform: translateX($rail-width * 0.5 * -1);
+  // * move to middlepoint
+  transform: translateX(calc(#{$knob-width-calculated} / 2 * -1));
 
   // allow click-trough!
   // pointer-events: none;

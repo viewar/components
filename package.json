@@ -67,7 +67,7 @@
   },
   "homepage": "https://github.com/viewar/components#readme",
   "dependencies": {
-    "@viewar/webpack": "^1.5.4",
+    "@viewar/webpack": "^1.6.0",
     "classnames": "^2.2.6",
     "react-hot-loader": "4.12.18",
     "react-router-dom": "^5.1.2",

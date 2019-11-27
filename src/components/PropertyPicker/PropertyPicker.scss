@@ -21,7 +21,7 @@
     overflow-x: auto;
     overflow-y: hidden;
     -webkit-overflow-scrolling: touch;
-
+ 
     .Tab {
       flex: 0 0 auto;
       padding: 0.5em 1em;
@@ -84,7 +84,7 @@
           margin-right: 0;
         }
 
-        &:hover {
+        // &:hover {
           //   &::after {
           //     content: "";
           //     position: absolute;

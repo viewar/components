@@ -21,7 +21,7 @@
     overflow-x: auto;
     overflow-y: hidden;
     -webkit-overflow-scrolling: touch;
- 
+
     .Tab {
       flex: 0 0 auto;
       padding: 0.5em 1em;
@@ -85,18 +85,18 @@
         }
 
         // &:hover {
-          //   &::after {
-          //     content: "";
-          //     position: absolute;
-          //     opacity: 0.3;
-          //     left: 0;
-          //     top: 0;
-          //     width: 100%;
-          //     height: 100%;
-          //     border-radius: 50%;
-          //   }
-        }
-        /* TODO: show tooltip instead of label?
+        //   &::after {
+        //     content: "";
+        //     position: absolute;
+        //     opacity: 0.3;
+        //     left: 0;
+        //     top: 0;
+        //     width: 100%;
+        //     height: 100%;
+        //     border-radius: 50%;
+        //   }
+      }
+      /* TODO: show tooltip instead of label?
 
         .Label {
           flex: 0 0 auto;
@@ -104,56 +104,55 @@
         }
 */
 
-        &.isActive .SelectionIndicator {
+      &.isActive .SelectionIndicator {
+        opacity: 1;
+        .Icon {
           opacity: 1;
-          .Icon {
-            opacity: 1;
-          }
         }
-        &:hover .SelectionIndicator {
-          opacity: 1;
-          :not(.isActive) .Icon {
-            opacity: 0;
-          }
+      }
+      &:hover .SelectionIndicator {
+        opacity: 1;
+        :not(.isActive) .Icon {
+          opacity: 0;
         }
+      }
 
-        .SelectionIndicator {
+      .SelectionIndicator {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+        height: 100%;
+        border: 2px solid $color-primary;
+        transition: opacity 0.25s ease-out;
+        border-radius: 50%;
+        pointer-events: none;
+
+        opacity: 0;
+
+        .Icon {
           position: absolute;
           left: 50%;
           top: 50%;
           transform: translate(-50%, -50%);
-          width: 100%;
-          height: 100%;
-          border: 2px solid $color-primary;
-          transition: opacity 0.25s ease-out;
-          border-radius: 50%;
-          pointer-events: none;
+          fill: white;
+          width: 30%;
+          height: 30%;
 
           opacity: 0;
-
-          .Icon {
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
-            fill: white;
-            width: 30%;
-            height: 30%;
-
-            opacity: 0;
-          }
         }
+      }
 
-        .Thumbnail {
-          position: absolute;
-          left: 50%;
-          top: 50%;
-          transform: translate(-50%, -50%);
-          width: calc(100% - 12px);
-          height: calc(100% - 12px);
-          background: center / contain no-repeat;
-          border-radius: 50%;
-        }
+      .Thumbnail {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: calc(100% - 12px);
+        height: calc(100% - 12px);
+        background: center / contain no-repeat;
+        border-radius: 50%;
       }
     }
   }

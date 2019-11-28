@@ -43,7 +43,7 @@ class App extends PureComponent {
         {children && <div id="component">{children}</div>}
 
         {initiated &&
-          <Router>
+          <Router hashType="slash">
             <Link to="/Button">Button</Link>{' - '}
             <Link to="/ButtonToggle">ButtonToggle</Link>{' - '}
             <Link to="/PropertyPicker">PropertyPicker</Link>{' - '}

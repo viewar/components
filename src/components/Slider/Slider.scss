@@ -1,30 +1,41 @@
-@import '../../styles/';
+@import 'styles';
 
 $rail-height: 1.5rem !default;
 $rail-width: $rail-height;
 
-$rail-padding: 2px;
+$rail-padding: 4px;
+
+$knob-width-calculated: calc(#{$rail-width} - #{$rail-padding * 2});
 
 .Slider {
   margin-bottom: 1rem;
 }
 
-.slideRail {
+.slideRailWrapper {
   width: 100%;
   height: $rail-height;
+  position: relative;
   background-color: $color-primary;
   border-radius: 1.5rem;
-
   cursor: pointer;
+}
+
+.slideRail {
+  box-sizing: content-box;
+  height: $rail-height;
+  // removed to enable clickthrough to wrapper on edges
+  margin-right: calc(#{$knob-width-calculated} - (#{$rail-padding}));
+  margin-left: calc(#{$knob-width-calculated} - (#{$rail-padding}));
 
   position: relative;
+  cursor: pointer;
 }
 
 .slideKnob {
   // * block definitions
   height: calc(#{$rail-height} - #{$rail-padding * 2});
-  width: calc(#{$rail-width} - #{$rail-padding * 2});
-  margin: $rail-padding;
+  width: $knob-width-calculated;
+  margin: $rail-padding 0;
 
   box-shadow: 0px 0px 10px solid #999;
   border-radius: 50%;
@@ -38,9 +49,13 @@ $rail-padding: 2px;
   // * styling
   background-color: #fff;
 
-  // * finetune
-  transform: translateX($rail-width * 0.5 * -1);
+  // * move to middlepoint
+  transform: translateX(calc(#{$knob-width-calculated} / 2 * -1));
 
   // allow click-trough!
-  pointer-events: none;
+  // pointer-events: none;
+
+  &:hover {
+    box-shadow: 0 0 #{$rail-padding} rgba(0, 0, 0, 1);
+  }
 }

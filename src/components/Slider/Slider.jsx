@@ -39,9 +39,8 @@ class Slider extends PureComponent {
       max,
     };
 
-
     // TODO: uncontrolled variant
-    this.state = {};
+    // this.state = {};
   }
 
   componentDidMount() {
@@ -73,7 +72,7 @@ class Slider extends PureComponent {
         return max / fullWidth * value;
       }
       else {
-        // * min-max
+        // * handle min-max for value -> pixel
         if (value > max) {
           value = max;
         }
@@ -124,6 +123,7 @@ class Slider extends PureComponent {
     // apply style to element
     knobRef.style.left = `${newPositionLeft}px`;
 
+    // convert value
     let newValue = this.convertValue(newPositionLeft);
     if (newValue > this.props.max) newValue = this.props.max;
     if (newValue < this.props.min) newValue = this.props.min;
@@ -133,13 +133,10 @@ class Slider extends PureComponent {
       : parseFloat(newValue);
 
     this.props.onChange(newValue);
-    // this.setState({
-    //   positionLeft: newPositionLeft,
-    // });
   }
 
   render() {
-    const { label, value } = this.props; // TODO: uncontrolled variant
+    const { label } = this.props; // TODO: uncontrolled variant
 
     return (
       <div className={styles.Slider} style={{ width: '200px' }}>

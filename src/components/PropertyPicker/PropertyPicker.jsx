@@ -5,6 +5,7 @@ import viewarApi from 'viewar-api';
 
 import styles from './PropertyPicker.scss';
 
+
 class PropertyPicker extends PureComponent {
   static propTypes = {
     item: PropTypes.shape({
@@ -16,7 +17,7 @@ class PropertyPicker extends PureComponent {
       key:               PropTypes.oneOfType([ PropTypes.string, PropTypes.number ]).isRequired,
     }).isRequired,
     shownProperties: PropTypes.arrayOf(
-      PropTypes.oneOfType([ PropTypes.string, PropTypes.instanceOf(RegExp) ])
+      PropTypes.oneOfType([ PropTypes.string, PropTypes.instanceOf(RegExp) ]),
     ),
     activeIcon: PropTypes.node,
     setLoading: PropTypes.func,
@@ -71,7 +72,7 @@ class PropertyPicker extends PureComponent {
     } = this;
 
     let optionIsActive = false,
-        optionActiveLabel = '';
+      optionActiveLabel = '';
 
     // TODO: filter in constructor (needs refactoring of 'item' usage)
     // * filter 'item.properties' by 'props.shownProperties'
@@ -80,8 +81,8 @@ class PropertyPicker extends PureComponent {
         (strOrRegExp instanceof RegExp
           ? strOrRegExp
           : new RegExp(strOrRegExp, 'i')
-        ).test(property.name)
-      )
+        ).test(property.name),
+      ),
     );
 
     return (
@@ -91,7 +92,7 @@ class PropertyPicker extends PureComponent {
             <div
               className={cx(
                 styles.Tab,
-                item.key === property && styles.isActive
+                item.key === property && styles.isActive,
               )}
               key={item.key}
               onClick={this.handlePropertyChange(item.key)}

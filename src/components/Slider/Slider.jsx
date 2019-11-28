@@ -5,7 +5,6 @@ import PropTypes from 'prop-types';
 import styles from './Slider.scss';
 
 // TODO: add drag handler to <Slider />
-// TODO: handle 'value <-> position' convertions
 class Slider extends PureComponent {
   static propTypes = {
     label:    PropTypes.string,
@@ -45,6 +44,17 @@ class Slider extends PureComponent {
     this.state = {};
   }
 
+  componentDidMount() {
+    const { value } = this.props;
+    const {
+      knob: { current: knobRef },
+    } = this.elements;
+
+    // apply initial positionLeft to element
+    const positionLeft = this.convertValue(value, 'value');
+    knobRef.style.left = `${positionLeft}px`;
+  }
+
   convertValue = (value, inputType = 'pixel') => {
     const {
       options: { max },
@@ -55,21 +65,23 @@ class Slider extends PureComponent {
       ? railRef.clientWidth
       : 176; // ! fix clientWidth on first call
 
-    if (value > max) {
-      value = max;
-    }
-    else if (value < 0) {
-      value = 0;
-    }
-
-    // inputType = 'pixel' | 'value'
-    const onePercent = fullWidth / 100;
-
     if (inputType === 'pixel') {
-      return value / onePercent / 100 * max;
+      return value / fullWidth * max;
     }
-    else {
-      return (value / max) * fullWidth;
+    else if (inputType === 'value') {
+      if (max < fullWidth) {
+        return max / fullWidth * value;
+      }
+      else {
+        // * min-max
+        if (value > max) {
+          value = max;
+        }
+        else if (value < 0) {
+          value = 0;
+        }
+        return (value / max) * fullWidth;
+      }
     }
   }
 
@@ -86,29 +98,30 @@ class Slider extends PureComponent {
     } = this.elements;
 
     const railWidth = railRef.clientWidth;
-    console.log('railWidth :', railWidth);
-
-    let newPositionLeft = offsetX;
-    console.log('newPositionLeft :', newPositionLeft);
-    if (newPositionLeft > railWidth) {
-      newPositionLeft = railWidth;
-      console.log('newPositionLeft :', newPositionLeft);
-    }
-    else if (newPositionLeft > railWidth) {
-      newPositionLeft = 0;
-    }
+    let newPositionLeft;
 
     if (wrapper) {
-      console.log('wrapper :', offsetX < railWidth / 3, offsetX > railWidth * 0.66, offsetX);
       // wrapper click - set to max or zero
-      // only triggered on padded edges (due to stopPropagation
+      // only triggered on padded edges (due to stopPropagation)
       newPositionLeft = offsetX < railWidth / 3
         ? 0
         : offsetX > railWidth * 0.66
           ? railWidth
           : console.warn('[Viewar Slider] wrapper catched clickevent ! on edge');
     }
+    else {
+      newPositionLeft = offsetX;
+    }
 
+    // fix > max and < min
+    if (newPositionLeft > railWidth) {
+      newPositionLeft = railWidth;
+    }
+    else if (newPositionLeft > railWidth) {
+      newPositionLeft = 0;
+    }
+
+    // apply style to element
     knobRef.style.left = `${newPositionLeft}px`;
 
     let newValue = this.convertValue(newPositionLeft);
@@ -120,11 +133,13 @@ class Slider extends PureComponent {
       : parseFloat(newValue);
 
     this.props.onChange(newValue);
+    // this.setState({
+    //   positionLeft: newPositionLeft,
+    // });
   }
 
   render() {
     const { label, value } = this.props; // TODO: uncontrolled variant
-    const positionLeft = this.convertValue(value, 'value');
 
     return (
       <div className={styles.Slider} style={{ width: '200px' }}>
@@ -139,7 +154,7 @@ class Slider extends PureComponent {
             onClick={this.handleClick('rail')}
             className={styles.slideRail}
           >
-            <div className={styles.slideKnob} ref={this.elements.knob} style={{ left: positionLeft + 'px' }} />
+            <div className={styles.slideKnob} ref={this.elements.knob} />
           </div>
         </div>
 

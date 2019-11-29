@@ -5,13 +5,15 @@ import Slider from 'components/Slider';
 const Showcase = () => {
   const [ values, setValues ] = useState({
     // max > fullWidth
-    a: 1253,
-    b: 150,
+    a:  1253,
+    b:  150,
     // max < fullWidth
-    c: 1,
-    d: 144.78260869565216,
-    e: 700,
-    f: 500,
+    c:  1,
+    c2: 33,
+    c3: 80,
+    d:  144.78260869565216,
+    e:  700,
+    f:  500,
   });
 
   const handleSliderChange = (which) => (newValue) => {
@@ -27,6 +29,8 @@ const Showcase = () => {
 
       <h3>{'max < fullWidth'}</h3>
       <Slider label={`${values.c} of 2`} onChange={handleSliderChange('c')} min={0.2} max={2} value={values.c} />
+      <Slider label={`${values.c2} of 100`} onChange={handleSliderChange('c2')} min={0} max={100} value={values.c2} />
+      <Slider label={`${values.c3} of 150`} onChange={handleSliderChange('c3')} min={50} max={150} value={values.c3} />
 
       <h3>{'decimals={false}'}</h3>
       <Slider label={`${values.d} of 360`} onChange={handleSliderChange('d')} max={360} value={values.d} decimals={false} />

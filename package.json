@@ -71,7 +71,7 @@
     "classnames": "^2.2.6",
     "react-hot-loader": "4.12.18",
     "react-router-dom": "^5.1.2",
-    "viewar-api": "^1.0.0",
+    "viewar-api": "^1.1.0",
     "viewar-core": "^11.60.14"
   },
   "devDependencies": {

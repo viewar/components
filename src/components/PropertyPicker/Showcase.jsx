@@ -1,15 +1,34 @@
 import React, { PureComponent } from 'react';
+import ViewarApi from 'viewar-api';
 
 import { PropertyPicker } from 'components';
 
 class Showcase extends PureComponent {
-  state = {
-    isReady:       false,
-    modelInstance: null,
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      isReady:       false,
+      modelInstance: null,
+    };
+
+    this.insertModel();
   }
 
-  componentDidMount() {
 
+  insertModel = async () => {
+    const {
+      modelManager: { fetchModelFromRepository },
+      sceneManager: { insertModel },
+    } = ViewarApi;
+
+    const model = await fetchModelFromRepository('46308'); // Mammoth Chair
+    const modelInstance = insertModel(model);
+
+    this.setState({
+      isReady: true,
+      modelInstance,
+    });
   }
 
 

@@ -81,7 +81,7 @@ class Button extends PureComponent {
         [styles.filled]:   filled,
         [styles.inverted]: inverted,
       },
-      className
+      className,
     );
 
     return (

@@ -7,7 +7,7 @@ import * as iconList from './list';
 import styles from './Icon.scss';
 
 const iconNamesShort = Object.keys(iconList).map((iconName) =>
-  iconName.replace('button_', '')
+  iconName.replace('button_', ''),
 );
 
 // TODO: add variant without mask!? (see base6/EdgeButton)
@@ -22,7 +22,7 @@ function Icon({
       WebkitMaskImage: `url('${iconList[iconName]}')`,
       backgroundColor: color,
     },
-    styles
+    styles,
   );
 
   return (

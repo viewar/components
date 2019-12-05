@@ -58,7 +58,7 @@ class Accordion extends PureComponent {
         [styles.left]:  left,
         [styles.right]: right,
       },
-      className
+      className,
     );
 
     return (

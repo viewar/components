@@ -11,7 +11,7 @@ const {
 const mounted = mount(
   <Accordion title="<Accordion /> spec test" initialState={{ isOpen: true }}>
     {'required prop \'children\''}
-  </Accordion>
+  </Accordion>,
 );
 
 describe('<Accordion />', function() {

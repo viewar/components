@@ -5,3 +5,45 @@
     clear: both;
   }
 }
+
+//* media queries
+
+@mixin phone-landscape {
+  @media only screen and (orientation: landscape) and (max-height: 736px) {
+    @content;
+  }
+}
+
+@mixin phone-portrait {
+  @media only screen and (orientation: portrait) and (max-height: 736px),
+    screen and (orientation: portrait) and (max-width: 414px) {
+    @content;
+  }
+}
+
+@mixin phone {
+  @media only screen and (orientation: portrait) and (max-height: 736px),
+    screen and (orientation: portrait) and (max-width: 414px),
+    screen and (orientation: landscape) and (max-height: 736px) {
+    @content;
+  }
+}
+
+@mixin tablet-portrait {
+  @media only screen and (orientation: portrait) and (min-height: 736px) {
+    @content;
+  }
+}
+
+@mixin tablet-landscape {
+  @media only screen and (orientation: landscape) and (min-height: 415px) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media only screen and (orientation: portrait) and (min-width: 415px),
+    screen and (orientation: landscape) and (min-height: 415px) {
+    @content;
+  }
+}

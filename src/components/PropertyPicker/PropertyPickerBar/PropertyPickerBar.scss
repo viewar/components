@@ -1,0 +1,72 @@
+@import 'constants.scss';
+@import 'media-queries.scss';
+
+.Container {
+  display: flex;
+  align-items: center;
+  font-size: 1.5em;
+  height: calc(#{$icon-size} - 3px);
+}
+
+.Button {
+  flex: 0 0 auto;
+  height: $icon-size;
+  width: $icon-size;
+  margin: 0 !important;
+  cursor: pointer;
+}
+
+.EdgeButtonNext {
+  margin-left: -50px !important;
+}
+
+.EdgeButtonPrevious {
+  margin-right: -50px !important;
+}
+
+.Active {
+  height: calc(#{$icon-size});
+  margin: 0 -2px;
+  flex: 1 1 auto;
+  overflow: hidden;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+}
+
+.Active.noButtons {
+  border-radius: calc(#{$icon-size} / 2);
+}
+
+.Property {
+  font-size: 0.9em;
+  flex: 0 0 auto;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.Value {
+  font-size: 1.1em;
+  flex: 0 0 auto;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@include phone-landscape {
+  .Container {
+    height: $icon-size-phone-landscape;
+  }
+
+  .Button {
+    height: $icon-size-phone-landscape;
+    width: $icon-size-phone-landscape;
+  }
+
+  .Active {
+    height: calc(#{$icon-size-phone-landscape});
+  }
+}

@@ -1,0 +1,201 @@
+@import 'constants.scss';
+@import 'media-queries.scss';
+
+.List .ValueWrapper::-webkit-scrollbar,
+.Container::-webkit-scrollbar {
+  width: 0;
+  display: none;
+}
+
+.Container.Thumbnail {
+  display: flex;
+  flex-flow: column-reverse;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  margin-bottom: $icon-padding;
+  margin-top: $icon-padding;
+}
+
+.Thumbnail .Circle,
+.Thumbnail .Value {
+  width: $icon-size;
+  height: $icon-size;
+}
+
+.Thumbnail .Value {
+  position: relative;
+  margin: $icon-padding $icon-padding 0 0;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 0 0 auto;
+}
+
+.Thumbnail .Circle {
+  position: absolute;
+  border: 4px solid rgba(255, 255, 255, 0.4);
+  box-sizing: border-box;
+  border-radius: 50%;
+  z-index: 50;
+}
+
+.Thumbnail .Circle.selected {
+  border-color: white;
+}
+
+.Thumbnail .Image {
+  position: absolute;
+  border-radius: 50%;
+  background: center / cover no-repeat;
+  width: calc(100% - 16px);
+  height: calc(100% - 16px);
+  overflow: hidden;
+  z-index: 40;
+}
+
+.Container.List {
+  display: flex;
+  flex-flow: column-reverse;
+  overflow: hidden;
+  margin: $icon-padding;
+  justify-content: flex-start;
+}
+
+.List .ValueWrapper {
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.List .Value {
+  width: calc(#{$icon-size} + #{$icon-padding} + 16px);
+  margin-bottom: 10px;
+  position: relative;
+}
+
+.List .Value:last-of-type {
+  margin-bottom: 0;
+}
+
+.List .Value .Text {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: calc(#{$icon-size} + #{$icon-padding});
+  border-radius: 35px;
+  height: calc(#{$icon-size} - 16px);
+  line-height: calc(#{$icon-size} - 16px);
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 1.3rem;
+  cursor: pointer;
+  box-sizing: border-box;
+  padding: 0 10px;
+}
+
+.List .Value .Circle {
+  width: calc(#{$icon-size} + #{$icon-padding} + 16px);
+  height: $icon-size;
+  box-sizing: border-box;
+  border-radius: 39px;
+  border: 4px solid rgba(255, 255, 255, 0.4);
+}
+
+.List .Value.selected .Circle {
+  border-color: white;
+}
+
+@include phone-landscape {
+  .Container.Thumbnail {
+    margin-bottom: $icon-padding-phone-landscape;
+  }
+
+  .Thumbnail .Circle,
+  .Thumbnail .Value {
+    height: $icon-size-phone-landscape;
+    width: $icon-size-phone-landscape;
+  }
+
+  .Thumbnail .Value {
+    margin: $icon-padding-phone-landscape $icon-padding-phone-landscape 0 0;
+  }
+
+  .Container.List {
+    margin: $icon-padding-phone-landscape;
+  }
+
+  .List .Value {
+    width: calc(#{$icon-size-phone-landscape} + #{$icon-padding-phone-landscape} + 16px);
+  }
+
+  .List .Value .Text {
+    width: calc(#{$icon-size} + #{$icon-padding});
+    width: calc(#{$icon-size-phone-landscape} + #{$icon-padding-phone-landscape});
+    height: calc(#{$icon-size-phone-landscape} - 16px);
+    border-radius: calc((#{$icon-size-phone-landscape} - 16px) / 2);
+    line-height: calc(#{$icon-size-phone-landscape} - 16px);
+  }
+
+  .List .Value .Circle {
+    height: $icon-size-phone-landscape;
+    border-radius: calc(#{$icon-size-phone-landscape} / 2);
+    width: calc(#{$icon-size-phone-landscape} + #{$icon-padding-phone-landscape} + 16px);
+  }
+}
+
+@include phone-portrait {
+  .Container.Thumbnail,
+  .Container.List {
+    margin: 12px 24px;
+  }
+
+  .Container.Thumbnail {
+    flex-flow: row;
+  }
+
+  .Thumbnail .Value {
+    margin: 0 12px 0 0;
+  }
+
+  .Thumbnail .Value:last-child {
+    margin-right: 0;
+  }
+
+  .Thumbnail .Circle,
+  .Thumbnail .Value {
+    width: 60px;
+    height: 60px;
+  }
+
+  .List .ValueWrapper {
+    display: flex;
+  }
+
+  .List .Value {
+    width: 120px;
+    height: 60px;
+    margin: 0 12px 0 0;
+  }
+
+  .List .Value:last-child {
+    width: 120px;
+    height: 60px;
+    margin-right: 0;
+  }
+
+  .List .Value .Text {
+    width: calc(120px - 16px);
+    height: calc(60px - 16px);
+    border-radius: calc((60px - 16px) / 2);
+    line-height: calc(60px - 16px);
+  }
+
+  .List .Value .Circle {
+    border-radius: 30px;
+    height: 60px;
+    width: 120px;
+  }
+}

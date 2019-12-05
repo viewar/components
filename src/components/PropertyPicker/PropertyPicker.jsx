@@ -1,13 +1,11 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
-import { compose } from 'recompose';
+// import { getUiConfigPath } from 'utils'; // TODO: fix getUiConfigPath
 
-import { getUiConfigPath } from 'utils';
-import { withSetLoading, withDialogControls } from 'services';
-import { PropertyOptions, PropertyPickerBar, PropertyPickerList } from 'components';
-// TODO: remove view styles
-import viewStyles from 'views/main/main.scss';
+import PropertyOptions from './PropertyOptions';
+import PropertyPickerBar from './PropertyPickerBar';
+import PropertyPickerList from './PropertyPickerList';
 import styles from './PropertyPicker.scss';
 
 /**
@@ -31,19 +29,19 @@ export const getFilteredProperties = ({ displayTemplate, properties }) =>
 class PropertyPickerClass extends PureComponent {
   static propTypes = {
     instance: PropTypes.shape({
-      id: PropTypes.string.isRequired,
+      id:                PropTypes.string.isRequired,
       setPropertyValues: PropTypes.func.isRequired,
     }).isRequired,
-    className: PropTypes.string,
+    className:       PropTypes.string,
     widgetClassName: PropTypes.string,
-    setLoading: PropTypes.func,
+    setLoading:      PropTypes.func,
     // showDialog: PropTypes.func,
   };
 
   static defaultProps = {
-    className: '',
+    className:       '',
     widgetClassName: '',
-    setLoading: () => {},
+    setLoading:      () => {},
     // showDialog: () => {},
   };
 
@@ -64,9 +62,9 @@ class PropertyPickerClass extends PureComponent {
     const propertyValues = instance ? instance.propertyValues : {};
 
     this.state = {
-      instanceId: instance ? instance.id : null,
+      instanceId:     instance ? instance.id : null,
       // TODO: refactor property filtering
-      properties: propertiesFilterd,
+      properties:     propertiesFilterd,
       activeProperty: propertiesFilterd.length
         ? instance.properties[propertiesFilterd[0]]
         : null,
@@ -113,7 +111,9 @@ class PropertyPickerClass extends PureComponent {
   };
 
   render() {
-    const { instance, setLoading, className, widgetClassName } = this.props;
+    const {
+      instance, setLoading, className, widgetClassName,
+    } = this.props;
 
     if (!instance) {
       return <div key="PropertyPicker" />;

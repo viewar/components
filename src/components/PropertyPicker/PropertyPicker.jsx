@@ -1,7 +1,6 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
-// import { getUiConfigPath } from 'utils'; // TODO: fix getUiConfigPath
 
 import PropertyOptions from './PropertyOptions';
 import PropertyPickerBar from './PropertyPickerBar';
@@ -32,16 +31,18 @@ class PropertyPicker extends PureComponent {
       id:                PropTypes.string.isRequired,
       setPropertyValues: PropTypes.func.isRequired,
     }).isRequired,
-    className:       PropTypes.string,
-    widgetClassName: PropTypes.string,
-    setLoading:      PropTypes.func,
+    showPropertyList: PropTypes.bool,
+    className:        PropTypes.string,
+    widgetClassName:  PropTypes.string,
+    setLoading:       PropTypes.func,
     // showDialog: PropTypes.func,
   };
 
   static defaultProps = {
-    className:       '',
-    widgetClassName: '',
-    setLoading:      () => {},
+    showPropertyList: false, // shows list instead of bar
+    className:        '',
+    widgetClassName:  '',
+    setLoading:       () => {},
     // showDialog: () => {},
   };
 
@@ -49,10 +50,6 @@ class PropertyPicker extends PureComponent {
     super(props);
 
     const { instance } = props;
-
-    this.config = {
-      showPropertyList: getUiConfigPath('showPropertyList'),
-    };
 
     if (instance) {
       console.log('instance', instance);
@@ -112,7 +109,7 @@ class PropertyPicker extends PureComponent {
 
   render() {
     const {
-      instance, setLoading, className, widgetClassName,
+      instance, showPropertyList, setLoading, className, widgetClassName,
     } = this.props;
 
     if (!instance) {
@@ -132,7 +129,7 @@ class PropertyPicker extends PureComponent {
 
     return (
       <div key="PropertyPicker" className={cx(styles.Container, className)}>
-        {this.config.showPropertyList ? (
+        {showPropertyList ? (
           <PropertyPickerList
             setLoading={setLoading}
             properties={properties}

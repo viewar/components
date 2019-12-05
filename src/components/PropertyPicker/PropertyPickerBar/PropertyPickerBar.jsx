@@ -1,12 +1,11 @@
+/* eslint-disable react/prop-types */
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 
-import styles from './PropertyPickerBar.scss';
-import globalStyles from '../../../sass/global.scss';
+import { Icon } from 'components';
 
-import { isEdgeBrowser } from '../../../utils/is-edge';
-import { IconButtonEdge, Icon } from 'components';
+import styles from './PropertyPickerBar.scss';
 
 class PropertyPickerBar extends PureComponent {
   selectNext = () => {
@@ -37,53 +36,28 @@ class PropertyPickerBar extends PureComponent {
       <div className={cx(styles.Container, className)}>
         {showButtons && (
           <>
-            {isEdgeBrowser ? (
-              <IconButtonEdge
-                className={styles.EdgeButtonPrevious}
-                dark
-                size={'small'}
-                icon={'back'}
-                onClick={this.selectNext}
-              />
-            ) : (
-              <Icon
-                icon="submenu_back"
-                className={cx(styles.Button, globalStyles.ContentBoxColor)}
-                onClick={this.selectNext}
-              />
-            )}
+            <Icon
+              icon="submenu_back"
+              className={cx(styles.Button)}
+              onClick={this.selectNext}
+            />
           </>
         )}
         <div
           className={cx(
             styles.Active,
-            globalStyles.ContentBoxColor,
-            globalStyles.ContentBoxTextColor,
-            !showButtons && styles.noButtons
+            !showButtons && styles.noButtons,
           )}
         >
           <div className={styles.Property}>{activeProperty.name + ':'}</div>
           <div className={styles.Value}>{activeProperty.value.name}</div>
         </div>
-        {showButtons && (
-          <>
-            {isEdgeBrowser ? (
-              <IconButtonEdge
-                className={styles.EdgeButtonNext}
-                dark
-                size={'small'}
-                icon={'next'}
-                onClick={this.selectPrevious}
-              />
-            ) : (
-              <Icon
-                icon="submenu_next"
-                className={cx(styles.Button, globalStyles.ContentBoxColor)}
-                onClick={this.selectPrevious}
-              />
-            )}
-          </>
-        )}
+        {showButtons &&
+          <Icon
+            icon="submenu_next"
+            className={cx(styles.Button)}
+            onClick={this.selectPrevious}
+          />}
       </div>
     );
   }

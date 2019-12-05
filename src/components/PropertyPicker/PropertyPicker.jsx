@@ -26,7 +26,7 @@ export const getFilteredProperties = ({ displayTemplate, properties }) =>
         : !!displayTemplate.find((item) => item.name === properties[propertyKey].name),
     );
 
-class PropertyPickerClass extends PureComponent {
+class PropertyPicker extends PureComponent {
   static propTypes = {
     instance: PropTypes.shape({
       id:                PropTypes.string.isRequired,
@@ -138,7 +138,6 @@ class PropertyPickerClass extends PureComponent {
             properties={properties}
             activeProperty={activeProperty}
             setActiveProperty={this.setActiveProperty}
-            className={viewStyles.ConfiguratorList}
           />
         ) : (
           <PropertyPickerBar
@@ -146,7 +145,6 @@ class PropertyPickerClass extends PureComponent {
             properties={properties}
             activeProperty={activeProperty}
             setActiveProperty={this.setActiveProperty}
-            className={viewStyles.ConfiguratorPicker}
           />
         )}
 
@@ -162,7 +160,5 @@ class PropertyPickerClass extends PureComponent {
     );
   }
 }
-
-const PropertyPicker = compose(withSetLoading, withDialogControls)(PropertyPickerClass);
 
 export default PropertyPicker;

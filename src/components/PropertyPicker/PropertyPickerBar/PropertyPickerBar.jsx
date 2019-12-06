@@ -11,12 +11,16 @@ import styles from './PropertyPickerBar.scss';
 
 class PropertyPickerBar extends PureComponent {
   selectNext = () => {
-    const { properties, activeProperty, setActiveProperty } = this.props;
+    const {
+      instance, properties, activeProperty, setActiveProperty,
+    } = this.props;
 
-    const oldIndex = properties.indexOf(activeProperty);
+    const oldIndex = properties.indexOf(activeProperty.name);
     const newIndex = (properties.length + (oldIndex + 1)) % properties.length;
 
-    setActiveProperty(properties[newIndex]);
+    setActiveProperty(
+      instance.properties[properties[newIndex]],
+    );
   };
 
   selectPrevious = () => {
@@ -25,7 +29,7 @@ class PropertyPickerBar extends PureComponent {
     const oldIndex = properties.indexOf(activeProperty);
     const newIndex = (properties.length + (oldIndex - 1)) % properties.length;
 
-    setActiveProperty(properties[newIndex]);
+    // setActiveProperty(properties[newIndex]);
   };
 
   render() {
@@ -41,7 +45,8 @@ class PropertyPickerBar extends PureComponent {
             <Icon
               icon="submenu_back"
               className={cx(styles.Button)}
-              onClick={this.selectNext}
+              onClick={this.selectPrevious}
+              color="#333"
             />
           </>
         )}
@@ -58,7 +63,8 @@ class PropertyPickerBar extends PureComponent {
           <Icon
             icon="submenu_next"
             className={cx(styles.Button)}
-            onClick={this.selectPrevious}
+            onClick={this.selectNext}
+            color="#333"
           />}
       </div>
     );

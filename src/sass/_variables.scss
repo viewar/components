@@ -7,8 +7,13 @@ $color-bg-dark: #eaeaea !default;
 $font-color-sidebar: #666 !default;
 
 // * ICONS
-$icon-padding: 2px !default;
-$icon-padding-phone-landscape: 3px !default;
+$icon-size: 60px;
+$icon-padding: 24px;
+$icon-size-medium: 42px;
+$icon-padding-medium: 12px;
+$icon-size-small: 32px;
+$icon-padding-small: 16px;
 
-$icon-size: 24px !default;
-$icon-size-phone-landscape: 20px !default;
+$icon-size-phone-landscape: calc(100vh / 4 - 30px);
+$icon-padding-phone-landscape: 24px;
+$icon-size-small-phone-landscape: 7vh;

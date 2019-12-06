@@ -1,5 +1,12 @@
 @import 'styles';
 
+.Container {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  z-index: 30;
+}
+
 .List .ValueWrapper::-webkit-scrollbar,
 .Container::-webkit-scrollbar {
   width: 0;
@@ -13,6 +20,7 @@
   -webkit-overflow-scrolling: touch;
   margin-bottom: $icon-padding;
   margin-top: $icon-padding;
+  cursor: pointer;
 }
 
 .Thumbnail .Circle,

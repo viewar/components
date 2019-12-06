@@ -1,3 +1,3 @@
-import PropertyPicker from './PropertyPicker';
+import PropertyPickerLight from './PropertyPickerLight';
 
-export default PropertyPicker;
+export default PropertyPickerLight;

@@ -16,14 +16,17 @@ import styles from './PropertyPicker.scss';
  * @param {Array} instance.displayTemplate
  * @return {keys[]} - list of propertyKeys which are allowed
  */
-export const getFilteredProperties = ({ displayTemplate, properties }) =>
-  arguments[0] == null // eslint-disable-line no-undef
+export const getFilteredProperties = ({ displayTemplate, properties }) => {
+  return Object.keys(properties);
+
+  return arguments[0] == null // eslint-disable-line no-undef
     ? null
     : Object.keys(properties).filter((propertyKey) =>
       !(properties[propertyKey].options.length > 1)
         ? false
         : !!displayTemplate.find((item) => item.name === properties[propertyKey].name),
     );
+};
 
 class PropertyPicker extends PureComponent {
   static propTypes = {
@@ -90,8 +93,9 @@ class PropertyPicker extends PureComponent {
   getFirstProperty = (properties) =>
     properties && properties.length ? properties[0] : null;
 
-  setActiveProperty = ({ properties }) => {
-    const activeProperty = this.getActiveProperty(properties);
+  setActiveProperty = (activeProperty) => {
+    console.log('setActiveProperty - activeProperty :', activeProperty);
+    // const activeProperty = this.getActiveProperty(properties);
 
     this.setState({ activeProperty });
   };
@@ -118,7 +122,7 @@ class PropertyPicker extends PureComponent {
     console.log('instance :', instance);
     console.log('getFilteredProperties(instance) :', getFilteredProperties(instance));
 
-    const { activeProperty, properties } = this.state;
+    const { activeProperty, properties, propertyValues } = this.state;
 
     console.log('activeProperty :', activeProperty);
     console.log('this.props.properties (propertiesFiltered):', this.state.properties);
@@ -129,7 +133,7 @@ class PropertyPicker extends PureComponent {
 
     return (
       <div key="PropertyPicker" className={cx(styles.Container, className)}>
-        {showPropertyList ? (
+        { showPropertyList ? (
           <PropertyPickerList
             setLoading={setLoading}
             properties={properties}
@@ -138,6 +142,7 @@ class PropertyPicker extends PureComponent {
           />
         ) : (
           <PropertyPickerBar
+            instance={instance}
             setLoading={setLoading}
             properties={properties}
             activeProperty={activeProperty}
@@ -149,6 +154,7 @@ class PropertyPicker extends PureComponent {
           valueValid={this.valueValid}
           setLoading={setLoading}
           property={activeProperty}
+          propertyValues={propertyValues}
           setValues={this.setValues}
           className={widgetClassName}
           configuration={instance}

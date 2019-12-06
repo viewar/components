@@ -1,17 +1,15 @@
 import React, { PureComponent } from 'react';
-import ViewarApi from 'viewar-api';
+import ViewarApi, { sceneManager } from 'viewar-api';
 
 import { PropertyPicker } from 'components';
 
 class Showcase extends PureComponent {
-  constructor(props) {
-    super(props);
+  state = {
+    isReady:       false,
+    modelInstance: null,
+  };
 
-    this.state = {
-      isReady:       false,
-      modelInstance: null,
-    };
-
+  componentDidMount() {
     this.insertModel();
   }
 
@@ -22,8 +20,15 @@ class Showcase extends PureComponent {
       sceneManager: { insertModel },
     } = ViewarApi;
 
-    const model = await fetchModelFromRepository('46308'); // Mammoth Chair
-    const modelInstance = insertModel(model);
+    const sceneChild = sceneManager.scene.children[0];
+    if (sceneChild && sceneChild.model && sceneChild.model.id === '46308') {
+      console.info('skipping insertModel');
+      this.setState({ isReady: true });
+      return true;
+    }
+
+    const model = await fetchModelFromRepository('62126'); // Floyd Sofa
+    const modelInstance = await insertModel(model);
 
     this.setState({
       isReady: true,
@@ -35,13 +40,13 @@ class Showcase extends PureComponent {
   render() {
     const { isReady, modelInstance } = this.state;
 
-    if (!isReady) {
+    if (!(isReady && modelInstance)) {
       return <div key="PropertyPickerShowcase">Loading model instance...</div>;
     }
 
     return (
       <div key="PropertyPickerShowcase">
-        {isReady &&
+        {(isReady && modelInstance) &&
           <PropertyPicker
             instance={modelInstance}
           />}

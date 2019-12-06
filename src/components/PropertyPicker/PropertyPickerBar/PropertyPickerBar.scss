@@ -2,9 +2,17 @@
 
 .Container {
   display: flex;
+  -webkit-box-align: center;
   align-items: center;
   font-size: 1.5em;
+
+  width: 80%;
+  margin: 0 auto;
   height: calc(#{$icon-size} - 3px);
+  border-radius: calc(#{$icon-size} / 2);
+
+  background-color: white;
+  color: #282f39;
 }
 
 .Button {

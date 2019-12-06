@@ -17,7 +17,7 @@ import styles from './PropertyPicker.scss';
  * @return {keys[]} - list of propertyKeys which are allowed
  */
 export const getFilteredProperties = ({ displayTemplate, properties }) => {
-  return Object.keys(properties);
+  // return Object.keys(properties);
 
   return arguments[0] == null // eslint-disable-line no-undef
     ? null
@@ -32,6 +32,17 @@ class PropertyPicker extends PureComponent {
   static propTypes = {
     instance: PropTypes.shape({
       id:                PropTypes.string.isRequired,
+      properties:        PropTypes.objectOf(PropTypes.shape({
+        name:    PropTypes.string.isRequired,
+        type:    PropTypes.string.isRequired,
+        options: PropTypes.arrayOf(PropTypes.shape({
+          name:     PropTypes.string.isRequired,
+          key:      PropTypes.string.isRequired,
+          imageUrl: PropTypes.string.isRequired,
+          // TODO: check isValid implementation
+          isValid:  PropTypes.func.isRequired,
+        })).isRequired,
+      })).isRequired,
       setPropertyValues: PropTypes.func.isRequired,
     }).isRequired,
     showPropertyList: PropTypes.bool,
@@ -90,13 +101,10 @@ class PropertyPicker extends PureComponent {
   //   }
   // }
 
-  getFirstProperty = (properties) =>
-    properties && properties.length ? properties[0] : null;
+  // getFirstProperty = (properties) =>
+  //   properties && properties.length ? properties[0] : null;
 
   setActiveProperty = (activeProperty) => {
-    console.log('setActiveProperty - activeProperty :', activeProperty);
-    // const activeProperty = this.getActiveProperty(properties);
-
     this.setState({ activeProperty });
   };
 
@@ -104,31 +112,19 @@ class PropertyPicker extends PureComponent {
 
   setValues = async (propertyValues) => {
     const { instance } = this.props;
-    console.log('PropertyPicker->setValues: propertyValues :', propertyValues);
 
     await instance.setPropertyValues(propertyValues);
-    // TODO: set activePropertyHere
     this.setState({ propertyValues });
   };
 
   render() {
     const {
-      instance, showPropertyList, setLoading, className, widgetClassName,
-    } = this.props;
+      props: { instance, showPropertyList, setLoading, className, widgetClassName },
+      state: { activeProperty, properties, propertyValues },
+    } = this;
 
-    if (!instance) {
+    if (!instance || !activeProperty) {
       return <div key="PropertyPicker" />;
-    }
-    console.log('instance :', instance);
-    console.log('getFilteredProperties(instance) :', getFilteredProperties(instance));
-
-    const { activeProperty, properties, propertyValues } = this.state;
-
-    console.log('activeProperty :', activeProperty);
-    console.log('this.props.properties (propertiesFiltered):', this.state.properties);
-
-    if (!activeProperty) {
-      return '';
     }
 
     return (

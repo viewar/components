@@ -35,8 +35,9 @@ export const getFilteredProperties = ({ displayTemplate, properties }, useDispla
 class PropertyPicker extends PureComponent {
   static propTypes = {
     instance: PropTypes.shape({
-      id:                PropTypes.string.isRequired,
-      properties:        PropTypes.objectOf(PropTypes.shape({
+      id:             PropTypes.string.isRequired,
+      propertyValues: PropTypes.objectOf(PropTypes.string).isRequired,
+      properties:     PropTypes.objectOf(PropTypes.shape({
         name:    PropTypes.string.isRequired,
         type:    PropTypes.string.isRequired,
         options: PropTypes.arrayOf(PropTypes.shape({
@@ -79,8 +80,7 @@ class PropertyPicker extends PureComponent {
     const propertyValues = instance ? instance.propertyValues : {};
 
     this.state = {
-      instanceId:     instance ? instance.id : null,
-      // TODO: refactor property filtering
+      // instanceId:  instance ? instance.id : null,
       properties:     propertiesFilterd,
       activeProperty: propertiesFilterd.length
         ? instance.properties[propertiesFilterd[0]]

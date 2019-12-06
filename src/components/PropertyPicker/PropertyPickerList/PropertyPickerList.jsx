@@ -1,5 +1,5 @@
-/* eslint-disable react/jsx-no-bind */
-/* eslint-disable react/prop-types */
+/* eslint-disable */
+// TODO: add and refactor Detail components from base6 (#44)
 import React, { PureComponent } from 'react';
 import cx from 'classnames';
 

@@ -8,9 +8,18 @@ import RotationWidget from './widgets/Rotation';
 
 class PropertyOptions extends PureComponent {
   static propTypes = {
-    // TODO: complete proptype definitions
+    // TODO: ? remove configuration prop ?
     configuration: PropTypes.any, // eslint-disable-line react/require-default-props
-    property:      PropTypes.any, // eslint-disable-line react/require-default-props
+    property:      PropTypes.shape({
+      name:    PropTypes.string.isRequired,
+      type:    PropTypes.string.isRequired,
+      options: PropTypes.arrayOf(PropTypes.shape({
+        name:     PropTypes.string.isRequired,
+        key:      PropTypes.string.isRequired,
+        imageUrl: PropTypes.string.isRequired,
+        isValid:  PropTypes.func.isRequired,
+      })).isRequired,
+    }).isRequired,
     setValues:     PropTypes.func.isRequired,
     valueValid:    PropTypes.func.isRequired,
     setLoading:    PropTypes.func,
@@ -46,6 +55,8 @@ class PropertyOptions extends PureComponent {
   };
 
   render() {
+    console.log('property :', this.props.property);
+
     const widgetProps = this.getWidgetProps();
 
     switch (widgetProps.type) {

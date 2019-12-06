@@ -8,6 +8,8 @@ import {
   Link,
 } from 'react-router-dom';
 
+import * as showcases from 'components/showcases';
+
 import ComponentPresenter from './ComponentPresenter';
 import styles from './App.scss';
 
@@ -34,7 +36,20 @@ class App extends PureComponent {
 
   api = null;
 
+  renderComponentLinks = () =>
+    Object.keys(showcases).map((componentName) => (
+      <Link
+        key={`linkTo_${componentName}`}
+        to={`/${componentName}`}
+        className={styles.componentLink}
+      >
+        {componentName}
+      </Link>
+    ))
+
   render() {
+    console.log('showcases :', showcases);
+
     const { props: { children }, state: { initiated }} = this;
 
     return (
@@ -44,10 +59,8 @@ class App extends PureComponent {
 
         {initiated &&
           <Router hashType="slash">
-            <Link to="/Button">Button</Link>{' - '}
-            <Link to="/ButtonToggle">ButtonToggle</Link>{' - '}
-            <Link to="/PropertyPicker">PropertyPicker</Link>{' - '}
-            <Link to="/Slider">Slider</Link>
+
+            {this.renderComponentLinks()}
 
             <Switch>
               <Route

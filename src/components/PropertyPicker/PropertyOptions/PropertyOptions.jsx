@@ -28,13 +28,11 @@ class PropertyOptions extends PureComponent {
       property: { values, value, type },
     } = this.props;
 
-    return { type, selectedValue: value, values: [...values] };
+    return { type, selectedValue: value, values: [ ...values ]};
   };
 
   render() {
     const widgetProps = this.getWidgetProps();
-
-    console.log('widgetProps :', widgetProps);
 
     switch (widgetProps.type) {
       case 'material':

@@ -32,22 +32,26 @@ export const getFilteredProperties = ({ displayTemplate, properties }, useDispla
   );
 };
 
+export const propertyPropTypeShape = {
+  name:    PropTypes.string.isRequired,
+  type:    PropTypes.string.isRequired,
+  options: PropTypes.arrayOf(PropTypes.shape({
+    name:     PropTypes.string.isRequired,
+    key:      PropTypes.string.isRequired,
+    imageUrl: PropTypes.string.isRequired,
+    // TODO: check isValid implementation
+    isValid:  PropTypes.func.isRequired,
+  })).isRequired,
+};
+
 class PropertyPicker extends PureComponent {
   static propTypes = {
     instance: PropTypes.shape({
-      id:             PropTypes.string.isRequired,
-      propertyValues: PropTypes.objectOf(PropTypes.string).isRequired,
-      properties:     PropTypes.objectOf(PropTypes.shape({
-        name:    PropTypes.string.isRequired,
-        type:    PropTypes.string.isRequired,
-        options: PropTypes.arrayOf(PropTypes.shape({
-          name:     PropTypes.string.isRequired,
-          key:      PropTypes.string.isRequired,
-          imageUrl: PropTypes.string.isRequired,
-          // TODO: check isValid implementation
-          isValid:  PropTypes.func.isRequired,
-        })).isRequired,
-      })).isRequired,
+      id:                PropTypes.string.isRequired,
+      propertyValues:    PropTypes.objectOf(PropTypes.string).isRequired,
+      properties:        PropTypes.objectOf(
+        PropTypes.shape(propertyPropTypeShape).isRequired,
+      ).isRequired,
       setPropertyValues: PropTypes.func.isRequired,
     }).isRequired,
     useDisplayTemplate: PropTypes.bool,
@@ -71,11 +75,6 @@ class PropertyPicker extends PureComponent {
     super(props);
 
     const { instance, useDisplayTemplate } = props;
-
-    if (instance) {
-      console.log('instance', instance);
-      console.log('instance', instance);
-    }
     const propertiesFilterd = instance ? getFilteredProperties(instance, useDisplayTemplate) : [];
     const propertyValues = instance ? instance.propertyValues : {};
 
@@ -106,9 +105,6 @@ class PropertyPicker extends PureComponent {
   //     return null;
   //   }
   // }
-
-  // getFirstProperty = (properties) =>
-  //   properties && properties.length ? properties[0] : null;
 
   setActiveProperty = (activeProperty) => {
     this.setState({ activeProperty });

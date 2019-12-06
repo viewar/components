@@ -2,6 +2,14 @@
 
 > generated with [@semantic-release/changelog](https://github.com/semantic-release/changelog)
 
+## [1.5.1](https://github.com/viewar/components/compare/v1.5.0...v1.5.1) (2019-12-06)
+
+
+### Bug Fixes
+
+* **Slider:** fix 'max < fullWdth' cases* move initial position set to `componentDidMount()` ([31010d8](https://github.com/viewar/components/commit/31010d8945a7dd7bee8c3cc21df1558071b818e9))
+* **install:** update package-lock ([b27b56c](https://github.com/viewar/components/commit/b27b56c1a050cd153932fe3984d5169114165aa2))
+
 # [1.5.0](https://github.com/viewar/components/compare/v1.4.0...v1.5.0) (2019-11-27)
 
 

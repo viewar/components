@@ -16,6 +16,9 @@
       "pre-push": "npm test"
     }
   },
+  "engines": {
+    "node": ">=10.13.0"
+  },
   "babel": {
     "presets": [
       [

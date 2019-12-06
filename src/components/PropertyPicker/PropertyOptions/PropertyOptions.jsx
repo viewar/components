@@ -1,11 +1,25 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
 
 import ListWidget from './widgets/ListWidget';
 import ThumbnailWidget from './widgets/ThumbnailWidget';
 import RotationWidget from './widgets/Rotation';
 
 class PropertyOptions extends PureComponent {
+  static propTypes = {
+    // TODO: complete proptype definitions
+    configuration: PropTypes.any, // eslint-disable-line react/require-default-props
+    property:      PropTypes.any, // eslint-disable-line react/require-default-props
+    setValues:     PropTypes.func.isRequired,
+    valueValid:    PropTypes.func.isRequired,
+    setLoading:    PropTypes.func,
+  };
+
+  static defaultProps = {
+    setLoading: () => {},
+  };
+
   valueValid = (value) => {
     return value.isValid(this.props.configuration);
   };

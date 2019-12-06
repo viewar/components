@@ -16,16 +16,20 @@ import styles from './PropertyPicker.scss';
  * @param {Array} instance.displayTemplate
  * @return {keys[]} - list of propertyKeys which are allowed
  */
-export const getFilteredProperties = ({ displayTemplate, properties }) => {
-  // return Object.keys(properties);
+export const getFilteredProperties = ({ displayTemplate, properties }, useDisplayTemplate = false) => {
+  // * prefilter properties with only one option
+  const propertiesFiltered = Object.keys(properties).filter(
+    (propertyKey) => properties[propertyKey].options.length > 1,
+  );
 
-  return arguments[0] == null // eslint-disable-line no-undef
-    ? null
-    : Object.keys(properties).filter((propertyKey) =>
-      !(properties[propertyKey].options.length > 1)
-        ? false
-        : !!displayTemplate.find((item) => item.name === properties[propertyKey].name),
-    );
+  if (!useDisplayTemplate || !displayTemplate) {
+    return propertiesFiltered;
+  }
+
+  // * filter properties not in displayTemplate
+  return propertiesFiltered.filter(
+    (propertyKey) => !!displayTemplate.find((item) => item.name === properties[propertyKey].name),
+  );
 };
 
 class PropertyPicker extends PureComponent {
@@ -45,31 +49,33 @@ class PropertyPicker extends PureComponent {
       })).isRequired,
       setPropertyValues: PropTypes.func.isRequired,
     }).isRequired,
-    showPropertyList: PropTypes.bool,
-    className:        PropTypes.string,
-    widgetClassName:  PropTypes.string,
-    setLoading:       PropTypes.func,
+    useDisplayTemplate: PropTypes.bool,
+    showPropertyList:   PropTypes.bool,
+    className:          PropTypes.string,
+    widgetClassName:    PropTypes.string,
+    setLoading:         PropTypes.func,
     // showDialog: PropTypes.func,
   };
 
   static defaultProps = {
-    showPropertyList: false, // shows list instead of bar
-    className:        '',
-    widgetClassName:  '',
-    setLoading:       () => {},
+    useDisplayTemplate: true,
+    showPropertyList:   false, // shows list instead of bar
+    className:          '',
+    widgetClassName:    '',
+    setLoading:         () => {},
     // showDialog: () => {},
   };
 
   constructor(props) {
     super(props);
 
-    const { instance } = props;
+    const { instance, useDisplayTemplate } = props;
 
     if (instance) {
       console.log('instance', instance);
       console.log('instance', instance);
     }
-    const propertiesFilterd = instance ? getFilteredProperties(instance) : [];
+    const propertiesFilterd = instance ? getFilteredProperties(instance, useDisplayTemplate) : [];
     const propertyValues = instance ? instance.propertyValues : {};
 
     this.state = {

@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 import cx from 'classnames';
 import viewarApi from 'viewar-api';
 
-import styles from './PropertyPicker.scss';
+import styles from './PropertyPickerLight.scss';
 
 // TODO: if !item -> look for selectedInstance -> look for only/first/last child in current sceneState
-class PropertyPicker extends PureComponent {
+class PropertyPickerLight extends PureComponent {
   static propTypes = {
     item: PropTypes.shape({
       propertyValues:    PropTypes.object.isRequired,
@@ -143,4 +143,4 @@ class PropertyPicker extends PureComponent {
   }
 }
 
-export default PropertyPicker;
+export default PropertyPickerLight;

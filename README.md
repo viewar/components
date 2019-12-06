@@ -13,3 +13,28 @@
 [semantic-url]: https://semver.org/
 
 <!--- /status badge url references ---->
+
+## Usage
+
+`npm run start:mock` or  
+`npm run start` for 3D mode
+
+## ComponentPresenter
+
+> ❗️❗️ **This is just a provisional styleguide subtstitute**  
+> 🏗 **until we found the right component pattern libary to match our needs**
+>
+> _see [[feat] add styleguide](viewar/components#2) (issue#2)_
+
+#### what
+
+reads hash location and renders corresponding Component
+
+#### how
+
+links to component showcases are auto generated  
+**requires export in '/components/showcases.js':**
+
+```jsx
+export { default as Button } from 'components/Button/Showcase';
+```

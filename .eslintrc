@@ -1,3 +1,36 @@
 {
-  "extends": ["./node_modules/@viewar/config-eslint/env/react.js"]
+  "extends": ["./node_modules/@viewar/config-eslint/env/react.js"],
+  "rules": {
+    "object-curly-newline": [
+      "error",
+      {
+        "ObjectExpression": {
+          "multiline": true,
+          "consistent": true,
+          "minProperties": 99
+        },
+        "ObjectPattern": {
+          "multiline": true,
+          "consistent": true,
+          "minProperties": 99
+        },
+        "ImportDeclaration": {
+          "multiline": true,
+          "consistent": true,
+          "minProperties": 99
+        },
+        "ExportDeclaration": {
+          "multiline": true,
+          "consistent": true,
+          "minProperties": 99
+        }
+      }
+    ],
+    "object-property-newline": [
+      "error",
+      {
+        "allowMultiplePropertiesPerLine": true
+      }
+    ]
+  }
 }

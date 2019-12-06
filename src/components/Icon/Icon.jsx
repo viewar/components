@@ -25,8 +25,6 @@ function Icon({
     styles,
   );
 
-
-  console.log('onClick :', onClick);
   return (
     <div
       role="button"

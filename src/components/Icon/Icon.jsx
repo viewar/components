@@ -12,7 +12,7 @@ const iconNamesShort = Object.keys(iconList).map((iconName) =>
 
 // TODO: add variant without mask!? (see base6/EdgeButton)
 function Icon({
-  icon, color, size, style,
+  icon, color, size, style, onClick,
 }) {
   const iconName = `button_${icon}`;
   const styleObject = Object.assign(
@@ -25,10 +25,14 @@ function Icon({
     styles,
   );
 
+
+  console.log('onClick :', onClick);
   return (
     <div
+      role="button"
+      onClick={onClick}
       style={styleObject}
-      className={cx(styles.Icon, global.BorderDark, {
+      className={cx(styles.Icon, {
         [styles.big]:    size === 'big',
         [styles.small]:  size === 'small',
         [styles.xsmall]: size === 'xsmall',
@@ -38,16 +42,18 @@ function Icon({
 }
 
 Icon.propTypes = {
-  icon:  PropTypes.oneOf(iconNamesShort).isRequired,
-  color: PropTypes.string,
-  size:  PropTypes.oneOf([ 'big', 'small', 'xsmall' ]),
-  style: PropTypes.object,
+  icon:    PropTypes.oneOf(iconNamesShort).isRequired,
+  onClick: PropTypes.func,
+  color:   PropTypes.string,
+  size:    PropTypes.oneOf([ 'big', 'small', 'xsmall' ]),
+  style:   PropTypes.object,
 };
 
 Icon.defaultProps = {
-  color: null,
-  size:  null,
-  style: {},
+  onClick: () => {},
+  color:   null,
+  size:    null,
+  style:   {},
 };
 
 export default Icon;

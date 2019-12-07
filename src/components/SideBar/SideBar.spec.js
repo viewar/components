@@ -13,7 +13,7 @@ const propsMock = {
 };
 
 const mounted = mount(
-  <Sidebar className={propsMock.className} />
+  <Sidebar className={propsMock.className} />,
 );
 
 describe('<Sidebar />', function() {

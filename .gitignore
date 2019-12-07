@@ -1,6 +1,8 @@
 # custom
 build
 .viewar-config
+package-lock.json
+yarn.lock
 
 # Logs
 logs
@@ -8,7 +10,6 @@ logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-.viewar-config
 
 # Runtime data
 pids

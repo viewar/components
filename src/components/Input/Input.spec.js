@@ -9,7 +9,7 @@ const {
 } = global;
 
 const mounted = mount(
-  <Input value="input value text" label="input label text" className="testClassName" />
+  <Input value="input value text" label="input label text" className="testClassName" />,
 );
 
 describe('<Input />', function() {
@@ -29,7 +29,7 @@ describe('<Input />', function() {
     };
 
     const mountedWithHandler = mount(
-      <Input value="input value text" onChange={getOnChangeHandler()} />
+      <Input value="input value text" onChange={getOnChangeHandler()} />,
     );
 
     // set value to changedInputValue

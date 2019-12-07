@@ -5,7 +5,6 @@ import PropTypes from 'prop-types';
 import styles from './Slider.scss';
 
 // TODO: add drag handler to <Slider />
-// TODO: handle 'value <-> position' convertions
 class Slider extends PureComponent {
   static propTypes = {
     label:    PropTypes.string,
@@ -40,9 +39,19 @@ class Slider extends PureComponent {
       max,
     };
 
-
     // TODO: uncontrolled variant
-    this.state = {};
+    // this.state = {};
+  }
+
+  componentDidMount() {
+    const { value } = this.props;
+    const {
+      knob: { current: knobRef },
+    } = this.elements;
+
+    // apply initial positionLeft to element
+    const positionLeft = this.convertValue(value, 'value');
+    knobRef.style.left = `${positionLeft}px`;
   }
 
   convertValue = (value, inputType = 'pixel') => {
@@ -53,61 +62,97 @@ class Slider extends PureComponent {
 
     const fullWidth = railRef && railRef.clientWidth
       ? railRef.clientWidth
-      : 200; // ! fix clientWidth on first call
-
-    // inputType = 'pixel' | 'value'
-    const onePercent = fullWidth / 100;
+      : 176; // ! fix clientWidth on first call
 
     if (inputType === 'pixel') {
-      return value / onePercent / 100 * max;
+      return value / fullWidth * max;
     }
-    else {
-      return (value / max) * fullWidth;
+    else if (inputType === 'value') {
+      if (max < fullWidth) {
+        return max / fullWidth * value;
+      }
+      else {
+        // * handle min-max for value -> pixel
+        if (value > max) {
+          value = max;
+        }
+        else if (value < 0) {
+          value = 0;
+        }
+        return (value / max) * fullWidth;
+      }
     }
   }
 
   handleClick = (target) => (e) => {
-    if (target === 'rail') {
-      this.handleRailClick(e);
-    }
+    e.stopPropagation(); // prevent bubble up to wrapper
+    e.nativeEvent && e.nativeEvent.stopPropagation();
+    this.handleRailClick(e, target === 'wrapper');
   }
 
-  handleRailClick = ({ nativeEvent: { offsetX, offsetY }}) => {
+  handleRailClick = ({ nativeEvent: { offsetX, offsetY }}, wrapper = false) => {
     const {
       rail: { current: railRef },
       knob: { current: knobRef },
     } = this.elements;
 
-    let newPositionLeft = offsetX;
-    if (newPositionLeft > railRef.clientWidth) {
-      newPositionLeft = railRef.clientWidth;
+    const railWidth = railRef.clientWidth;
+    let newPositionLeft;
+
+    if (wrapper) {
+      // wrapper click - set to max or zero
+      // only triggered on padded edges (due to stopPropagation)
+      newPositionLeft = offsetX < railWidth / 3
+        ? 0
+        : offsetX > railWidth * 0.66
+          ? railWidth
+          : console.warn('[Viewar Slider] wrapper catched clickevent ! on edge');
+    }
+    else {
+      newPositionLeft = offsetX;
     }
 
+    // fix > max and < min
+    if (newPositionLeft > railWidth) {
+      newPositionLeft = railWidth;
+    }
+    else if (newPositionLeft > railWidth) {
+      newPositionLeft = 0;
+    }
+
+    // apply style to element
     knobRef.style.left = `${newPositionLeft}px`;
 
+    // convert value
     let newValue = this.convertValue(newPositionLeft);
     if (newValue > this.props.max) newValue = this.props.max;
     if (newValue < this.props.min) newValue = this.props.min;
 
-    newValue = parseFloat(newValue).toFixed(this.props.decimals);
+    newValue = this.props.decimals
+      ? parseFloat(parseFloat(newValue).toFixed(this.props.decimals))
+      : parseFloat(newValue);
 
     this.props.onChange(newValue);
   }
 
   render() {
-    const { label, value } = this.props; // TODO: uncontrolled variant
-    const positionLeft = this.convertValue(value, 'value');
+    const { label } = this.props; // TODO: uncontrolled variant
 
     return (
       <div className={styles.Slider} style={{ width: '200px' }}>
         {label &&
         <div className={styles.label}>{label}</div>}
         <div
-          className={styles.slideRail}
-          onClick={this.handleClick('rail')}
-          ref={this.elements.rail}
+          className={styles.slideRailWrapper}
+          onClick={this.handleClick('wrapper')}
         >
-          <div className={styles.slideKnob} ref={this.elements.knob} style={{ left: positionLeft + 'px' }} />
+          <div
+            ref={this.elements.rail}
+            onClick={this.handleClick('rail')}
+            className={styles.slideRail}
+          >
+            <div className={styles.slideKnob} ref={this.elements.knob} />
+          </div>
         </div>
 
       </div>

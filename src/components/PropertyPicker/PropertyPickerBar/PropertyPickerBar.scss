@@ -1,42 +1,18 @@
 @import 'styles';
 
 .Container {
-  background-color: transparent;
-
-  width: 100%;
-  display: -webkit-box;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  flex-flow: column;
+  -webkit-box-align: center;
+  align-items: center;
+  font-size: 1.5em;
 
-  // display: flex;
-  // align-items: center;
-  // font-size: 1.5em;
-  // height: calc(#{$icon-size} - 3px);
+  width: 80%;
+  margin: 0 auto;
+  height: calc(#{$icon-size} - 3px);
+  border-radius: calc(#{$icon-size} / 2);
 
-  position: absolute;
-  bottom: $icon-padding;
-  left: 0;
-
-  // left: calc(#{$icon-size} * 1.5 + #{$icon-padding} * 3);
-  // right: calc(#{$icon-size} * 1.5 + #{$icon-padding} * 3);
-
-  @include phone-landscape {
-    bottom: 24px;
-    left: calc(
-      #{$icon-size-phone-landscape} + #{$icon-padding-phone-landscape} * 3 + 14px
-    );
-    right: calc(
-      #{$icon-size-phone-landscape} + #{$icon-padding-phone-landscape} * 3 + 14px
-    );
-  }
-
-  @include phone-portrait {
-    left: calc(#{$icon-size} + #{$icon-padding} * 2);
-    right: $icon-padding;
-    bottom: $icon-padding;
-  }
+  background-color: white;
+  color: #282f39;
 }
 
 .Button {

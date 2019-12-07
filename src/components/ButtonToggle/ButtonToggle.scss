@@ -1,3 +1,5 @@
+@import 'styles';
+
 .ButtonToggle {
   display: inline-block;
   padding: 10px;
@@ -35,10 +37,11 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #ccc;
   -webkit-transition: 0.4s;
   transition: 0.4s;
   pointer-events: none;
+  background-color: $color-secondary;
+  border: 1px solid $color-primary;
 }
 
 .slider:before {
@@ -47,18 +50,18 @@
   height: 26px;
   width: 26px;
   left: 4px;
-  bottom: 4px;
+  bottom: 3px;
   background-color: white;
   -webkit-transition: 0.4s;
   transition: 0.4s;
 }
 
 input:checked + .slider {
-  background-color: #bd1819;
+  background-color: $color-primary;
 }
 
 input:focus + .slider {
-  box-shadow: 0 0 1px #bd1819;
+  box-shadow: 0 0 1px $color-primary;
 }
 
 input:checked + .slider:before {

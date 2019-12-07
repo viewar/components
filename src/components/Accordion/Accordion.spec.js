@@ -11,7 +11,7 @@ const {
 const mounted = mount(
   <Accordion title="<Accordion /> spec test" initialState={{ isOpen: true }}>
     {'required prop \'children\''}
-  </Accordion>
+  </Accordion>,
 );
 
 describe('<Accordion />', function() {
@@ -19,7 +19,14 @@ describe('<Accordion />', function() {
     expect(mounted).to.exist;
   });
 
-  it('mounts with given initialState `{ isOpen: true }`', function() {
+  it('mounts with initialState', function() {
+    expect(mounted.state().isOpen).to.equal(true);
+  });
+
+  it('toggles `state.isOpen` on header click', function() {
+    mounted.find('[rel="trigger"]').simulate('click');
+    expect(mounted.state().isOpen).to.equal(false);
+    mounted.find('[rel="trigger"]').simulate('click');
     expect(mounted.state().isOpen).to.equal(true);
   });
 });

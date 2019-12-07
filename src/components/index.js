@@ -6,5 +6,6 @@ export { default as Input } from './Input';
 export { default as LoadingState } from './LoadingState';
 export { default as Overlay } from './Overlay';
 export { default as PropertyPicker } from './PropertyPicker';
+export { default as PropertyPickerLight } from './PropertyPickerLight';
 export { default as SideBar } from './SideBar';
 export { default as Slider } from './Slider';

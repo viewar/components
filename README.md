@@ -21,7 +21,7 @@
 
 ## ComponentPresenter
 
-> ❗️❗️ **This is just a provisional styleguide subtstitute**  
+> ❗️ **This is just a provisional styleguide subtstitute**  
 > 🏗 **until we found the right component pattern libary to match our needs**
 >
 > _see [[feat] add styleguide](viewar/components#2) (issue#2)_

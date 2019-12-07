@@ -4,30 +4,27 @@
 
 ## [1.5.1](https://github.com/viewar/components/compare/v1.5.0...v1.5.1) (2019-12-06)
 
-
 ### Bug Fixes
 
-* **Slider:** fix 'max < fullWdth' cases* move initial position set to `componentDidMount()` ([31010d8](https://github.com/viewar/components/commit/31010d8945a7dd7bee8c3cc21df1558071b818e9))
-* **install:** update package-lock ([b27b56c](https://github.com/viewar/components/commit/b27b56c1a050cd153932fe3984d5169114165aa2))
+- **Slider:** fix 'max < fullWdth' cases\* move initial position set to `componentDidMount()` ([31010d8](https://github.com/viewar/components/commit/31010d8945a7dd7bee8c3cc21df1558071b818e9))
+- **install:** update package-lock ([b27b56c](https://github.com/viewar/components/commit/b27b56c1a050cd153932fe3984d5169114165aa2))
 
 # [1.5.0](https://github.com/viewar/components/compare/v1.4.0...v1.5.0) (2019-11-27)
 
-
 ### Bug Fixes
 
-* **ButtonToggle:** allow `<ButtonToggle />` to be un-controlled ([e085434](https://github.com/viewar/components/commit/e085434dcaa93942d0f15bca13178b4aa4e71776))
-* **scripts:** fix 'format' - ignore build ([5caf8d3](https://github.com/viewar/components/commit/5caf8d3403f546442ec3391d7f9f21a4848d3353))
-* **router:** use HashRouter ([5a11853](https://github.com/viewar/components/commit/5a11853b6ada6dda12d685ae0771efdbd32ac25a))
-
+- **ButtonToggle:** allow `<ButtonToggle />` to be un-controlled ([e085434](https://github.com/viewar/components/commit/e085434dcaa93942d0f15bca13178b4aa4e71776))
+- **scripts:** fix 'format' - ignore build ([5caf8d3](https://github.com/viewar/components/commit/5caf8d3403f546442ec3391d7f9f21a4848d3353))
+- **router:** use HashRouter ([5a11853](https://github.com/viewar/components/commit/5a11853b6ada6dda12d685ae0771efdbd32ac25a))
 
 ### Features
 
-* **ButtonToggle:** add `<ButtonToggle />` ([a58639f](https://github.com/viewar/components/commit/a58639fc27a6b8fc8b6de05cbbc96db0ddf7e650))
-* **Slider:** add `<Slider />` component + Showcase ([#19](https://github.com/viewar/components/issues/19)) ([4860fc2](https://github.com/viewar/components/commit/4860fc22ced0b953e57cefd5f6075c06b098e66f))
-* **husky:** add `npm test` to 'pre-push' hooks ([eb7d799](https://github.com/viewar/components/commit/eb7d799aae16a9f05ea157652dce5c7721350ade))
-* **PropertyPicker:** only show 'item.properties' filtered by 'props.shownProperties' ([79835e0](https://github.com/viewar/components/commit/79835e037daa0d8a0cbf3e675076bacc77b377a8))
-* **componentPresenter:** render Showcases per router param ([#20](https://github.com/viewar/components/issues/20)) ([fff1af6](https://github.com/viewar/components/commit/fff1af6361be260bbcccf5188139f644069df2c8))
-* **sass:** use global includePaths of '@viewar/webpack' > v1.6.0* move /src/style to /src/sass to be auto included* rename index.scss to style* use shorthand import `[@import](https://github.com/import) 'styles'` in component scss ([d40ffbc](https://github.com/viewar/components/commit/d40ffbcf9553c197fca48e7c27a65bc93212df8b))
+- **ButtonToggle:** add `<ButtonToggle />` ([a58639f](https://github.com/viewar/components/commit/a58639fc27a6b8fc8b6de05cbbc96db0ddf7e650))
+- **Slider:** add `<Slider />` component + Showcase ([#19](https://github.com/viewar/components/issues/19)) ([4860fc2](https://github.com/viewar/components/commit/4860fc22ced0b953e57cefd5f6075c06b098e66f))
+- **husky:** add `npm test` to 'pre-push' hooks ([eb7d799](https://github.com/viewar/components/commit/eb7d799aae16a9f05ea157652dce5c7721350ade))
+- **PropertyPicker:** only show 'item.properties' filtered by 'props.shownProperties' ([79835e0](https://github.com/viewar/components/commit/79835e037daa0d8a0cbf3e675076bacc77b377a8))
+- **componentPresenter:** render Showcases per router param ([#20](https://github.com/viewar/components/issues/20)) ([fff1af6](https://github.com/viewar/components/commit/fff1af6361be260bbcccf5188139f644069df2c8))
+- **sass:** use global includePaths of '@viewar/webpack' > v1.6.0* move /src/style to /src/sass to be auto included* rename index.scss to style\* use shorthand import `[@import](https://github.com/import) 'styles'` in component scss ([d40ffbc](https://github.com/viewar/components/commit/d40ffbcf9553c197fca48e7c27a65bc93212df8b))
 
 # [1.4.0](https://github.com/viewar/components/compare/v1.3.0...v1.4.0) (2019-11-20)
 

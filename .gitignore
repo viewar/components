@@ -1,6 +1,8 @@
 # custom
 build
 .viewar-config
+package-lock.json
+yarn.lock
 
 # Logs
 logs
@@ -63,4 +65,3 @@ typings/
 
 # next.js build output
 .next
-package-lock.json

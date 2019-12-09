@@ -1,11 +1,26 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
 
+import { propertyPropTypeShape } from '../PropertyPicker';
 import ListWidget from './widgets/ListWidget';
 import ThumbnailWidget from './widgets/ThumbnailWidget';
 import RotationWidget from './widgets/Rotation';
 
 class PropertyOptions extends PureComponent {
+  static propTypes = {
+    // TODO: ? remove configuration prop ?
+    configuration: PropTypes.any, // eslint-disable-line react/require-default-props
+    property:      PropTypes.shape(propertyPropTypeShape).isRequired,
+    setValues:     PropTypes.func.isRequired,
+    valueValid:    PropTypes.func.isRequired,
+    setLoading:    PropTypes.func,
+  };
+
+  static defaultProps = {
+    setLoading: () => {},
+  };
+
   valueValid = (value) => {
     return value.isValid(this.props.configuration);
   };
@@ -28,13 +43,13 @@ class PropertyOptions extends PureComponent {
       property: { values, value, type },
     } = this.props;
 
-    return { type, selectedValue: value, values: [...values] };
+    return { type, selectedValue: value, values: [ ...values ]};
   };
 
   render() {
-    const widgetProps = this.getWidgetProps();
+    console.log('property :', this.props.property);
 
-    console.log('widgetProps :', widgetProps);
+    const widgetProps = this.getWidgetProps();
 
     switch (widgetProps.type) {
       case 'material':

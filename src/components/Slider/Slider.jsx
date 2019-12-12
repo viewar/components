@@ -1,6 +1,8 @@
 /* eslint-disable no-console */
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
+import debounce from 'lodash.debounce';
+import throttle from 'lodash.throttle';
 
 import styles from './Slider.scss';
 
@@ -49,9 +51,30 @@ class Slider extends PureComponent {
       knob: { current: knobRef },
     } = this.elements;
 
-    // apply initial positionLeft to element
+    // * apply initial positionLeft to element
     const positionLeft = this.convertValue(value, 'value');
     knobRef.style.left = `${positionLeft}px`;
+
+    // * init drag handler
+    // const originalMouseDown = railRef.onmousedown;
+    // railRef.onmousedown = (e1) => {
+    //   e1.stopPropagation();
+    //   originalMouseDown.apply(this, [ e1 ]);
+
+    //   console.log('onMouseDown event set');
+    //   railRef.onmousemove = debounce((e2) => {
+    //     console.log('nativeEvent :', e2);
+    //   }, 100);
+
+    //   railRef.onmouseup = () => {
+    //     railRef.onmousemove = null;
+    //     console.log('onMouseDown event removed');
+    //   };
+    // };
+  }
+
+  startDragHandler = () => {
+
   }
 
   convertValue = (value, inputType = 'pixel') => {
@@ -85,12 +108,16 @@ class Slider extends PureComponent {
   }
 
   handleClick = (target) => (e) => {
-    e.stopPropagation(); // prevent bubble up to wrapper
+    if (target === 'rail') {
+    // prevent bubble up to wrapper
+    // but pass knob click to rail
+      e.stopPropagation();
+    }
     e.nativeEvent && e.nativeEvent.stopPropagation();
-    this.handleRailClick(e, target === 'wrapper');
+    this.handleRailClick(e, target);
   }
 
-  handleRailClick = ({ nativeEvent: { offsetX, offsetY }}, wrapper = false) => {
+  handleRailClick = ({ nativeEvent: { offsetX, offsetY }}, target) => {
     const {
       rail: { current: railRef },
       knob: { current: knobRef },
@@ -99,7 +126,7 @@ class Slider extends PureComponent {
     const railWidth = railRef.clientWidth;
     let newPositionLeft;
 
-    if (wrapper) {
+    if (target === 'wrapper') {
       // wrapper click - set to max or zero
       // only triggered on padded edges (due to stopPropagation)
       newPositionLeft = offsetX < railWidth / 3
@@ -133,6 +160,16 @@ class Slider extends PureComponent {
       : parseFloat(newValue);
 
     this.props.onChange(newValue);
+
+    // * handle knob drag
+    if (target !== 'wrapper' && !railRef.mousemove) {
+      railRef.onmousemove = throttle(({ offsetX, offsetY }) => {
+        // simulate rail-click
+        this.handleRailClick({ nativeEvent: { offsetX, offsetY }}, 'rail');
+      }, 150);
+      // remove handler onmouseup
+      railRef.onmouseup = () => { railRef.onmousemove = null; };
+    }
   }
 
   render() {
@@ -144,14 +181,18 @@ class Slider extends PureComponent {
         <div className={styles.label}>{label}</div>}
         <div
           className={styles.slideRailWrapper}
-          onClick={this.handleClick('wrapper')}
+          onMouseDown={this.handleClick('wrapper')}
         >
           <div
             ref={this.elements.rail}
-            onClick={this.handleClick('rail')}
+            onMouseDown={this.handleClick('rail')}
             className={styles.slideRail}
           >
-            <div className={styles.slideKnob} ref={this.elements.knob} />
+            <div
+              className={styles.slideKnob}
+              ref={this.elements.knob}
+              onMouseDown={this.handleClick('knob')}
+            />
           </div>
         </div>
 

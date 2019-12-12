@@ -32,8 +32,9 @@ class Slider extends PureComponent {
     const { min, max } = props;
 
     this.elements = {
-      rail: React.createRef(),
-      knob: React.createRef(),
+      rail:    React.createRef(),
+      knob:    React.createRef(),
+      wrapper: React.createRef(),
     };
 
     this.options = {
@@ -54,23 +55,6 @@ class Slider extends PureComponent {
     // * apply initial positionLeft to element
     const positionLeft = this.convertValue(value, 'value');
     knobRef.style.left = `${positionLeft}px`;
-
-    // * init drag handler
-    // const originalMouseDown = railRef.onmousedown;
-    // railRef.onmousedown = (e1) => {
-    //   e1.stopPropagation();
-    //   originalMouseDown.apply(this, [ e1 ]);
-
-    //   console.log('onMouseDown event set');
-    //   railRef.onmousemove = debounce((e2) => {
-    //     console.log('nativeEvent :', e2);
-    //   }, 100);
-
-    //   railRef.onmouseup = () => {
-    //     railRef.onmousemove = null;
-    //     console.log('onMouseDown event removed');
-    //   };
-    // };
   }
 
   startDragHandler = () => {
@@ -117,7 +101,7 @@ class Slider extends PureComponent {
     this.handleRailClick(e, target);
   }
 
-  handleRailClick = ({ nativeEvent: { offsetX, offsetY }}, target) => {
+  handleRailClick = ({ nativeEvent: { offsetX }}, target) => {
     const {
       rail: { current: railRef },
       knob: { current: knobRef },
@@ -161,14 +145,24 @@ class Slider extends PureComponent {
 
     this.props.onChange(newValue);
 
+    const touchDevice =  ('ontouchstart' in document.documentElement);
+    const eNames = {
+      down: touchDevice ? 'ontouchstart' : 'onmousedown',
+      up:   touchDevice ? 'ontouchend' : 'onmouseup',
+      move: touchDevice ? 'ontouchmove' : 'onmousemove',
+    };
+    const elementOffset = touchDevice ? railRef.getBoundingClientRect().left : 0;
+
     // * handle knob drag
-    if (target !== 'wrapper' && !railRef.mousemove) {
-      railRef.onmousemove = throttle(({ offsetX, offsetY }) => {
+    if (target !== 'wrapper' && !railRef[eNames.move]) {
+      railRef[eNames.move] = throttle((e) => {
+        console.log('railRef..getBoundingClientRect():');
+        const offsetX = touchDevice ? e.targetTouches.item(0).clientX - elementOffset : e.offsetX;
         // simulate rail-click
-        this.handleRailClick({ nativeEvent: { offsetX, offsetY }}, 'rail');
-      }, 150);
+        this.handleRailClick({ nativeEvent: { offsetX }}, 'rail');
+      }, 50);
       // remove handler onmouseup
-      railRef.onmouseup = () => { railRef.onmousemove = null; };
+      railRef[eNames.up] = () => { railRef[eNames.move] = null; };
     }
   }
 
@@ -180,18 +174,22 @@ class Slider extends PureComponent {
         {label &&
         <div className={styles.label}>{label}</div>}
         <div
+          ref={this.elements.wrapper}
           className={styles.slideRailWrapper}
           onMouseDown={this.handleClick('wrapper')}
+          onTouchStart={this.handleClick('wrapper')}
         >
           <div
             ref={this.elements.rail}
             onMouseDown={this.handleClick('rail')}
+            onTouchStart={this.handleClick('rail')}
             className={styles.slideRail}
           >
             <div
               className={styles.slideKnob}
               ref={this.elements.knob}
               onMouseDown={this.handleClick('knob')}
+              onTouchStart={this.handleClick('knob')}
             />
           </div>
         </div>

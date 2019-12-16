@@ -29,8 +29,8 @@ const LoadingState = ({ progress, isVisible, isOverlay }) => {
         [styles.isOverlay]: isOverlay,
       })}
       >
-        <div key="LoadingState.progressBar" style={{ width: '100%', height: '1rem', border: '1px solid green' }}>
-          <div key="LoadingState.progressBarInner" style={{ backgroundColor: 'red', width: `${progress}%`, height: '1rem' }} />
+        <div key="LoadingState.progressBar" className={styles.progressBar}>
+          <div key="LoadingState.progress" className={styles.progress} style={{ width: `${progress}%` }} />
         </div>
       </div>
     );

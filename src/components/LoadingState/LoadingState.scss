@@ -1,8 +1,49 @@
+@import 'styles';
+
+$border-radius: 0.3rem !default;
+$position: 'right';
+
 .LoadingState {
   // horizontal center the child element (.inner)
   display: flex;
   flex-direction: column;
   justify-content: center;
+  position: relative;
+
+  .progressBar {
+    width: 100%;
+    height: 1rem;
+
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
+    border-radius: $border-radius;
+
+    .progress {
+      border-radius: $border-radius;
+      background-color: $color-primary;
+      height: 100%;
+      transition: width 150ms ease-out;
+    }
+  }
+
+  .cancel {
+    color: $font-color-sidebar;
+    font-size: 0.7rem;
+    text-align: #{$position};
+    padding: 0 0.3rem;
+    cursor: pointer;
+    &:hover {
+      text-decoration: underline;
+    }
+    // &:after {
+    //   font-size: 1rem;
+    //   display: inline-block;
+    //   content: '❌';
+    // }
+    // display: none;
+    .LoadingState:hover & {
+      display: inline-block;
+    }
+  }
 
   &.isOverlay {
     width: 100%;

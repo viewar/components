@@ -3,6 +3,10 @@ import PropTypes from 'prop-types';
 
 import LoadingState from './LoadingState';
 
+const getRandomInt = (max) =>
+  Math.floor(Math.random() * Math.floor(max));
+
+
 class LoadingStateShowcase extends PureComponent {
   state = {
     tempOverlay: true,
@@ -15,7 +19,7 @@ class LoadingStateShowcase extends PureComponent {
 
       window._increaseProgressInterval = setInterval(() => {
         this.setState(({ progress }) => {
-          progress = progress + Math.random(5, 50);
+          progress += getRandomInt(15);
           if (progress >= 100) {
             progress = 100;
             clearInterval(window._increaseProgressInterval);

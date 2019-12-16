@@ -6,7 +6,6 @@ import throttle from 'lodash.throttle';
 
 import styles from './Slider.scss';
 
-// TODO: add drag handler to <Slider />
 class Slider extends PureComponent {
   static propTypes = {
     label:    PropTypes.string,

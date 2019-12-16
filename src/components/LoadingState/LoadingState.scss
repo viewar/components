@@ -10,6 +10,9 @@ $position: 'right';
   justify-content: center;
   position: relative;
 
+  color: $font-color-sidebar;
+  font-size: 0.7rem;
+
   .progressBar {
     width: 100%;
     height: 1rem;
@@ -21,13 +24,25 @@ $position: 'right';
       border-radius: $border-radius;
       background-color: $color-primary;
       height: 100%;
-      transition: width 150ms ease-out;
+      transition: width 300ms ease-in;
     }
   }
 
-  .cancel {
-    color: $font-color-sidebar;
-    font-size: 0.7rem;
+  .label,
+  .cancel,
+  .restart {
+    padding-top: 0.3rem;
+  }
+
+  .label {
+    text-align: center;
+  }
+
+  .cancel,
+  .restart {
+    position: absolute;
+    right: 0.3rem;
+    bottom: 0;
     text-align: #{$position};
     padding: 0 0.3rem;
     cursor: pointer;

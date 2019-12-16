@@ -26,6 +26,7 @@
         }
       }
     ],
+    "react/no-unused-prop-types": 1,
     "object-property-newline": [
       "error",
       {

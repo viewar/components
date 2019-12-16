@@ -4,12 +4,16 @@ import cx from 'classnames';
 
 // this import triggers 'file-loader' to copy assets into /build of 'webpack-dev-server'
 import LoadingGear from 'assets/viewar_loading_gear_red.svg'; // eslint-disable-line no-unused-vars
-import Icon from 'components/Icon';
+import { Icon } from 'components';
 
 import styles from './LoadingState.scss';
 
 
-const LoadingState = ({ progress, isVisible, isOverlay }) => {
+const LoadingState = ({ progress, isVisible, isOverlay, onCancel, onUpdate }) => {
+  const onCancelHandler = () => (e) => {
+    onCancel();
+  };
+
   if (progress === false) {
     return (
       <div className={cx(styles.LoadingState, {
@@ -32,6 +36,7 @@ const LoadingState = ({ progress, isVisible, isOverlay }) => {
         <div key="LoadingState.progressBar" className={styles.progressBar}>
           <div key="LoadingState.progress" className={styles.progress} style={{ width: `${progress}%` }} />
         </div>
+        <div key="LoadingState.cancel" className={styles.cancel} onClick={onCancelHandler()} role="button">Cancel</div>
       </div>
     );
   }
@@ -41,12 +46,16 @@ LoadingState.propTypes = {
   progress:  PropTypes.bool,
   isVisible: PropTypes.bool,
   isOverlay: PropTypes.bool,
+  onUpdate:  PropTypes.func,
+  onCancel:  PropTypes.func,
 };
 
 LoadingState.defaultProps = {
   progress:  false,
   isVisible: false,
   isOverlay: true,
+  onUpdate:  () => {},
+  onCancel:  () => {},
 };
 
 export default LoadingState;

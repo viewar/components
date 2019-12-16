@@ -6,6 +6,16 @@ import viewarApi from 'viewar-api';
 import styles from './PropertyPickerLight.scss';
 
 // TODO: if !item -> look for selectedInstance -> look for only/first/last child in current sceneState
+/**
+ * PropertyPickerLight
+ * old version of the PropertyPicker
+ *
+ * @component
+ * @example
+ * ```jsx
+ *  <PropertyPickerLight item={instance} />
+ * ```
+ */
 class PropertyPickerLight extends PureComponent {
   static propTypes = {
     item: PropTypes.shape({
@@ -19,7 +29,9 @@ class PropertyPickerLight extends PureComponent {
     shownProperties: PropTypes.arrayOf(
       PropTypes.oneOfType([ PropTypes.string, PropTypes.instanceOf(RegExp) ]),
     ),
+    /* <Icon /> for active state */
     activeIcon: PropTypes.node,
+    /* setter for global loading state */
     setLoading: PropTypes.func,
   };
 

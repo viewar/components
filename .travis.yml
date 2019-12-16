@@ -58,7 +58,7 @@ jobs:
       allow_failures: true
       fast_finish: true
     - stage: release
-      if: branch = next AND type IN (push) AND tag IS blank AND (commit_message !~ /chore\(release\)/)
+      if: branch = next AND type IN (push) AND tag IS blank AND commit_message !~ /chore\(release\)/
       node_js: 12
       script: skip
       install: skip

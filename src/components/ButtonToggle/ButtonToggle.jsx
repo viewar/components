@@ -3,6 +3,16 @@ import React, { PureComponent } from 'react';
 
 import styles from './ButtonToggle.scss';
 
+/**
+ * ButtonToggle
+ * Toggle Switch Button
+ *
+ * @component
+ * @example
+ * ```jsx
+ *  <ButtonToggle label={'Turn me on'} initialState={{checked: false}} />
+ * ```
+ */
 class ButtonToggle extends PureComponent {
   static propTypes = {
     label:        PropTypes.string.isRequired,

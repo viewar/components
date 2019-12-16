@@ -9,7 +9,8 @@
     "build": "webpack -p --mode production --env production",
     "test": "npm run lint && npm run build && npm run karma",
     "karma": "karma start ./node_modules/@viewar/webpack/karma",
-    "lint": "prettier **/*.{css,scss,md,json} --write && eslint --fix \"**/*.*{js,jsx}\" --ignore-pattern \"build/**/*\" --format pretty"
+    "lint": "prettier **/*.{css,scss,md,json} --write && eslint --fix \"**/*.*{js,jsx}\" --ignore-pattern \"build/**/*\" --format pretty",
+    "betterdocs": "jsdoc -c ./jsdoc.config"
   },
   "husky": {
     "hooks": {
@@ -78,6 +79,7 @@
     "viewar-core": "^11.60.14"
   },
   "devDependencies": {
+    "@babel/core": "^7.7.5",
     "@babel/plugin-proposal-class-properties": "^7.7.4",
     "@babel/plugin-proposal-decorators": "^7.7.4",
     "@babel/plugin-proposal-export-default-from": "^7.7.4",
@@ -86,10 +88,14 @@
     "@babel/preset-env": "^7.7.5",
     "@babel/preset-react": "^7.7.4",
     "@viewar/config-eslint": "^1.10.0",
+    "better-docs": "^1.4.7",
     "cross-env": "^6.0.3",
     "eslint": "^6.7.2",
     "husky": "^3.1.0",
+    "jsdoc": "^3.6.3",
+    "jsdoc-to-markdown": "^5.0.3",
     "karma": "^4.4.1",
+    "parcel": "^1.12.4",
     "puppeteer": "^2.0.0"
   }
 }

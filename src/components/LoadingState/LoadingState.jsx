@@ -23,7 +23,7 @@ class LoadingState extends PureComponent {
   };
 
   static defaultProps = {
-    label:      false,
+    label:      '',
     progress:   false,
     isVisible:  true,
     isCanceled: false,

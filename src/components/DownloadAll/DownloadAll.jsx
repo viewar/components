@@ -4,8 +4,7 @@ import viewarApi from 'viewar-api';
 
 import LoadingState from 'components/LoadingState';
 
-const getRandomInt = (max) =>
-  Math.floor(Math.random() * Math.floor(max));
+import styles from './DownloadAll.scss';
 
 class DownloadAll extends PureComponent {
   static propTypes = {
@@ -24,7 +23,6 @@ class DownloadAll extends PureComponent {
     onCancel:  () => {},
     isOverlay: true,
   };
-
 
   constructor(props) {
     super(props);
@@ -47,16 +45,12 @@ class DownloadAll extends PureComponent {
   }
 
   onRestart = () => {
+    this.props.onRestart();
     this.setState({ isCanceled: false, progress: 0 });
     this.triggerDownloadAll();
-    this.props.onRestart();
   }
 
   triggerDownloadAll = async () => {
-    // viewarApi.sceneManager.on('sceneStateUpdateProgress', (current, total) => {
-    //   console.log('sceneStateUpdateProgress :', current, total);
-    // });
-
     await viewarApi.modelManager.downloadAll(this.downloadAllProgress);
     this.setState(({ isCanceled, progress }) => {
       console.log('triggerDownloadAll- isCanceled?:', isCanceled);
@@ -90,11 +84,15 @@ class DownloadAll extends PureComponent {
     const { isOverlay } = this.props;
     const { progress, isCanceled, isFinished, current, total, model } = this.state;
 
+    const downloadStatusString = total
+      ? `downloading model ${current} of ${total}`
+      : !isFinished ? 'preloading models...' : 'download finished';
+
     return (
-      <div key="DownloadAll">
+      <div className={styles.DownloadAll} key="DownloadAll">
         <LoadingState
           isVisible
-          label={`Downloading Model ${current} of ${total}`}
+          label={downloadStatusString}
           progress={progress}
           isOverlay={isOverlay && !isFinished}
           isCanceled={isCanceled}

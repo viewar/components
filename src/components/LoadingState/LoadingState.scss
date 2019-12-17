@@ -1,14 +1,71 @@
-.LoadingState {
-  width: 100%;
-  height: 100%;
-  position: fixed;
-  z-index: 9999;
-  background-color: rgba(255, 255, 255, 0.6);
+@import 'styles';
 
+$border-radius: 0.3rem !default;
+$position: 'right';
+
+.LoadingState {
   // horizontal center the child element (.inner)
   display: flex;
   flex-direction: column;
   justify-content: center;
+  position: relative;
+  padding-bottom: 1rem;
+
+  color: $font-color-sidebar;
+  font-size: 0.7rem;
+
+  .progressBar {
+    width: 100%;
+    height: 1rem;
+
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
+    border-radius: $border-radius;
+
+    .progress {
+      border-radius: $border-radius;
+      background-color: $color-primary;
+      height: 100%;
+      transition: width 300ms ease-in;
+    }
+  }
+
+  .label,
+  .cancel,
+  .restart {
+    padding-top: 0.3rem;
+  }
+
+  .label {
+    text-align: center;
+    position: absolute;
+    z-index: 11;
+    bottom: 0;
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
+  }
+
+  .cancel,
+  .restart {
+    position: absolute;
+    right: 0.3rem;
+    bottom: 0;
+    text-align: #{$position};
+    padding: 0 0.3rem;
+    cursor: pointer;
+    &:hover {
+      text-decoration: underline;
+    }
+    // &:after {
+    //   font-size: 1rem;
+    //   display: inline-block;
+    //   content: '❌';
+    // }
+    // display: none;
+    .LoadingState:hover & {
+      display: inline-block;
+    }
+  }
 
   &.isHidden {
     display: none;
@@ -16,10 +73,11 @@
 
   .img {
     margin: 0 auto;
-    height: 10%;
-    width: 10%;
+    height: 5rem;
+    width: 5rem;
 
-    background: transparent url('/src/assets/viewar_loading_gear_red.svg') no-repeat;
+    // background: transparent url('/src/assets/viewar_loading_gear_red.svg') no-repeat;
+    background-repeat: no-repeat;
     background-position: center center;
     background-size: contain;
   }

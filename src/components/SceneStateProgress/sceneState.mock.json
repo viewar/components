@@ -1,0 +1,90 @@
+{
+  "id": "DefaultLayer",
+  "type": "normal",
+  "grouped": false,
+  "meta": {},
+  "children": [
+    {
+      "id": "93135:vftz5euzd3rsgjae",
+      "model": { "foreignKey": "monalisa", "id": "93135" },
+      "meta": {},
+      "propertyValues": {},
+      "surfaceMaterials": {},
+      "interaction": {
+        "interactionPlane": "vertical",
+        "translation": false,
+        "rotation": false,
+        "scaling": false
+      }
+    },
+    {
+      "id": "93133:ekqjdck2wbvkcp1y",
+      "model": { "foreignKey": "francoise", "id": "93133" },
+      "meta": {},
+      "propertyValues": {},
+      "surfaceMaterials": {},
+      "interaction": {
+        "interactionPlane": "vertical",
+        "translation": false,
+        "rotation": false,
+        "scaling": false
+      }
+    },
+    {
+      "id": "93134:oj5ky3xe7ev2kftj",
+      "model": { "foreignKey": "mammoth_chair", "id": "93134" },
+      "meta": {},
+      "propertyValues": { "Wood": "Wood Layered", "Metal": "Metal", "Fabric": "123" },
+      "surfaceMaterials": {},
+      "interaction": {
+        "interactionPlane": "horizontal",
+        "translation": true,
+        "rotation": true,
+        "scaling": false
+      }
+    },
+    {
+      "id": "93145:ul4iewpm8jo81w6r",
+      "model": { "foreignKey": "venus", "id": "93145" },
+      "meta": {},
+      "propertyValues": {},
+      "surfaceMaterials": {},
+      "interaction": {
+        "interactionPlane": "vertical",
+        "translation": false,
+        "rotation": false,
+        "scaling": false
+      }
+    },
+    {
+      "id": "93146:bpnw0lwyupkha9pb",
+      "model": { "foreignKey": "floyd-sofa", "id": "93146" },
+      "meta": {},
+      "propertyValues": {
+        "Floyd_Fabric": "Floyd_Fabric",
+        "Floyd_Wood": "Floyd_Wood",
+        "Floyd_Dark_Wood": "Floyd_Dark_Wood"
+      },
+      "surfaceMaterials": {},
+      "interaction": {
+        "interactionPlane": "horizontal",
+        "translation": true,
+        "rotation": true,
+        "scaling": false
+      }
+    },
+    {
+      "id": "20:caa9yxtcpechbn3c",
+      "model": { "foreignKey": "20", "id": "20" },
+      "meta": {},
+      "propertyValues": {},
+      "surfaceMaterials": {},
+      "interaction": {
+        "interactionPlane": "horizontal",
+        "translation": true,
+        "rotation": true,
+        "scaling": true
+      }
+    }
+  ]
+}

@@ -1,9 +1,9 @@
 import React, { PureComponent } from 'react';
 import ViewarApi, { sceneManager } from 'viewar-api';
 
-import { PropertyPicker } from 'components';
+import { PropertyPicker, LoadingState } from 'components';
 
-class Showcase extends PureComponent {
+class PropertyPickerShowcase extends PureComponent {
   state = {
     isReady:       false,
     modelInstance: null,
@@ -13,6 +13,9 @@ class Showcase extends PureComponent {
     this.insertModel();
   }
 
+  async componentWillUnmount() {
+    await sceneManager.clearScene();
+  }
 
   insertModel = async () => {
     const {
@@ -41,18 +44,21 @@ class Showcase extends PureComponent {
     const { isReady, modelInstance } = this.state;
 
     if (!(isReady && modelInstance)) {
-      return <div key="PropertyPickerShowcase">Loading model instance...</div>;
+      return (
+        <div key="PropertyPickerShowcase">
+          <LoadingState />
+        </div>
+      );
     }
 
     return (
       <div key="PropertyPickerShowcase">
-        {(isReady && modelInstance) &&
-          <PropertyPicker
-            instance={modelInstance}
-          />}
+        {!(isReady && modelInstance)
+          ? <LoadingState />
+          : <PropertyPicker instance={modelInstance} />}
       </div>
     );
   }
 }
 
-export default Showcase;
+export default PropertyPickerShowcase;

@@ -72,6 +72,8 @@
   "dependencies": {
     "@viewar/webpack": "^1.7.0",
     "classnames": "^2.2.6",
+    "lodash.debounce": "^4.0.8",
+    "lodash.throttle": "^4.1.1",
     "react-hot-loader": "4.12.18",
     "react-router-dom": "^5.1.2",
     "viewar-api": "^1.1.0",

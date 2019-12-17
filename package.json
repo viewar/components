@@ -2,12 +2,13 @@
   "name": "@viewar/components",
   "version": "1.6.0",
   "description": "ViewAR's reusable react components",
-  "main": "./src/index.js",
+  "main": "./dist/index.js",
   "scripts": {
     "start": "cross-env DEBUG=true webpack-dev-server --open --mode development --env development_core",
     "start:mock": "cross-env DEBUG=true webpack-dev-server --open --mode development --env development_mock",
-    "build": "webpack -p --mode production --env production",
-    "test": "npm run lint && npm run build && npm run karma",
+    "build:webpack": "webpack -p --mode production --env production",
+    "build:package": "rm ./dist -rf && webpack -p --mode production --env production --config ./package/webpack.config.js",
+    "test": "npm run lint && npm run build:webpack && npm run karma",
     "karma": "karma start ./node_modules/@viewar/webpack/karma",
     "lint": "prettier **/*.{css,scss,md,json} --write && eslint --fix \"**/*.*{js,jsx}\" --ignore-pattern \"build/**/*\" --format pretty"
   },
@@ -69,6 +70,9 @@
     "url": "https://github.com/viewar/components/issues"
   },
   "homepage": "https://github.com/viewar/components#readme",
+  "bundledDependencies": [
+    "@viewar/components"
+  ],
   "dependencies": {
     "@viewar/webpack": "^1.7.0",
     "classnames": "^2.2.6",

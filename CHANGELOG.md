@@ -2,6 +2,20 @@
 
 > generated with [@semantic-release/changelog](https://github.com/semantic-release/changelog)
 
+# [1.6.0](https://github.com/viewar/components/compare/v1.5.1...v1.6.0) (2019-12-17)
+
+
+### Bug Fixes
+
+* **Slider:** adapt dragHandler for mobile ([aff6b12](https://github.com/viewar/components/commit/aff6b1216cf33a828c7e8dcb46870a9bfb40096b))
+* **SceneStateProgress:** fix onCancel and on Restart to handle connection errors ([7d7f5c9](https://github.com/viewar/components/commit/7d7f5c92bf835df4825db445ce7abea9769f0999))
+
+
+### Features
+
+* **DownloadAll:** add `<DownloadAll />` component ([a231ddc](https://github.com/viewar/components/commit/a231ddca96a342ddcb2690dabba39918d3cb2d46))
+* **SceneStateProgress:** add `<SceneStateProgress />` with showcase and mockdata ([760cc14](https://github.com/viewar/components/commit/760cc14c4f5e9cdaf29aafb6fe328203e74107d8))
+
 ## [1.5.1](https://github.com/viewar/components/compare/v1.5.0...v1.5.1) (2019-12-06)
 
 ### Bug Fixes

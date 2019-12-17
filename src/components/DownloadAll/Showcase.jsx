@@ -1,21 +1,18 @@
 import React, { PureComponent } from 'react';
-import PropTypes from 'prop-types';
-import viewarApi from 'viewar-api';
 
 import DownloadAll from 'components/DownloadAll/DownloadAll';
 
 class DownloadAllShowcase extends PureComponent {
   state = {
     isFinished: false,
-    isCanceled: false,
   }
 
   onFinish = () => {
-    this.setState({ isFinished: true });
+    this.setState({ isFinished: true, isCanceled: false });
   }
 
   onCancel = () => {
-    this.setState({ isFinished: true });
+    this.setState({ isFinished: false, isCanceled: true });
   }
 
   onUpdate = ({ current, total, progress, model }) => {
@@ -23,18 +20,25 @@ class DownloadAllShowcase extends PureComponent {
   }
 
   restart = () => {
-    this.setState({ isFinished: false });
+    this.setState({ isFinished: false, isCanceled: false });
   }
 
   render() {
-    const { isFinished } = this.state;
+    const { isFinished, isCanceled } = this.state;
 
     return (
       <div>
+        {'downloads all model resources for \'modelManager.models\''}
+        <br /><br /><br /><br />
         {`download finished? ${isFinished} - `}
-        {isFinished && <button onClick={this.restart}>restart</button>}
-        <br /><br />
-        {!isFinished && <DownloadAll onCancel={this.onCancel} onFinish={this.onFinish} onUpdate={this.onUpdate} isOverlay={false} />}
+        {isFinished
+          ? (
+            <>
+              <button onClick={this.restart}>restart</button>
+              <br /><br />
+            </>
+          )
+          : <DownloadAll onCancel={this.onCancel} onFinish={this.onFinish} onUpdate={this.onUpdate} isOverlay={false} />}
       </div>
     );
   }

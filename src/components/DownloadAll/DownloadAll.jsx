@@ -63,12 +63,6 @@ class DownloadAll extends PureComponent {
     });
   }
 
-  // setSceneState = () => {
-  //   viewarApi.sceneManager.on('sceneStateUpdateProgress', (current, total) => {
-  //     console.log('sceneStateUpdateProgress :', current, total);
-  //   });
-  // }
-
   // see http://test2.3.viewar.com/docs/ModelManager.html#event:downloadAllProgress
   downloadAllProgress = (current, total, progress, model) => {
     const progressQuotient = Math.ceil(100 / total);
@@ -77,13 +71,14 @@ class DownloadAll extends PureComponent {
     progress = progressPrevious + progress;
 
     this.props.onUpdate({ current, total, progress, model });
-    this.setState({ progress, current, total, model });
+    this.setState({ progress, current, total });
   }
 
   render() {
     const { isOverlay } = this.props;
-    const { progress, isCanceled, isFinished, current, total, model } = this.state;
+    const { progress, isCanceled, isFinished, current, total } = this.state;
 
+    // ? show state.model.name
     const downloadStatusString = total
       ? `downloading model ${current} of ${total}`
       : !isFinished ? 'preloading models...' : 'download finished';

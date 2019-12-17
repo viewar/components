@@ -1,6 +1,5 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react/jsx-no-bind */
-/* eslint-disable react/jsx-no-bind */
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
@@ -9,6 +8,7 @@ import { Icon } from 'components';
 
 import styles from './PropertyPickerBar.scss';
 
+// TODO: add proptypes
 class PropertyPickerBar extends PureComponent {
   selectNext = () => {
     const {
@@ -29,7 +29,7 @@ class PropertyPickerBar extends PureComponent {
     const oldIndex = properties.indexOf(activeProperty);
     const newIndex = (properties.length + (oldIndex - 1)) % properties.length;
 
-    // setActiveProperty(properties[newIndex]);
+    setActiveProperty(properties[newIndex]);
   };
 
   render() {

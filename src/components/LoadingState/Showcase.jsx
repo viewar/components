@@ -68,7 +68,6 @@ class LoadingStateShowcase extends PureComponent {
 
   render() {
     const { showOverlay, progress, isCanceled, isVisible } = this.state;
-    const { onCancel } = this.props;
 
     return (
       <div>
@@ -100,7 +99,7 @@ class LoadingStateShowcase extends PureComponent {
         <LoadingState
           isVisible={isVisible}
           isOverlay={showOverlay}
-          onCancel={onCancel}
+          onCancel={this.onCancel}
         />
       </div>
     );

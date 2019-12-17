@@ -1,5 +1,4 @@
 import React, { PureComponent } from 'react';
-import PropTypes from 'prop-types';
 import ViewarApi from 'viewar-api';
 
 import { SceneStateProgress } from 'components';

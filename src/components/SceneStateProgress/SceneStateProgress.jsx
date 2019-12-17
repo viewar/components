@@ -11,7 +11,6 @@ class SceneStateProgress extends PureComponent {
     sceneState:   PropTypes.shape({
       children: PropTypes.arrayOf(PropTypes.object),
     }).isRequired,
-    children:     PropTypes.node,
     onUpdate:     PropTypes.func,
     onRestart:    PropTypes.func,
     onFinish:     PropTypes.func,
@@ -21,8 +20,6 @@ class SceneStateProgress extends PureComponent {
   };
 
   static defaultProps = {
-    sceneState: null,
-    children:   null,
     onUpdate:   () => {},
     onRestart:  () => {},
     onFinish:   () => {},
@@ -33,21 +30,22 @@ class SceneStateProgress extends PureComponent {
   constructor(props) {
     super(props);
 
-    this.state = {
-      progress: 0,
-      current:  0,
-      total:    0,
+    this.initialState = {
+      isCanceled: false,
+      isFinished: false,
+      progress:   0,
+      current:    0,
+      total:      0,
+      label:      'preloading models...',
     };
-  }
 
+    this.state = { ...this.initialState };
+  }
 
   async componentDidMount() {
     const { sceneState } = this.props;
 
-    // * set listener
-    viewarApi.sceneManager.on('sceneStateUpdateProgress', (current, total) => {
-      this.updateProgress({ current, total });
-    });
+    this.setListener();
 
     // * setSceneState
     if (sceneState) {
@@ -55,54 +53,93 @@ class SceneStateProgress extends PureComponent {
     }
   }
 
-  setSceneState = async () => {
-    await viewarApi.sceneManager.setSceneState(this.props.sceneState);
-
-    this.setState(({ isCanceled, progress }) => {
-      const newState = { isFinished: !isCanceled };
-      if (!isCanceled) {
-        this.props.onFinish();
-        newState.progress = 100;
-      }
-      return newState;
+  setListener = () => {
+    viewarApi.sceneManager.on('sceneStateUpdateProgress', (current, total) => {
+      this.updateProgress({ current, total });
     });
   }
 
+  setSceneState = async () => {
+    viewarApi.sceneManager.setSceneState(this.props.sceneState)
+      .then((result) => {
+        this.setState(({ isCanceled, progress }) => {
+          const newState = { isFinished: !isCanceled };
+          if (!isCanceled) {
+            this.props.onFinish();
+            newState.progress = 100;
+          }
+          return newState;
+        });
+
+        return true;
+      })
+      .catch((err) => {
+        // TODO: add proper error handling to setSceneState (in viewar-api)
+        console.info('[Error - SceneStateProgress] setSceneState():', err);
+        this.setState({
+          label:      'Download failed! Check your internet connection and try again.',
+          isCanceled: true,
+        });
+        this.onCancel();
+      });
+  }
+
   updateProgress = ({ current, total }) => {
-    console.log('sceneStateUpdateProgress :', current, total);
     const progressQuotient = Math.ceil(100 / total);
     const progress = Math.ceil((current - 1) * progressQuotient);
 
-    this.setState({ progress, current, total });
+    const newState = { progress, current, total };
+    this.props.onUpdate(newState);
+
+    newState.label = total
+      ? `Downloading Model ${current} of ${total}`
+      : '';
+
+    this.setState(newState);
   }
 
-  onCancel = () => {
-    this.props.onCancel();
-    this.setState({ isCanceled: true, isFinished: false });
+  onCancel = async () => {
+    const { sceneManager } = viewarApi;
 
-    viewarApi.sceneManager.off('sceneStateUpdateProgress');
+    sceneManager.off('sceneStateUpdateProgress');
+
+    try {
+      // * try to keep scene - checks if current state is valid
+      // * if some instances are only partially inserted, this will throw an error
+      const sceneState = sceneManager.getSceneState();
+      await sceneManager.setSceneState(sceneState);
+    }
+    catch (err) {
+      // * or clear it
+      console.info('[Info - SceneStateProgress] couldn\'t restore current SceneState. Will clear SceneState.');
+      await sceneManager.clearScene();
+    }
+
+    this.setState({ isCanceled: true, isFinished: false });
+    this.props.onCancel();
   }
 
   onRestart = () => {
     this.props.onRestart();
-    this.setState({ isCanceled: false, progress: 0 });
+
+    this.setState(({ progress }) => ({ ...this.initialState, progress }));
+
+    this.setListener();
+    this.setSceneState();
   }
 
   render() {
-    const { progress, isFinished, current, total } = this.state;
-    const { isOverlay, children } = this.props;
-
-    const downloadStatusString = total
-      ? `Downloading Model ${current} of ${total}`
-      : '';
+    const { progress, isFinished, isCanceled, label } = this.state;
+    const { isOverlay } = this.props;
 
     return (
       <div className={styles.SceneStateProgress} key="DownloadAll">
         <LoadingState
-          isOverlay
+          isOverlay={isOverlay}
           isVisible={!isFinished}
-          label={downloadStatusString}
+          label={label}
           progress={progress}
+          isCanceled={isCanceled}
           onCancel={this.onCancel}
           onRestart={this.onRestart}
         />

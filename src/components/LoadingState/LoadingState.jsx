@@ -5,6 +5,7 @@ import cx from 'classnames';
 // this import triggers 'file-loader' to copy assets into /build of 'webpack-dev-server'
 import LoadingGear from 'assets/viewar_loading_gear_red.svg'; // eslint-disable-line no-unused-vars
 import { Icon } from 'components';
+import Overlay from 'components/Overlay';
 
 import styles from './LoadingState.scss';
 
@@ -27,7 +28,7 @@ class LoadingState extends PureComponent {
     progress:   false,
     isVisible:  true,
     isCanceled: false,
-    isOverlay:  false,
+    isOverlay:  true,
     onRestart:  () => {},
     onCancel:   () => {},
   };
@@ -42,9 +43,10 @@ class LoadingState extends PureComponent {
 
   render() {
     const { progress, label, isCanceled, isVisible, isOverlay } = this.props;
+    let loadingStateComponent = '';
 
     if (progress === false) {
-      return (
+      loadingStateComponent = (
         <div className={cx(styles.LoadingState, {
           [styles.isHidden]:  !isVisible,
           [styles.isOverlay]: isOverlay,
@@ -56,10 +58,9 @@ class LoadingState extends PureComponent {
       );
     }
     else {
-      return (
+      loadingStateComponent = (
         <div className={cx(styles.LoadingState, {
           [styles.isHidden]:  !isVisible,
-          [styles.isOverlay]: isOverlay,
         })}
         >
           <div key="LoadingState.progressBar" className={styles.progressBar}>
@@ -69,12 +70,16 @@ class LoadingState extends PureComponent {
           {label && <div key="Loadingstate.label" className={styles.label}>{label}</div>}
 
           {(!isCanceled && progress !== 100) &&
-            <div key="LoadingState.cancel" className={styles.cancel} onClick={this.onCancel} role="button">Cancel</div>}
+          <div key="LoadingState.cancel" className={styles.cancel} onClick={this.onCancel} role="button">Cancel</div>}
           {(isCanceled) &&
-            <div key="LoadingState.restart" className={styles.restart} onClick={this.onRestart} role="button">Restart</div>}
+          <div key="LoadingState.restart" className={styles.restart} onClick={this.onRestart} role="button">Restart</div>}
         </div>
       );
     }
+
+    return isOverlay
+      ? <Overlay isOpen={isVisible} content={loadingStateComponent} />
+      : loadingStateComponent;
   }
 }
 

@@ -15,7 +15,7 @@ class LoadingStateShowcase extends PureComponent {
   }
 
   componentDidMount() {
-    this.showOverlay(this.startFakeProcess);
+    this.showOverlay(this.startFakeProcess, 500);
   }
 
   startFakeProcess = () => {
@@ -38,7 +38,7 @@ class LoadingStateShowcase extends PureComponent {
 
   onCancel = () => {
     clearInterval(window._increaseProgressInterval);
-    this.setState({ isCanceled: true });
+    this.setState({ isCanceled: true, showOverlay: false });
   }
 
   onRestart = () => {
@@ -68,6 +68,7 @@ class LoadingStateShowcase extends PureComponent {
 
   render() {
     const { showOverlay, progress, isCanceled, isVisible } = this.state;
+    const { onCancel } = this.props;
 
     return (
       <div>
@@ -83,7 +84,8 @@ class LoadingStateShowcase extends PureComponent {
 
         <br /><br />
         <LoadingState
-          isVisible={!showOverlay}
+          label={`${progress}%`}
+          isOverlay={false}
           isCanceled={isCanceled}
           progress={progress}
           onCancel={this.onCancel}
@@ -98,6 +100,7 @@ class LoadingStateShowcase extends PureComponent {
         <LoadingState
           isVisible={isVisible}
           isOverlay={showOverlay}
+          onCancel={onCancel}
         />
       </div>
     );

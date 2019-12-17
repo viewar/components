@@ -7,9 +7,14 @@ import DownloadAll from 'components/DownloadAll/DownloadAll';
 class DownloadAllShowcase extends PureComponent {
   state = {
     isFinished: false,
+    isCanceled: false,
   }
 
   onFinish = () => {
+    this.setState({ isFinished: true });
+  }
+
+  onCancel = () => {
     this.setState({ isFinished: true });
   }
 
@@ -29,7 +34,7 @@ class DownloadAllShowcase extends PureComponent {
         {`download finished? ${isFinished} - `}
         {isFinished && <button onClick={this.restart}>restart</button>}
         <br /><br />
-        {!isFinished && <DownloadAll onFinish={this.onFinish} onUpdate={this.onUpdate} isOverlay={false} />}
+        {!isFinished && <DownloadAll onCancel={this.onCancel} onFinish={this.onFinish} onUpdate={this.onUpdate} isOverlay={false} />}
       </div>
     );
   }

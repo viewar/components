@@ -4,10 +4,11 @@
   "description": "ViewAR's reusable react components",
   "main": "./index.js",
   "scripts": {
+    "clean": "rimraf ./build && rimraf ./dist",
     "start": "cross-env DEBUG=true webpack-dev-server --open --mode development --env development_core",
     "start:mock": "cross-env DEBUG=true webpack-dev-server --open --mode development --env development_mock",
-    "build:webpack": "rm ./build -rf && webpack -p --mode production --env production",
-    "build:package": "rm ./dist -rf && webpack -p --mode development --env development --config ./package/webpack.config.js",
+    "build:webpack": "npm run clean && webpack -p --mode production --env production",
+    "build:package": "npm run clean && webpack -p --mode development --env development --config ./package/webpack.config.js",
     "test": "npm run lint && npm run build:webpack && npm run karma",
     "karma": "karma start ./node_modules/@viewar/webpack/karma",
     "lint": "prettier **/*.{css,scss,md,json} --write && eslint --fix \"**/*.*{js,jsx}\" --ignore-pattern \"build/**/*\" --format pretty",
@@ -109,7 +110,8 @@
     "lodash": "^4.17.15",
     "puppeteer": "^2.0.0",
     "react": "^16.9.0",
-    "react-dom": "^16.9.0"
+    "react-dom": "^16.9.0",
+    "rimraf": "^3.0.0"
   },
   "peerDependencies": {
     "react": "^16.9.0",

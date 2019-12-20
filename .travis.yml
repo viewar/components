@@ -63,8 +63,9 @@ jobs:
       script: skip
       install: npm i @babel/core@^7.7.5 @babel/cli@^7.7.5 rimraf@latest
       before_deploy:
-        - npm i -g semantic-release
+        - npm i -g semantic-release @babel/core@^7.7.5 @babel/cli@^7.7.5 rimraf@latest
         - npm i -g @semantic-release/commit-analyzer @semantic-release/release-notes-generator @semantic-release/changelog @semantic-release/npm @semantic-release/git @semantic-release/github semantic-release-slack-bot
+        - bash ./build_package.sh
       deploy:
         tags: false
         provider: script

@@ -1,17 +1,14 @@
 #!/bin/bash
 
-# * clean /dist
-rm ./dist -rf
+npm run clean
 
-# * compile /src/components - keep dir structure and copy nonJS files
-npx babel ./src/components -d dist/components --copy-files --compact --minified
+# * compile components
+npx babel ./src/components -d dist/components --source-maps inline --copy-files --compact --minified
 
 # * copy /src/sass to /dist/sass
-rm ./dist/sass -rf
 mkdir ./dist/sass
 cp ./src/sass/* ./dist/sass -r
 
 # * copy /src/assets to /dist/assets
-rm ./dist/assets -rf
 mkdir ./dist/assets
 cp ./src/assets/* ./dist/assets -r

@@ -63,10 +63,10 @@ class DownloadAll extends PureComponent {
 
   // see http://test2.3.viewar.com/docs/ModelManager.html#event:downloadAllProgress
   downloadAllProgress = (current, total, progress, model) => {
-    const progressQuotient = Math.ceil(100 / total);
-    const progressPrevious = Math.ceil((current - 1) * progressQuotient);
+    const progressQuotient = 100 / total;
+    const progressPrevious = (current - 1) * progressQuotient;
 
-    progress = progressPrevious + progress;
+    progress = parseFloat(progressPrevious + progress).toFixed(3);
 
     this.props.onUpdate({ current, total, progress, model });
     this.setState({ progress, current, total });

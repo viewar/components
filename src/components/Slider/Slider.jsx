@@ -1,7 +1,6 @@
 /* eslint-disable no-console */
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import debounce from 'lodash.debounce';
 import throttle from 'lodash.throttle';
 
 import styles from './Slider.scss';

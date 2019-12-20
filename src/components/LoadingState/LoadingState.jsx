@@ -2,11 +2,8 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 
-// this import triggers 'file-loader' to copy assets into /build of 'webpack-dev-server'
-import LoadingGear from 'assets/viewar_loading_gear_red.svg'; // eslint-disable-line no-unused-vars
-import { Icon } from 'components';
-import Overlay from 'components/Overlay';
-
+import Overlay from '../Overlay/Overlay';
+import Icon from '../Icon/Icon';
 import styles from './LoadingState.scss';
 
 class LoadingState extends PureComponent {

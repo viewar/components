@@ -97,12 +97,12 @@
     "@babel/plugin-proposal-export-default-from": "^7.7.4",
     "@babel/plugin-proposal-export-namespace-from": "^7.7.4",
     "@babel/plugin-transform-react-constant-elements": "^7.7.4",
-    "@babel/preset-env": "^7.7.5",
+    "@babel/preset-env": "^7.7.7",
     "@babel/preset-react": "^7.7.4",
     "@viewar/config-eslint": "^1.10.0",
     "@viewar/webpack": "^1.9.0",
     "cross-env": "^6.0.3",
-    "eslint": "^6.7.2",
+    "eslint": "^6.8.0",
     "husky": "^3.1.0",
     "karma": "^4.4.1",
     "lodash": "^4.17.15",
@@ -111,13 +111,13 @@
     "react-dom": "^16.9.0",
     "rimraf": "^3.0.0",
     "viewar-api": "^1.1.0",
-    "viewar-core": "^11.60.14"
+    "viewar-core": "^11.62.4"
   },
   "peerDependencies": {
+    "@viewar/webpack": "^1.9.0",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "viewar-api": "^1.1.0",
-    "viewar-core": "^11.60.14",
-    "@viewar/webpack": "^1.9.0"
+    "viewar-core": "^11.62.4"
   }
 }

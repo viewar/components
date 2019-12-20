@@ -21,7 +21,9 @@
   "files": [
     "index.js",
     "dist/**/*",
-    "src/**/*"
+    "src/index.js",
+    "src/components/**/*",
+    "src/sass/**/*"
   ],
   "directories": {
     "lib": "dist"

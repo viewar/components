@@ -20,7 +20,8 @@
   },
   "files": [
     "index.js",
-    "dist/**/*"
+    "dist/**/*",
+    "src/**/*"
   ],
   "directories": {
     "lib": "dist"

@@ -1,4 +1,4 @@
-@import 'styles';
+@import 'viewar-styles';
 
 $rail-height: 1.5rem !default;
 $rail-width: $rail-height;
@@ -41,7 +41,7 @@ $knob-width-calculated: calc(#{$rail-width} - #{$rail-padding * 2});
   border-radius: 50%;
 
   // * positioning
-  transition: left 150ms ease-out;
+  // transition: left 50ms ease-in;
   position: absolute;
   top: 0;
   left: $rail-padding;
@@ -53,7 +53,7 @@ $knob-width-calculated: calc(#{$rail-width} - #{$rail-padding * 2});
   transform: translateX(calc(#{$knob-width-calculated} / 2 * -1));
 
   // allow click-trough!
-  // pointer-events: none;
+  pointer-events: none;
 
   &:hover {
     box-shadow: 0 0 #{$rail-padding} rgba(0, 0, 0, 1);

@@ -48,8 +48,6 @@ class App extends PureComponent {
     ))
 
   render() {
-    console.log('showcases :', showcases);
-
     const { props: { children }, state: { initiated }} = this;
 
     return (

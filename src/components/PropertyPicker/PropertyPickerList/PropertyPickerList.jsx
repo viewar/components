@@ -4,7 +4,7 @@ import React, { PureComponent } from 'react';
 import cx from 'classnames';
 
 // TODO: add Detail Container components
-import { DetailContainer, DetailHeader, DetailContent } from 'components';
+import { DetailContainer, DetailHeader, DetailContent } from '../../';
 
 import styles from './PropertyPickerList.scss';
 

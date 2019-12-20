@@ -4,7 +4,7 @@
 rm ./dist -rf
 
 # * compile /src/components - keep dir structure and copy nonJS files
-./node_modules/.bin/babel ./src/components -d dist/components --copy-files --compact --minified
+npx babel ./src/components -d dist/components --copy-files --compact --minified
 
 # * copy /src/sass to /dist/sass
 rm ./dist/sass -rf

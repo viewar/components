@@ -99,7 +99,7 @@
     "@babel/preset-env": "^7.7.5",
     "@babel/preset-react": "^7.7.4",
     "@viewar/config-eslint": "^1.10.0",
-    "@viewar/webpack": "^1.8.2",
+    "@viewar/webpack": "^1.9.0",
     "cross-env": "^6.0.3",
     "eslint": "^6.7.2",
     "husky": "^3.1.0",
@@ -116,6 +116,7 @@
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "viewar-api": "^1.1.0",
-    "viewar-core": "^11.60.14"
+    "viewar-core": "^11.60.14",
+    "@viewar/webpack": "^1.9.0"
   }
 }

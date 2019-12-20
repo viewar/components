@@ -14,4 +14,4 @@ cp ./src/sass/* ./dist/sass -r
 # * copy /src/assets to /dist/assets
 rm ./dist/assets -rf
 mkdir ./dist/assets
-cp ./assets/* ./dist/assets -r
+cp ./src/assets/* ./dist/assets -r

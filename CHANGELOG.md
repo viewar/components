@@ -4,36 +4,31 @@
 
 ## [1.7.1](https://github.com/viewar/components/compare/v1.7.0...v1.7.1) (2019-12-20)
 
-
 ### Bug Fixes
 
-* **ci:** install build deps in release stage ([38e4e1d](https://github.com/viewar/components/commit/38e4e1da2ede2dc113d7c072befe7de33dc574b6))
+- **ci:** install build deps in release stage ([38e4e1d](https://github.com/viewar/components/commit/38e4e1da2ede2dc113d7c072befe7de33dc574b6))
 
 # [1.7.0](https://github.com/viewar/components/compare/v1.6.0...v1.7.0) (2019-12-20)
 
-
 ### Bug Fixes
 
-* **osx:** use rimraf and add add 'clean' script ([3a38441](https://github.com/viewar/components/commit/3a3844179163b3b14b1cb5a5c5e883efc989f542))
-
+- **osx:** use rimraf and add add 'clean' script ([3a38441](https://github.com/viewar/components/commit/3a3844179163b3b14b1cb5a5c5e883efc989f542))
 
 ### Features
 
-* **npm:** setup for package release ([#53](https://github.com/viewar/components/issues/53)) ([abb371c](https://github.com/viewar/components/commit/abb371c06f585366e0a46513c42b48e900c67679))
+- **npm:** setup for package release ([#53](https://github.com/viewar/components/issues/53)) ([abb371c](https://github.com/viewar/components/commit/abb371c06f585366e0a46513c42b48e900c67679))
 
 # [1.6.0](https://github.com/viewar/components/compare/v1.5.1...v1.6.0) (2019-12-17)
 
-
 ### Bug Fixes
 
-* **Slider:** adapt dragHandler for mobile ([aff6b12](https://github.com/viewar/components/commit/aff6b1216cf33a828c7e8dcb46870a9bfb40096b))
-* **SceneStateProgress:** fix onCancel and on Restart to handle connection errors ([7d7f5c9](https://github.com/viewar/components/commit/7d7f5c92bf835df4825db445ce7abea9769f0999))
-
+- **Slider:** adapt dragHandler for mobile ([aff6b12](https://github.com/viewar/components/commit/aff6b1216cf33a828c7e8dcb46870a9bfb40096b))
+- **SceneStateProgress:** fix onCancel and on Restart to handle connection errors ([7d7f5c9](https://github.com/viewar/components/commit/7d7f5c92bf835df4825db445ce7abea9769f0999))
 
 ### Features
 
-* **DownloadAll:** add `<DownloadAll />` component ([a231ddc](https://github.com/viewar/components/commit/a231ddca96a342ddcb2690dabba39918d3cb2d46))
-* **SceneStateProgress:** add `<SceneStateProgress />` with showcase and mockdata ([760cc14](https://github.com/viewar/components/commit/760cc14c4f5e9cdaf29aafb6fe328203e74107d8))
+- **DownloadAll:** add `<DownloadAll />` component ([a231ddc](https://github.com/viewar/components/commit/a231ddca96a342ddcb2690dabba39918d3cb2d46))
+- **SceneStateProgress:** add `<SceneStateProgress />` with showcase and mockdata ([760cc14](https://github.com/viewar/components/commit/760cc14c4f5e9cdaf29aafb6fe328203e74107d8))
 
 ## [1.5.1](https://github.com/viewar/components/compare/v1.5.0...v1.5.1) (2019-12-06)
 

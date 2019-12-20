@@ -2,6 +2,18 @@
 
 > generated with [@semantic-release/changelog](https://github.com/semantic-release/changelog)
 
+# [1.7.0](https://github.com/viewar/components/compare/v1.6.0...v1.7.0) (2019-12-20)
+
+
+### Bug Fixes
+
+* **osx:** use rimraf and add add 'clean' script ([3a38441](https://github.com/viewar/components/commit/3a3844179163b3b14b1cb5a5c5e883efc989f542))
+
+
+### Features
+
+* **npm:** setup for package release ([#53](https://github.com/viewar/components/issues/53)) ([abb371c](https://github.com/viewar/components/commit/abb371c06f585366e0a46513c42b48e900c67679))
+
 # [1.6.0](https://github.com/viewar/components/compare/v1.5.1...v1.6.0) (2019-12-17)
 
 

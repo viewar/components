@@ -1,6 +1,6 @@
 {
   "name": "@viewar/components",
-  "version": "1.6.0",
+  "version": "1.7.0",
   "description": "ViewAR's reusable react components",
   "main": "./index.js",
   "scripts": {

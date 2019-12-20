@@ -4,7 +4,8 @@
 
 [![Build Status](https://travis-ci.com/viewar/components.svg?branch=master)](https://travis-ci.com/viewar/components)
 [![Dependabot Status](https://api.dependabot.com/badges/status?host=github&repo=viewar/components)](https://dependabot.com)
-[![PRs Welcome][pr-welcome]](http://makeapullrequest.com)
+[![PRs Welcome][pr-welcome]](http://makeapullrequest.com)<br />
+[![NPM Release](https://img.shields.io/npm/v/%40viewar%2Fcomponents.svg?style=flat)](https://www.npmjs.com/package/%40viewar%2Fcomponents)
 [![Conventional Commits](https://img.shields.io/badge/✔-Conventional%20Commits-blue.svg)](https://conventionalcommits.org)
 [![Semantic Versioning][semantic-img]][semantic-url]
 
@@ -14,11 +15,15 @@
 
 <!--- /status badge url references ---->
 
+## BETA VERSION
+
+> requires [@viewar/webpack](https://github.com/viewar/webpack)
+
 ## ComponentPresenter
 
-> ❗️ **This is just a provisional styleguide subtstitute**  
-> 🏗 **until we found the right component pattern libary to match our needs**
->
+❗️ **This is just a provisional styleguide subtstitute**  
+🏗 **until we found the right component pattern libary to match our needs**
+
 > _see [[feat] add styleguide](viewar/components#2) (issue#2)_
 
 #### Usage

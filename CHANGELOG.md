@@ -4,10 +4,9 @@
 
 ## [1.7.2](https://github.com/viewar/components/compare/v1.7.1...v1.7.2) (2019-12-20)
 
-
 ### Bug Fixes
 
-* **Icons:** fix asset paths ([90dd515](https://github.com/viewar/components/commit/90dd515355cc20f8f704d50c692f8f534ac9c5ab))
+- **Icons:** fix asset paths ([90dd515](https://github.com/viewar/components/commit/90dd515355cc20f8f704d50c692f8f534ac9c5ab))
 
 ## [1.7.1](https://github.com/viewar/components/compare/v1.7.0...v1.7.1) (2019-12-20)
 

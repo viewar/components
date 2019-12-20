@@ -60,6 +60,7 @@ jobs:
     - stage: release
       if: branch = next AND type IN (push) AND tag IS blank AND (commit_message !~ /chore\(release\)/)
       node_js: 12
+      env: NODE_ENV=production
       script: skip
       install:
         - npm i -g @babel/core@^7.7.5 @babel/cli@^7.7.5 rimraf@latest

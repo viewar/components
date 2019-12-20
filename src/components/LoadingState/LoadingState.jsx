@@ -18,6 +18,7 @@ class LoadingState extends PureComponent {
     isOverlay:  PropTypes.bool,
     onRestart:  PropTypes.func,
     onCancel:   PropTypes.func,
+    onClose:    PropTypes.func,
   };
 
   static defaultProps = {
@@ -28,7 +29,12 @@ class LoadingState extends PureComponent {
     isOverlay:  true,
     onRestart:  () => {},
     onCancel:   () => {},
+    onClose:    () => {},
   };
+
+  onClose = () => {
+    this.props.onClose();
+  }
 
   onCancel = () => {
     this.props.onCancel();

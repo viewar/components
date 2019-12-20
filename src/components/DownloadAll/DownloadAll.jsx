@@ -52,7 +52,6 @@ class DownloadAll extends PureComponent {
   triggerDownloadAll = async () => {
     await viewarApi.modelManager.downloadAll(this.downloadAllProgress);
     this.setState(({ isCanceled, progress }) => {
-      console.log('triggerDownloadAll- isCanceled?:', isCanceled);
       const newState = { isFinished: !isCanceled };
       if (!isCanceled) {
         this.props.onFinish();
@@ -74,7 +73,7 @@ class DownloadAll extends PureComponent {
   }
 
   render() {
-    const { isOverlay } = this.props;
+    const { isOverlay, onClose } = this.props;
     const { progress, isCanceled, isFinished, current, total } = this.state;
 
     // ? show state.model.name
@@ -90,6 +89,7 @@ class DownloadAll extends PureComponent {
           progress={progress}
           isOverlay={isOverlay && !isFinished}
           isCanceled={isCanceled}
+          onClose={onClose}
           onCancel={this.onCancel}
           onRestart={this.onRestart}
         />

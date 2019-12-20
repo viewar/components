@@ -3,8 +3,7 @@
 import React, { PureComponent } from 'react';
 import cx from 'classnames';
 
-import { Slider } from 'components';
-
+import Slider from '../../../Slider';
 import styles from '../PropertyOptions.scss';
 
 class RotationWidget extends PureComponent {

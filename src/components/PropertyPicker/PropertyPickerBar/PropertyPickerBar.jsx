@@ -4,8 +4,7 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 
-import { Icon } from 'components';
-
+import Icon from '../../Icon';
 import styles from './PropertyPickerBar.scss';
 
 // TODO: add proptypes

@@ -2,6 +2,13 @@
 
 > generated with [@semantic-release/changelog](https://github.com/semantic-release/changelog)
 
+## [1.7.1](https://github.com/viewar/components/compare/v1.7.0...v1.7.1) (2019-12-20)
+
+
+### Bug Fixes
+
+* **ci:** install build deps in release stage ([38e4e1d](https://github.com/viewar/components/commit/38e4e1da2ede2dc113d7c072befe7de33dc574b6))
+
 # [1.7.0](https://github.com/viewar/components/compare/v1.6.0...v1.7.0) (2019-12-20)
 
 

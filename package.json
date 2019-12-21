@@ -8,7 +8,7 @@
     "start": "cross-env DEBUG=true webpack-dev-server --open --mode development --env development_core",
     "start:mock": "cross-env DEBUG=true webpack-dev-server --open --mode development --env development_mock",
     "build:webpack": "npm run clean && webpack -p --mode production --env production",
-    "build:package": "npm run clean && webpack -p --mode development --env development --config ./package/webpack.config.js",
+    "build:package": "npm run clean && ./build_package.sh",
     "test": "npm run lint && npm run build:webpack && npm run karma",
     "karma": "karma start ./node_modules/@viewar/webpack/karma",
     "lint": "prettier **/*.{css,scss,md,json} --write && eslint --fix \"**/*.*{js,jsx}\" --ignore-pattern \"build/**/*\" --format pretty"
@@ -21,6 +21,7 @@
   "files": [
     "index.js",
     "dist/**/*",
+    "dist/assets/*",
     "src/index.js",
     "src/components/**/*",
     "src/sass/**/*"
@@ -70,7 +71,10 @@
       [
         "@babel/plugin-proposal-class-properties"
       ],
-      "@babel/plugin-transform-react-constant-elements"
+      "@babel/plugin-transform-react-constant-elements",
+      [
+        "transform-inline-environment-variables"
+      ]
     ]
   },
   "repository": {
@@ -84,7 +88,9 @@
   },
   "homepage": "https://github.com/viewar/components#readme",
   "dependencies": {
+    "babel-plugin-transform-inline-environment-variables": "^0.4.3",
     "classnames": "^2.2.6",
+    "glob": "^7.1.6",
     "lodash.debounce": "^4.0.8",
     "lodash.throttle": "^4.1.1",
     "react-hot-loader": "4.12.18",

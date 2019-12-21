@@ -25,7 +25,7 @@ node_js:
   - 11
   - 10
 
-install: npm install
+install: npm ci
 script: npm test
 
 stages:

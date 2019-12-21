@@ -3,7 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 
-import * as iconList from './list';
+import * as iconList from './IconNamespace';
 import styles from './Icon.scss';
 
 const iconNamesShort = Object.keys(iconList).map((iconName) =>

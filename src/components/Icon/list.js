@@ -1,3 +1,4 @@
+/* eslint-disable node/no-unpublished-import */
 /* eslint-disable camelcase */
 export button_3d_goggle from '../../assets/buttons/button_3dgoggle.svg';
 

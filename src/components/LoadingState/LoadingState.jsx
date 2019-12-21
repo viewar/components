@@ -63,7 +63,7 @@ class LoadingState extends PureComponent {
     else {
       loadingStateComponent = (
         <div className={cx(styles.LoadingState, {
-          [styles.isHidden]:  !isVisible,
+          [styles.isHidden]: !isVisible,
         })}
         >
           <div key="LoadingState.progressBar" className={styles.progressBar}>

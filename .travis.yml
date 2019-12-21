@@ -63,10 +63,10 @@ jobs:
       env: NODE_ENV=production
       script: skip
       install:
-        - npm i -g @babel/core@^7.7.5 @babel/cli@^7.7.5 rimraf cross-env
+        - npm ci
         - npm i -g semantic-release @semantic-release/commit-analyzer @semantic-release/release-notes-generator @semantic-release/changelog @semantic-release/npm @semantic-release/git @semantic-release/github semantic-release-slack-bot
       before_deploy:
-        - bash ./build_package.sh
+        - npm run build:package
       deploy:
         tags: false
         provider: script

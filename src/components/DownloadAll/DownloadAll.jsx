@@ -11,6 +11,7 @@ class DownloadAll extends PureComponent {
     onRestart:    PropTypes.func,
     onFinish:     PropTypes.func,
     onCancel:     PropTypes.func,
+    onClose:     PropTypes.func,
     // LoadingState props
     isOverlay:    PropTypes.bool, // TODO: remove isOverlay?
   };
@@ -20,6 +21,7 @@ class DownloadAll extends PureComponent {
     onRestart: () => {},
     onFinish:  () => {},
     onCancel:  () => {},
+    onClose:   () => {},
     isOverlay: true,
   };
 

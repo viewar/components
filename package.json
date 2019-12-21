@@ -13,8 +13,7 @@
     "test:integration": "npm run lint && npm run build:webpack && npm run karma",
     "test:unit": "npx jest __tests__",
     "karma": "karma start ./node_modules/@viewar/webpack/karma",
-    "lint": "prettier **/*.{css,scss,md,json} --write && eslint --fix \"**/*.*{js,jsx}\" --ignore-pattern \"build/**/*\" --format pretty",
-    "prepublishOnly": "build_package.sh"
+    "lint": "prettier **/*.{css,scss,md,json} --write && eslint --fix \"**/*.*{js,jsx}\" --ignore-pattern \"build/**/*\" --format pretty"
   },
   "husky": {
     "hooks": {

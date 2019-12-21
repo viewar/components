@@ -1,0 +1,7 @@
+{
+  "extends": ["../.eslintrc"],
+  "globals": {
+    "test": "readonly",
+    "expect": "readonly"
+  }
+}

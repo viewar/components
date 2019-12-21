@@ -9,7 +9,9 @@
     "start:mock": "cross-env DEBUG=true webpack-dev-server --open --mode development --env development_mock",
     "build:webpack": "npm run clean && webpack -p --mode production --env production",
     "build:package": "npm run clean && bash build_package.sh",
-    "test": "npm run lint && npm run build:webpack && npm run karma",
+    "test": "npm run test:integration && npm run test:unit",
+    "test:integration": "npm run lint && npm run build:webpack && npm run karma",
+    "test:unit": "npx jest __tests__/(.+).spec(.js)?$",
     "karma": "karma start ./node_modules/@viewar/webpack/karma",
     "lint": "prettier **/*.{css,scss,md,json} --write && eslint --fix \"**/*.*{js,jsx}\" --ignore-pattern \"build/**/*\" --format pretty",
     "prepublishOnly": "build_package.sh"

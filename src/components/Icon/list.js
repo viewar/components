@@ -1,5 +1,3 @@
-/* eslint-disable node/no-unpublished-import */
-/* eslint-disable camelcase */
 export button_3d_goggle from '../../assets/buttons/button_3dgoggle.svg';
 
 export button_add_furniture from '../../assets/buttons/button_add_furniture.svg';

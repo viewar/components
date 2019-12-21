@@ -13,6 +13,7 @@ import * as showcases from 'components/showcases';
 import ComponentPresenter from './ComponentPresenter';
 import styles from './App.scss';
 import { Icon } from './components';
+// import { Icon } from '../dist/components';
 
 // TODO: add routing for presenter
 class App extends PureComponent {

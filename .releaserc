@@ -50,7 +50,8 @@
       {
         "assets": [
           "CHANGELOG.md",
-          "package.json"
+          "package.json",
+          "package-lock.json"
         ],
         "message": "chore(release): 🤖🔖🚀 v${nextRelease.version} \n\n${nextRelease.notes}"
       }

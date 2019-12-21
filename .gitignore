@@ -2,7 +2,6 @@
 build
 dist
 .viewar-config
-package-lock.json
 yarn.lock
 
 # Logs

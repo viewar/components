@@ -1,4 +1,6 @@
 /* eslint-disable camelcase */
+/* eslint-disable node/no-unpublished-import */
+// TODO: fix 'node/no-unpublished-import' convertPath
 export button_3d_goggle from '../../assets/buttons/button_3dgoggle.svg';
 
 export button_add_furniture from '../../assets/buttons/button_add_furniture.svg';

@@ -18,6 +18,7 @@ class LoadingState extends PureComponent {
     isOverlay:  PropTypes.bool,
     onRestart:  PropTypes.func,
     onCancel:   PropTypes.func,
+    onClose:    PropTypes.func,
   };
 
   static defaultProps = {
@@ -28,7 +29,12 @@ class LoadingState extends PureComponent {
     isOverlay:  true,
     onRestart:  () => {},
     onCancel:   () => {},
+    onClose:    () => {},
   };
+
+  onClose = () => {
+    this.props.onClose();
+  }
 
   onCancel = () => {
     this.props.onCancel();
@@ -57,7 +63,7 @@ class LoadingState extends PureComponent {
     else {
       loadingStateComponent = (
         <div className={cx(styles.LoadingState, {
-          [styles.isHidden]:  !isVisible,
+          [styles.isHidden]: !isVisible,
         })}
         >
           <div key="LoadingState.progressBar" className={styles.progressBar}>

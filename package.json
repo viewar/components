@@ -1,6 +1,6 @@
 {
   "name": "@viewar/components",
-  "version": "1.4.0",
+  "version": "1.7.4",
   "description": "ViewAR's reusable react components",
   "main": "./index.js",
   "scripts": {
@@ -8,7 +8,7 @@
     "start": "cross-env DEBUG=true webpack-dev-server --open --mode development --env development_core",
     "start:mock": "cross-env DEBUG=true webpack-dev-server --open --mode development --env development_mock",
     "build:webpack": "npm run clean && webpack -p --mode production --env production",
-    "build:package": "npm run clean && webpack -p --mode development --env development --config ./package/webpack.config.js",
+    "build:package": "npm run clean && bash build_package.sh",
     "test": "npm run lint && npm run build:webpack && npm run karma",
     "karma": "karma start ./node_modules/@viewar/webpack/karma",
     "lint": "prettier **/*.{css,scss,md,json} --write && eslint --fix \"**/*.*{js,jsx}\" --ignore-pattern \"build/**/*\" --format pretty",
@@ -21,7 +21,11 @@
   },
   "files": [
     "index.js",
-    "dist/**/*"
+    "dist/**/*",
+    "dist/assets/*",
+    "src/index.js",
+    "src/components/**/*",
+    "src/sass/**/*"
   ],
   "directories": {
     "lib": "dist"
@@ -68,7 +72,10 @@
       [
         "@babel/plugin-proposal-class-properties"
       ],
-      "@babel/plugin-transform-react-constant-elements"
+      "@babel/plugin-transform-react-constant-elements",
+      [
+        "transform-inline-environment-variables"
+      ]
     ]
   },
   "repository": {
@@ -83,38 +90,43 @@
   "homepage": "https://github.com/viewar/components#readme",
   "dependencies": {
     "classnames": "^2.2.6",
+    "glob": "^7.1.6",
     "lodash.debounce": "^4.0.8",
     "lodash.throttle": "^4.1.1",
     "react-hot-loader": "4.12.18",
     "react-router-dom": "^5.1.2",
-    "url-loader": "^3.0.0",
-    "viewar-api": "^1.1.0",
-    "viewar-core": "^11.60.14"
+    "url-loader": "^3.0.0"
   },
   "devDependencies": {
-    "@babel/cli": "^7.7.5",
-    "@babel/core": "^7.7.5",
+    "@babel/cli": "^7.7.7",
+    "@babel/core": "^7.7.7",
     "@babel/plugin-proposal-class-properties": "^7.7.4",
     "@babel/plugin-proposal-decorators": "^7.7.4",
     "@babel/plugin-proposal-export-default-from": "^7.7.4",
     "@babel/plugin-proposal-export-namespace-from": "^7.7.4",
+    "babel-plugin-transform-inline-environment-variables": "^0.4.3",
     "@babel/plugin-transform-react-constant-elements": "^7.7.4",
-    "@babel/preset-env": "^7.7.5",
+    "@babel/preset-env": "^7.7.7",
     "@babel/preset-react": "^7.7.4",
     "@viewar/config-eslint": "^1.10.0",
-    "@viewar/webpack": "^1.8.2",
+    "@viewar/webpack": "^1.9.0",
     "cross-env": "^6.0.3",
-    "eslint": "^6.7.2",
+    "eslint": "^6.8.0",
     "husky": "^3.1.0",
     "karma": "^4.4.1",
     "lodash": "^4.17.15",
     "puppeteer": "^2.0.0",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
-    "rimraf": "^3.0.0"
+    "rimraf": "^3.0.0",
+    "viewar-api": "^1.1.0",
+    "viewar-core": "^11.62.4"
   },
   "peerDependencies": {
+    "@viewar/webpack": "^1.9.0",
     "react": "^16.9.0",
-    "react-dom": "^16.9.0"
+    "react-dom": "^16.9.0",
+    "viewar-api": "^1.1.0",
+    "viewar-core": "^11.62.4"
   }
 }

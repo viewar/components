@@ -11,6 +11,7 @@ class DownloadAll extends PureComponent {
     onRestart:    PropTypes.func,
     onFinish:     PropTypes.func,
     onCancel:     PropTypes.func,
+    onClose:     PropTypes.func,
     // LoadingState props
     isOverlay:    PropTypes.bool, // TODO: remove isOverlay?
   };
@@ -20,6 +21,7 @@ class DownloadAll extends PureComponent {
     onRestart: () => {},
     onFinish:  () => {},
     onCancel:  () => {},
+    onClose:   () => {},
     isOverlay: true,
   };
 
@@ -52,7 +54,6 @@ class DownloadAll extends PureComponent {
   triggerDownloadAll = async () => {
     await viewarApi.modelManager.downloadAll(this.downloadAllProgress);
     this.setState(({ isCanceled, progress }) => {
-      console.log('triggerDownloadAll- isCanceled?:', isCanceled);
       const newState = { isFinished: !isCanceled };
       if (!isCanceled) {
         this.props.onFinish();
@@ -64,17 +65,17 @@ class DownloadAll extends PureComponent {
 
   // see http://test2.3.viewar.com/docs/ModelManager.html#event:downloadAllProgress
   downloadAllProgress = (current, total, progress, model) => {
-    const progressQuotient = Math.ceil(100 / total);
-    const progressPrevious = Math.ceil((current - 1) * progressQuotient);
+    const progressQuotient = 100 / total;
+    const progressPrevious = (current - 1) * progressQuotient;
 
-    progress = progressPrevious + progress;
+    progress = parseFloat(progressPrevious + progress).toFixed(3);
 
     this.props.onUpdate({ current, total, progress, model });
     this.setState({ progress, current, total });
   }
 
   render() {
-    const { isOverlay } = this.props;
+    const { isOverlay, onClose } = this.props;
     const { progress, isCanceled, isFinished, current, total } = this.state;
 
     // ? show state.model.name
@@ -90,6 +91,7 @@ class DownloadAll extends PureComponent {
           progress={progress}
           isOverlay={isOverlay && !isFinished}
           isCanceled={isCanceled}
+          onClose={onClose}
           onCancel={this.onCancel}
           onRestart={this.onRestart}
         />

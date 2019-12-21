@@ -63,7 +63,7 @@ jobs:
       env: NODE_ENV=production
       script: skip
       install:
-        - npm ci
+        - NODE_ENV=develop npm ci
         - npm i -g semantic-release @semantic-release/commit-analyzer @semantic-release/release-notes-generator @semantic-release/changelog @semantic-release/npm @semantic-release/git @semantic-release/github semantic-release-slack-bot
       before_deploy:
         - npm run build:package

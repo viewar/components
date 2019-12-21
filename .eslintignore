@@ -2,5 +2,3 @@ build/
 dist/
 package/
 index.js
-src/components/Icon/list.js
-src/components/Icon/icons.js

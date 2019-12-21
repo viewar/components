@@ -8,7 +8,7 @@
     "start": "cross-env DEBUG=true webpack-dev-server --open --mode development --env development_core",
     "start:mock": "cross-env DEBUG=true webpack-dev-server --open --mode development --env development_mock",
     "build:webpack": "npm run clean && webpack -p --mode production --env production",
-    "build:package": "npm run clean && ./build_package.sh",
+    "build:package": "npm run clean && bash build_package.sh",
     "test": "npm run lint && npm run build:webpack && npm run karma",
     "karma": "karma start ./node_modules/@viewar/webpack/karma",
     "lint": "prettier **/*.{css,scss,md,json} --write && eslint --fix \"**/*.*{js,jsx}\" --ignore-pattern \"build/**/*\" --format pretty"

@@ -1,3 +1,3 @@
-import ButtonToggle from 'components/ButtonToggle/ButtonToggle';
+import ButtonToggle from './ButtonToggle';
 
 export default ButtonToggle;

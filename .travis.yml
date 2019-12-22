@@ -25,8 +25,8 @@ node_js:
   - 11
   - 10
 
-install: npm install
-script: npm test
+install: npm ci
+script: npm run test
 
 stages:
   - test
@@ -61,10 +61,11 @@ jobs:
       if: branch = next AND type IN (push) AND tag IS blank AND (commit_message !~ /chore\(release\)/)
       node_js: 12
       script: skip
-      install: skip
+      install:
+        - npm ci
+        - npm i -g semantic-release @semantic-release/commit-analyzer @semantic-release/release-notes-generator @semantic-release/changelog @semantic-release/npm @semantic-release/git @semantic-release/github semantic-release-slack-bot
       before_deploy:
-        - npm i -g semantic-release
-        - npm i -g @semantic-release/commit-analyzer @semantic-release/release-notes-generator @semantic-release/changelog @semantic-release/npm @semantic-release/git @semantic-release/github semantic-release-slack-bot
+        - npm run build:package
       deploy:
         tags: false
         provider: script

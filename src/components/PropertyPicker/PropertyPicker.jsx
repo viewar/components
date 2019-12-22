@@ -13,7 +13,7 @@ import styles from './PropertyPicker.scss';
  *
  * @param {ModelInstance} instance
  * @param {Array} instance.displayTemplate
- * @param {Array} instance.displayTemplate
+ * @param {Array} instance.properties
  * @return {keys[]} - list of propertyKeys which are allowed
  */
 export const getFilteredProperties = ({ displayTemplate, properties }, useDisplayTemplate = false) => {

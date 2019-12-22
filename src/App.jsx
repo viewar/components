@@ -12,6 +12,8 @@ import * as showcases from 'components/showcases';
 
 import ComponentPresenter from './ComponentPresenter';
 import styles from './App.scss';
+import { Icon } from './components';
+// import { Icon } from '../dist/components';
 
 // TODO: add routing for presenter
 class App extends PureComponent {
@@ -48,14 +50,14 @@ class App extends PureComponent {
     ))
 
   render() {
-    console.log('showcases :', showcases);
-
     const { props: { children }, state: { initiated }} = this;
 
     return (
       <div id="app_root" className={styles.wrapper}>
         <h1 id="app_headline">@viewar/components</h1>
         {children && <div id="component">{children}</div>}
+
+        <Icon icon="refresh" />
 
         {initiated &&
           <Router hashType="slash">

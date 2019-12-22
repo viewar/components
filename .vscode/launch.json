@@ -11,8 +11,9 @@
       "program": "${workspaceFolder}/node_modules/.bin/jest",
       "args": ["--runInBand", "__tests__"],
       "console": "integratedTerminal",
-      "internalConsoleOptions": "neverOpen",
+      "internalConsoleOptions": "openOnFirstSessionStart",
       "disableOptimisticBPs": true,
+      "cwd": "${workspaceFolder}",
       "windows": {
         "program": "${workspaceFolder}/node_modules/jest/bin/jest"
       }

@@ -54,6 +54,7 @@
         {
           "modules": "commonjs",
           "targets": {
+            "node": "current",
             "esmodules": true,
             "browsers": [
               "> 1%",

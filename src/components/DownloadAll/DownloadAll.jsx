@@ -7,13 +7,14 @@ import styles from './DownloadAll.scss';
 
 class DownloadAll extends PureComponent {
   static propTypes = {
-    onUpdate:     PropTypes.func,
-    onRestart:    PropTypes.func,
-    onFinish:     PropTypes.func,
-    onCancel:     PropTypes.func,
-    onClose:     PropTypes.func,
+    onUpdate:  PropTypes.func,
+    onRestart: PropTypes.func,
+    onFinish:  PropTypes.func,
+    onCancel:  PropTypes.func,
+    onClose:   PropTypes.func,
     // LoadingState props
-    isOverlay:    PropTypes.bool, // TODO: remove isOverlay?
+    isVisible: PropTypes.bool,
+    isOverlay: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -22,6 +23,7 @@ class DownloadAll extends PureComponent {
     onFinish:  () => {},
     onCancel:  () => {},
     onClose:   () => {},
+    isVisible: true,
     isOverlay: true,
   };
 
@@ -31,6 +33,8 @@ class DownloadAll extends PureComponent {
     this.state = {
       progress:   0,
       isCanceled: false,
+      isFinished: false,
+      isClosed:   false,
     };
   }
 
@@ -45,9 +49,17 @@ class DownloadAll extends PureComponent {
     viewarApi.modelManager.stopDownloadAll();
   }
 
+  onClose = () => {
+    this.props.onClose();
+    this.setState({ isClosed: true, isFinished: false });
+
+    // ? run in background
+    // viewarApi.modelManager.stopDownloadAll();
+  }
+
   onRestart = () => {
     this.props.onRestart();
-    this.setState({ isCanceled: false, progress: 0 });
+    this.setState({ isClosed: false, isFinished: false, isCanceled: false, progress: 0 });
     this.triggerDownloadAll();
   }
 
@@ -75,8 +87,10 @@ class DownloadAll extends PureComponent {
   }
 
   render() {
-    const { isOverlay, onClose } = this.props;
-    const { progress, isCanceled, isFinished, current, total } = this.state;
+    const { isVisible, isOverlay } = this.props;
+    const {
+      progress, isCanceled, isClosed, isFinished, current, total,
+    } = this.state;
 
     // ? show state.model.name
     const downloadStatusString = total
@@ -86,12 +100,12 @@ class DownloadAll extends PureComponent {
     return (
       <div className={styles.DownloadAll} key="DownloadAll">
         <LoadingState
-          isVisible
+          isVisible={isVisible}
           label={downloadStatusString}
           progress={progress}
-          isOverlay={isOverlay && !isFinished}
+          isOverlay={isOverlay && !isClosed}
           isCanceled={isCanceled}
-          onClose={onClose}
+          onClose={this.onClose}
           onCancel={this.onCancel}
           onRestart={this.onRestart}
         />

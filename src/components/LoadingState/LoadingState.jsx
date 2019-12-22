@@ -80,9 +80,15 @@ class LoadingState extends PureComponent {
       );
     }
 
-    return isOverlay
-      ? <Overlay isOpen={isVisible} content={loadingStateComponent} />
-      : loadingStateComponent;
+    return !isOverlay
+      ? loadingStateComponent
+      : (
+        <Overlay
+          isOpen={isVisible}
+          content={loadingStateComponent}
+          onClose={this.onClose}
+        />
+      );
   }
 }
 

@@ -1,25 +1,29 @@
 const exec = require('util').promisify(require('child_process').exec);
 
-let output = {};
-beforeEach(async () => {
-  if (output.stdout) return output;
+describe('[npm run clean]', () => {
+  jest.setTimeout(10000);
 
-  output = await exec('npm run build:package');
-  return output;
+  test('should clean dist and build', async () => {
+    const { stderr } = await exec('npm run clean');
+
+    expect(!!stderr).toEqual(false);
+  });
 });
 
-test('[clean] should clean dist and build', async () => {
-  const { stderr } = await exec('npm run clean');
+describe('[npm run build:package]', () => {
+  let output = {};
+  beforeEach(async () => {
+    if (output.stdout) return output;
 
-  expect(!!stderr).toEqual(false);
+    output = await exec('npm run build:package');
+    return output;
+  });
+
+  test('should build dist without error', () =>
+    expect(!!output.stderr).toEqual(false));
+
+  test('should output \'Successfully compiled\'', () => {
+    const didCompile = (/(successfully) compiled/i).test(output.stdout);
+    expect(didCompile).toEqual(true);
+  });
 });
-
-test('[build:package] should build dist without error', () => {
-  expect(!!output.stderr).toEqual(false);
-});
-
-test('[build:package] should output \'Successfully compiled\'', () => {
-  const didCompile = (/(successfully) compiled/i).test(output.stdout);
-  expect(didCompile).toEqual(true);
-});
-

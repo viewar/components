@@ -1,5 +1,4 @@
-const util = require('util');
-const exec = util.promisify(require('child_process').exec);
+const exec = require('util').promisify(require('child_process').exec);
 
 let output = {};
 beforeEach(async () => {

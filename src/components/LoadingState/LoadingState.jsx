@@ -28,7 +28,7 @@ class LoadingState extends PureComponent {
     progress:     false,
     isVisible:    true,
     isCanceled:   false,
-    isOverlay:    true,
+    isOverlay:    false,
     onRestart:    () => {},
     onCancel:     () => {},
     onClose:      () => {},

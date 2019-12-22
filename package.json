@@ -11,7 +11,7 @@
     "build:package": "npm run clean && bash build_package.sh",
     "test": "npm run test:integration && npm run test:unit",
     "test:integration": "npm run lint && npm run build:webpack && npm run karma",
-    "test:unit": "npx jest __tests__",
+    "test:unit": "npm run clean && jest __tests__",
     "karma": "karma start ./node_modules/@viewar/webpack/karma",
     "lint": "prettier **/*.{css,scss,md,json} --write && eslint --fix \"**/*.*{js,jsx}\" --ignore-pattern \"build/**/*\" --format pretty"
   },

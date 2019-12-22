@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 import React, { useState } from 'react';
 
-import ButtonToggle from 'components/ButtonToggle/ButtonToggle';
+import { ButtonToggle } from 'components';
 
 const onChangeHandlerControlled = (setToggleValue) => (toggleValueNew) => {
   console.log('[App] onChangeHandlerControlled - toggleValueNew:', toggleValueNew);

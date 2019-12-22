@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 
-import LoadingState from './LoadingState';
+import { LoadingState } from 'components';
 
 const getRandomInt = (max) =>
   Math.floor(Math.random() * Math.floor(max));

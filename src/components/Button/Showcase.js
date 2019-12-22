@@ -1,7 +1,7 @@
 // TODO: implement styleguide
 import React from 'react';
 
-import Button from './Button';
+import { Button } from 'components';
 
 const ButtonShowcase = () => (
   <div>

@@ -8,7 +8,8 @@ import styles from './LoadingState.scss';
 
 class LoadingState extends PureComponent {
   static propTypes = {
-    label:    PropTypes.string,
+    label:        PropTypes.string,
+    withControls: PropTypes.bool,
     progress:     PropTypes.oneOfType([
       PropTypes.number,
       PropTypes.oneOf([ false ]),
@@ -22,15 +23,26 @@ class LoadingState extends PureComponent {
   };
 
   static defaultProps = {
-    label:      '',
-    progress:   false,
-    isVisible:  true,
-    isCanceled: false,
-    isOverlay:  true,
-    onRestart:  () => {},
-    onCancel:   () => {},
-    onClose:    () => {},
+    label:        '',
+    withControls: true,
+    progress:     false,
+    isVisible:    true,
+    isCanceled:   false,
+    isOverlay:    true,
+    onRestart:    () => {},
+    onCancel:     () => {},
+    onClose:      () => {},
   };
+
+  constructor(props) {
+    super({
+      ...props,
+      withControls: (props.withControls &&
+         // no progress -> no controls
+         props.progress !== false
+      ),
+    });
+  }
 
   onClose = () => {
     this.props.onClose();
@@ -45,7 +57,7 @@ class LoadingState extends PureComponent {
   }
 
   render() {
-    const { progress, label, isCanceled, isVisible, isOverlay } = this.props;
+    const { withControls, progress, label, isCanceled, isVisible, isOverlay } = this.props;
     let loadingStateComponent = '';
 
     if (progress === false) {
@@ -72,10 +84,14 @@ class LoadingState extends PureComponent {
 
           {label && <div key="Loadingstate.label" className={styles.label}>{label}</div>}
 
-          {(!isCanceled && progress !== 100) &&
-          <div key="LoadingState.cancel" className={styles.cancel} onClick={this.onCancel} role="button">Cancel</div>}
-          {(isCanceled) &&
-          <div key="LoadingState.restart" className={styles.restart} onClick={this.onRestart} role="button">Restart</div>}
+          {withControls && (
+            <div className={styles.controls}>
+              {(!isCanceled && progress !== 100) &&
+              <div key="LoadingState.cancel" className={styles.cancel} onClick={this.onCancel} role="button">Cancel</div>}
+              {(isCanceled) &&
+              <div key="LoadingState.restart" className={styles.restart} onClick={this.onRestart} role="button">Restart</div>}
+            </div>
+          )}
         </div>
       );
     }

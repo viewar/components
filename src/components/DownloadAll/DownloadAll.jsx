@@ -51,7 +51,7 @@ class DownloadAll extends PureComponent {
 
   onClose = () => {
     this.props.onClose();
-    this.setState({ isClosed: true, isFinished: false });
+    this.setState({ isClosed: true });
 
     // ? run in background
     // viewarApi.modelManager.stopDownloadAll();
@@ -100,10 +100,10 @@ class DownloadAll extends PureComponent {
     return (
       <div className={styles.DownloadAll} key="DownloadAll">
         <LoadingState
-          isVisible={isVisible}
           label={downloadStatusString}
-          progress={progress}
+          isVisible={isVisible}
           isOverlay={isOverlay && !isClosed}
+          progress={progress}
           isCanceled={isCanceled}
           onClose={this.onClose}
           onCancel={this.onCancel}

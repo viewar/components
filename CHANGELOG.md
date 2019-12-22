@@ -1,4 +1,4 @@
-## [1.7.4](https://github.com/viewar/components/compare/v1.8.0...v1.7.4) (2019-12-22)
+## [1.8.0](https://github.com/viewar/components/compare/v1.8.0...v1.7.4) (2019-12-22)
 
 ### Features
 

@@ -9,7 +9,7 @@
 //* media queries
 
 @mixin phone-landscape {
-  @media only screen and (orientation: landscape) and (max-height: 736px) {
+  @media only screen and (orientation: landscape) and (max-height: 414px) {
     @content;
   }
 }

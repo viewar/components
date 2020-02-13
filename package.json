@@ -11,7 +11,7 @@
     "build:package": "npm run clean && bash build_package.sh",
     "test": "npm run test:integration && npm run test:unit",
     "test:integration": "npm run lint && npm run build:webpack && npm run karma",
-    "test:unit": "npx jest __tests__",
+    "test:unit": "npm run clean && jest __tests__",
     "karma": "karma start ./node_modules/@viewar/webpack/karma",
     "lint": "prettier **/*.{css,scss,md,json} --write && eslint --fix \"**/*.*{js,jsx}\" --ignore-pattern \"build/**/*\" --format pretty"
   },
@@ -44,6 +44,9 @@
   "engines": {
     "node": ">=10.13.0"
   },
+  "jest": {
+    "testEnvironment": "node"
+  },
   "babel": {
     "presets": [
       [
@@ -51,6 +54,7 @@
         {
           "modules": "commonjs",
           "targets": {
+            "node": "current",
             "esmodules": true,
             "browsers": [
               "> 1%",
@@ -109,11 +113,14 @@
     "@babel/plugin-transform-react-constant-elements": "^7.7.4",
     "@babel/preset-env": "^7.7.7",
     "@babel/preset-react": "^7.7.4",
+    "@babel/register": "^7.7.7",
     "@viewar/config-eslint": "^1.10.0",
     "@viewar/webpack": "^1.9.1",
+    "babel-plugin-transform-inline-environment-variables": "^0.4.3",
     "cross-env": "^6.0.3",
     "eslint": "^6.8.0",
     "husky": "^3.1.0",
+    "jest": "^24.9.0",
     "karma": "^4.4.1",
     "lodash": "^4.17.15",
     "puppeteer": "^2.0.0",

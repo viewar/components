@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import Slider from 'components/Slider';
+import { Slider } from 'components';
 
 const Showcase = () => {
   const [ values, setValues ] = useState({

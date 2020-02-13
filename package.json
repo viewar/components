@@ -1,6 +1,6 @@
 {
   "name": "@viewar/components",
-  "version": "1.7.4",
+  "version": "1.9.0",
   "description": "ViewAR's reusable react components",
   "main": "./index.js",
   "scripts": {
@@ -116,7 +116,6 @@
     "@babel/register": "^7.7.7",
     "@viewar/config-eslint": "^1.10.0",
     "@viewar/webpack": "^1.9.1",
-    "babel-plugin-transform-inline-environment-variables": "^0.4.3",
     "cross-env": "^6.0.3",
     "eslint": "^6.8.0",
     "husky": "^3.1.0",

@@ -9,6 +9,7 @@ class DownloadAllShowcase extends PureComponent {
 
   onFinish = () => {
     console.log('[DownloadAllShowcase] onFinish() called');
+
     this.setState({ isFinished: true, isCanceled: false });
   }
 

@@ -33,7 +33,9 @@ const Showcase = () => {
       <Slider label={`${values.c3} of 150`} onChange={handleSliderChange('c3')} min={50} max={150} value={values.c3} />
 
       <h3>{'decimals={false}'}</h3>
-      <Slider label={`${values.d} of 360`} onChange={handleSliderChange('d')} max={360} value={values.d} decimals={false} />
+      <Slider
+        label={`${values.d} of 360`} onChange={handleSliderChange('d')} max={360} value={values.d} decimals={false}
+      />
 
       <h3>{'TBD: value > max'}</h3>
       <Slider label={`${values.e} of 500`} onChange={handleSliderChange('e')} max={500} value={values.e} />

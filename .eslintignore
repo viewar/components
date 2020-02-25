@@ -1,4 +1,5 @@
-build/
-dist/
-package/
+build/**/*
+dist/**/*
+package/**/*
+docs/**/*
 index.js

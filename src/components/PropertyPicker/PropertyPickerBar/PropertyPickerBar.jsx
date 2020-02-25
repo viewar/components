@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react/jsx-no-bind */
 import React, { PureComponent } from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types'; // TODO: add proptypes?
 import cx from 'classnames';
 
 import Icon from '../../Icon';

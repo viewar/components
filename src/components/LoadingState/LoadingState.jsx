@@ -93,9 +93,14 @@ class LoadingState extends PureComponent {
           {withControls && (
             <div className={styles.controls}>
               {(!isCanceled && progress !== 100) &&
-              <div key="LoadingState.cancel" className={styles.cancel} onClick={this.onCancel} role="button">Cancel</div>}
+              <div key="LoadingState.cancel" className={styles.cancel} onClick={this.onCancel} role="button">
+                Cancel
+              </div>}
+
               {(isCanceled) &&
-              <div key="LoadingState.restart" className={styles.restart} onClick={this.onRestart} role="button">Restart</div>}
+              <div key="LoadingState.restart" className={styles.restart} onClick={this.onRestart} role="button">
+                Restart
+              </div>}
             </div>
           )}
         </div>

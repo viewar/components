@@ -1,0 +1,259 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <title>JSDoc: PropertyPicker/PropertyPicker.jsx</title>
+
+    <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="./build/entry.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link href="https://fonts.googleapis.com/css?family=Muli:100,400,700|Oswald:300|Inconsolata,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <link type="text/css" rel="stylesheet" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css">
+    <link type="text/css" rel="stylesheet" href="styles/app.min.css">
+    <link type="text/css" rel="stylesheet" href="styles/iframe.css">
+</head>
+
+<body>
+    <div id="stickyNavbarOverlay"></div>
+    <div class="top-navbar">
+        <div class="container">
+            <nav class="navbar" role="navigation" aria-label="main navigation">
+                <div class="navbar-brand">
+                    
+                    
+                        <h1 class="navbar-item">Documentation</h1>
+                    
+                    <a id="hamburger" role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+                        <span aria-hidden="true"></span>
+                        <span aria-hidden="true"></span>
+                        <span aria-hidden="true"></span>
+                    </a>
+                </div>
+                
+            </nav>
+        </div>
+    </div>
+    <div class="container">
+        <div class="columns">
+            <div class="column is-3" id="sidebarNav">
+                <div class="sidebar">
+                    <nav>
+                        <h2><a href="index.html">Home</a></h2><div class="category"><h3>Classes</h3><ul><li><a href="ViewarComponents.LoadingState.html">LoadingState</a></li></ul><h3>Global</h3><ul><li><a href="global.html#getFilteredProperties">getFilteredProperties</a></li><li><a href="global.html#Overlay">Overlay</a></li></ul></div>
+                    </nav>
+                </div>
+            </div>
+            <div class="column is-9-desktop">
+                <div class="content" id="main-content-wrapper">
+                    <header class="page-title">
+                        <p>Source</p>
+                        <h1>PropertyPicker/PropertyPicker.jsx</h1>
+                    </header>
+                    
+                    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
+import cx from 'classnames';
+
+import PropertyOptions from './PropertyOptions';
+import PropertyPickerBar from './PropertyPickerBar';
+import PropertyPickerList from './PropertyPickerList';
+import styles from './PropertyPicker.scss';
+
+/**
+ * @function getFilteredProperties
+ * @desc filter properties by 'displayTemplate' entries
+ *
+ * @param {ModelInstance} instance
+ * @param {Array} instance.displayTemplate
+ * @param {Array} instance.properties
+ * @return {keys[]} - list of propertyKeys which are allowed
+ */
+export const getFilteredProperties = ({ displayTemplate, properties }, useDisplayTemplate = false) => {
+  // * prefilter properties with only one option
+  const propertiesFiltered = Object.keys(properties).filter(
+    (propertyKey) => properties[propertyKey].options.length > 1,
+  );
+
+  if (!useDisplayTemplate || !displayTemplate) {
+    return propertiesFiltered;
+  }
+
+  // * filter properties not in displayTemplate
+  return propertiesFiltered.filter(
+    (propertyKey) => !!displayTemplate.find((item) => item.name === properties[propertyKey].name),
+  );
+};
+
+export const propertyPropTypeShape = {
+  name:    PropTypes.string.isRequired,
+  type:    PropTypes.string.isRequired,
+  options: PropTypes.arrayOf(PropTypes.shape({
+    name:     PropTypes.string.isRequired,
+    key:      PropTypes.string.isRequired,
+    imageUrl: PropTypes.string.isRequired,
+    // TODO: check isValid implementation
+    isValid:  PropTypes.func.isRequired,
+  })).isRequired,
+};
+
+class PropertyPicker extends PureComponent {
+  static propTypes = {
+    instance: PropTypes.shape({
+      id:                PropTypes.string.isRequired,
+      propertyValues:    PropTypes.objectOf(PropTypes.string).isRequired,
+      properties:        PropTypes.objectOf(
+        PropTypes.shape(propertyPropTypeShape).isRequired,
+      ).isRequired,
+      setPropertyValues: PropTypes.func.isRequired,
+    }).isRequired,
+    useDisplayTemplate: PropTypes.bool,
+    showPropertyList:   PropTypes.bool,
+    className:          PropTypes.string,
+    widgetClassName:    PropTypes.string,
+    setLoading:         PropTypes.func,
+    // showDialog: PropTypes.func,
+  };
+
+  static defaultProps = {
+    useDisplayTemplate: true,
+    showPropertyList:   false, // shows list instead of bar
+    className:          '',
+    widgetClassName:    '',
+    setLoading:         () => {},
+    // showDialog: () => {},
+  };
+
+  constructor(props) {
+    super(props);
+
+    const { instance, useDisplayTemplate } = props;
+    const propertiesFilterd = instance ? getFilteredProperties(instance, useDisplayTemplate) : [];
+    const propertyValues = instance ? instance.propertyValues : {};
+
+    this.state = {
+      // instanceId:  instance ? instance.id : null,
+      properties:     propertiesFilterd,
+      activeProperty: propertiesFilterd.length
+        ? instance.properties[propertiesFilterd[0]]
+        : null,
+      propertyValues,
+    };
+  }
+
+  // withPropsOnChange ['instance']
+  // static getDerivedStateFromProps(props, state) {
+  //   const { instance } = props;
+  //   const { instanceId, properties } = state;
+
+  //   if (instance.id !== instanceId) {
+  //     const propertiesFiltered = instance ? getFilteredProperties(instance) : [];
+
+  //     return {
+  //       properties: propertiesFiltered,
+  //       activeProperty:
+  //         propertiesFiltered &amp;&amp; propertiesFiltered.length ? properties[0] : null,
+  //     };
+  //   } else {
+  //     return null;
+  //   }
+  // }
+
+  setActiveProperty = (activeProperty) => {
+    this.setState({ activeProperty });
+  };
+
+  valueValid = ({ instance }) => (value) => value.isValid(instance);
+
+  setValues = async (propertyValues) => {
+    const { instance } = this.props;
+
+    await instance.setPropertyValues(propertyValues);
+    this.setState({ propertyValues });
+  };
+
+  render() {
+    const {
+      props: { instance, showPropertyList, setLoading, className, widgetClassName },
+      state: { activeProperty, properties, propertyValues },
+    } = this;
+
+    if (!instance || !activeProperty) {
+      return &lt;div key="PropertyPicker" />;
+    }
+
+    return (
+      &lt;div key="PropertyPicker" className={cx(styles.Container, className)}>
+        { showPropertyList ? (
+          &lt;PropertyPickerList
+            setLoading={setLoading}
+            properties={properties}
+            activeProperty={activeProperty}
+            setActiveProperty={this.setActiveProperty}
+          />
+        ) : (
+          &lt;PropertyPickerBar
+            instance={instance}
+            setLoading={setLoading}
+            properties={properties}
+            activeProperty={activeProperty}
+            setActiveProperty={this.setActiveProperty}
+          />
+        )}
+
+        &lt;PropertyOptions
+          valueValid={this.valueValid}
+          setLoading={setLoading}
+          property={activeProperty}
+          propertyValues={propertyValues}
+          setValues={this.setValues}
+          className={widgetClassName}
+          configuration={instance}
+        />
+      &lt;/div>
+    );
+  }
+}
+
+export default PropertyPicker;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+<footer class="footer">
+    <div class="content has-text-centered">
+        <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.3</a> on Mon Dec 23 2019 21:33:00 GMT+0100 (GMT+01:00)</p>
+        <p class="sidebar-created-by">
+            <a href="https://github.com/SoftwareBrothers/better-docs" target="_blank">BetterDocs theme</a> provided with <i class="fas fa-heart"></i> by 
+            <a href="http://softwarebrothers.co" target="_blank">SoftwareBrothers - JavaScript Development Agency</a>
+        </p>
+    </div>
+</footer>
+
+
+<script src="scripts/app.min.js"></script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

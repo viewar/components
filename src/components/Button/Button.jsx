@@ -4,11 +4,6 @@ import cx from 'classnames';
 
 import styles from './Button.scss';
 
-/**
- ** TODO: enhanced <Button />
- *  * use function syntax here
- *  * add iconSuffix / iconPrefix
- */
 class Button extends PureComponent {
   static propTypes = {
     // TODO: rename to "content"

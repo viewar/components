@@ -1,0 +1,100 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <title>JSDoc: LoadingState/LoadingState.js</title>
+
+    <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="./build/entry.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link href="https://fonts.googleapis.com/css?family=Muli:100,400,700|Oswald:300|Inconsolata,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <link type="text/css" rel="stylesheet" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css">
+    <link type="text/css" rel="stylesheet" href="styles/app.min.css">
+    <link type="text/css" rel="stylesheet" href="styles/iframe.css">
+</head>
+
+<body>
+    <div id="stickyNavbarOverlay"></div>
+    <div class="top-navbar">
+        <div class="container">
+            <nav class="navbar" role="navigation" aria-label="main navigation">
+                <div class="navbar-brand">
+                    
+                    
+                        <h1 class="navbar-item">Documentation</h1>
+                    
+                    <a id="hamburger" role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+                        <span aria-hidden="true"></span>
+                        <span aria-hidden="true"></span>
+                        <span aria-hidden="true"></span>
+                    </a>
+                </div>
+                
+            </nav>
+        </div>
+    </div>
+    <div class="container">
+        <div class="columns">
+            <div class="column is-3" id="sidebarNav">
+                <div class="sidebar">
+                    <nav>
+                        <h2><a href="index.html">Home</a></h2><div class="category"><h3>Classes</h3><ul><li><a href="ViewarComponents.LoadingState.html">LoadingState</a></li></ul><h3>Global</h3><ul><li><a href="global.html#getFilteredProperties">getFilteredProperties</a></li><li><a href="global.html#Overlay">Overlay</a></li></ul></div>
+                    </nav>
+                </div>
+            </div>
+            <div class="column is-9-desktop">
+                <div class="content" id="main-content-wrapper">
+                    <header class="page-title">
+                        <p>Source</p>
+                        <h1>LoadingState/LoadingState.js</h1>
+                    </header>
+                    
+                    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>"use strict";Object.defineProperty(exports,"__esModule",{value:true});exports.default=void 0;var _react=_interopRequireWildcard(require("react"));var _propTypes=_interopRequireDefault(require("prop-types"));var _classnames=_interopRequireDefault(require("classnames"));var _Overlay=_interopRequireDefault(require("../Overlay/Overlay"));var _Icon=_interopRequireDefault(require("../Icon/Icon"));var _LoadingState=_interopRequireDefault(require("./LoadingState.scss"));function _interopRequireDefault(obj){return obj&amp;&amp;obj.__esModule?obj:{default:obj}}function _getRequireWildcardCache(){if(typeof WeakMap!=="function")return null;var cache=new WeakMap;_getRequireWildcardCache=function _getRequireWildcardCache(){return cache};return cache}function _interopRequireWildcard(obj){if(obj&amp;&amp;obj.__esModule){return obj}if(obj===null||typeof obj!=="object"&amp;&amp;typeof obj!=="function"){return{default:obj}}var cache=_getRequireWildcardCache();if(cache&amp;&amp;cache.has(obj)){return cache.get(obj)}var newObj={};var hasPropertyDescriptor=Object.defineProperty&amp;&amp;Object.getOwnPropertyDescriptor;for(var key in obj){if(Object.prototype.hasOwnProperty.call(obj,key)){var desc=hasPropertyDescriptor?Object.getOwnPropertyDescriptor(obj,key):null;if(desc&amp;&amp;(desc.get||desc.set)){Object.defineProperty(newObj,key,desc)}else{newObj[key]=obj[key]}}}newObj.default=obj;if(cache){cache.set(obj,newObj)}return newObj}function ownKeys(object,enumerableOnly){var keys=Object.keys(object);if(Object.getOwnPropertySymbols){var symbols=Object.getOwnPropertySymbols(object);if(enumerableOnly)symbols=symbols.filter(function(sym){return Object.getOwnPropertyDescriptor(object,sym).enumerable});keys.push.apply(keys,symbols)}return keys}function _objectSpread(target){for(var i=1;i&lt;arguments.length;i++){var source=arguments[i]!=null?arguments[i]:{};if(i%2){ownKeys(Object(source),true).forEach(function(key){_defineProperty(target,key,source[key])})}else if(Object.getOwnPropertyDescriptors){Object.defineProperties(target,Object.getOwnPropertyDescriptors(source))}else{ownKeys(Object(source)).forEach(function(key){Object.defineProperty(target,key,Object.getOwnPropertyDescriptor(source,key))})}}return target}function _defineProperty(obj,key,value){if(key in obj){Object.defineProperty(obj,key,{value:value,enumerable:true,configurable:true,writable:true})}else{obj[key]=value}return obj}/**
+ * @memberof ViewarComponents
+ *
+ * @component
+ */class LoadingState extends _react.PureComponent{constructor(props){super(_objectSpread({},props,{withControls:props.withControls&amp;&amp;// no progress -> no controls
+props.progress!==false}));_defineProperty(this,"onClose",()=>{this.props.onClose()});_defineProperty(this,"onCancel",()=>{this.props.onCancel()});_defineProperty(this,"onRestart",()=>{this.props.onRestart()})}render(){var{withControls,progress,label,isCanceled,isVisible,isOverlay}=this.props;var loadingStateComponent="";if(progress===false){loadingStateComponent=_react.default.createElement("div",{className:(0,_classnames.default)(_LoadingState.default.LoadingState,{[_LoadingState.default.isHidden]:!isVisible,[_LoadingState.default.isOverlay]:isOverlay})},_react.default.createElement(_Icon.default,{icon:"refresh",className:_LoadingState.default.img}),_react.default.createElement("div",{className:_LoadingState.default.text},"Loading ..."))}else{loadingStateComponent=_react.default.createElement("div",{className:(0,_classnames.default)(_LoadingState.default.LoadingState,{[_LoadingState.default.isHidden]:!isVisible})},_react.default.createElement("div",{key:"LoadingState.progressBar",className:_LoadingState.default.progressBar},_react.default.createElement("div",{key:"LoadingState.progress",className:_LoadingState.default.progress,style:{width:"".concat(progress,"%")}})),label&amp;&amp;_react.default.createElement("div",{key:"Loadingstate.label",className:_LoadingState.default.label},label),withControls&amp;&amp;_react.default.createElement("div",{className:_LoadingState.default.controls},!isCanceled&amp;&amp;progress!==100&amp;&amp;_react.default.createElement("div",{key:"LoadingState.cancel",className:_LoadingState.default.cancel,onClick:this.onCancel,role:"button"},"Cancel"),isCanceled&amp;&amp;_react.default.createElement("div",{key:"LoadingState.restart",className:_LoadingState.default.restart,onClick:this.onRestart,role:"button"},"Restart")))}return!isOverlay?loadingStateComponent:_react.default.createElement(_Overlay.default,{isOpen:isVisible,content:loadingStateComponent,onClose:this.onClose})}}_defineProperty(LoadingState,"propTypes",{/* test */label:_propTypes.default.string,withControls:_propTypes.default.bool,progress:_propTypes.default.oneOfType([_propTypes.default.number,_propTypes.default.oneOf([false])]),isVisible:_propTypes.default.bool,isCanceled:_propTypes.default.bool,isOverlay:_propTypes.default.bool,onRestart:_propTypes.default.func,onCancel:_propTypes.default.func,onClose:_propTypes.default.func});_defineProperty(LoadingState,"defaultProps",{label:"",withControls:true,progress:false,isVisible:true,isCanceled:false,isOverlay:false,onRestart:()=>{},onCancel:()=>{},onClose:()=>{}});var _default=LoadingState;exports.default=_default;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uL3NyYy9jb21wb25lbnRzL0xvYWRpbmdTdGF0ZS9Mb2FkaW5nU3RhdGUuanN4Il0sIm5hbWVzIjpbIkxvYWRpbmdTdGF0ZSIsIlB1cmVDb21wb25lbnQiLCJjb25zdHJ1Y3RvciIsInByb3BzIiwid2l0aENvbnRyb2xzIiwicHJvZ3Jlc3MiLCJvbkNsb3NlIiwib25DYW5jZWwiLCJvblJlc3RhcnQiLCJyZW5kZXIiLCJsYWJlbCIsImlzQ2FuY2VsZWQiLCJpc1Zpc2libGUiLCJpc092ZXJsYXkiLCJsb2FkaW5nU3RhdGVDb21wb25lbnQiLCJzdHlsZXMiLCJpc0hpZGRlbiIsImltZyIsInRleHQiLCJwcm9ncmVzc0JhciIsIndpZHRoIiwiY29udHJvbHMiLCJjYW5jZWwiLCJyZXN0YXJ0IiwiUHJvcFR5cGVzIiwic3RyaW5nIiwiYm9vbCIsIm9uZU9mVHlwZSIsIm51bWJlciIsIm9uZU9mIiwiZnVuYyJdLCJtYXBwaW5ncyI6IjZGQUFBLHFEQUNBLDZEQUNBLDhEQUVBLG1FQUNBLDBEQUNBLHlFLDIxREFFQTs7OztHQUtBLEtBQU1BLENBQUFBLFlBQU4sUUFBMkJDLHFCQUFjLENBNkJ2Q0MsV0FBVyxDQUFDQyxLQUFELENBQVEsQ0FDakIsdUJBQ0tBLEtBREwsRUFFRUMsWUFBWSxDQUFHRCxLQUFLLENBQUNDLFlBQU4sRUFDWjtBQUNBRCxLQUFLLENBQUNFLFFBQU4sR0FBbUIsS0FKeEIsSUFEaUIsK0JBVVQsSUFBTSxDQUNkLEtBQUtGLEtBQUwsQ0FBV0csT0FBWCxFQUNELENBWmtCLGtDQWNSLElBQU0sQ0FDZixLQUFLSCxLQUFMLENBQVdJLFFBQVgsRUFDRCxDQWhCa0IsbUNBa0JQLElBQU0sQ0FDaEIsS0FBS0osS0FBTCxDQUFXSyxTQUFYLEVBQ0QsQ0FwQmtCLENBUWxCLENBY0RDLE1BQU0sRUFBRyxDQUNQLEdBQU0sQ0FBRUwsWUFBRixDQUFnQkMsUUFBaEIsQ0FBMEJLLEtBQTFCLENBQWlDQyxVQUFqQyxDQUE2Q0MsU0FBN0MsQ0FB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QU0sQ0FBRSxDQVJGLENBU3BCRCxPQUFPLENBQU8sSUFBTSxDQUFFLENBVEYsQyxlQXNGVE4sWSIsInNvdXJjZXNDb250ZW50IjpbImltcG9ydCBSZWFjdCwgeyBQdXJlQ29tcG9uZW50IH0gZnJvbSAncmVhY3QnO1xuaW1wb3J0IFByb3BUeXBlcyBmcm9tICdwcm9wLXR5cGVzJztcbmltcG9ydCBjeCBmcm9tICdjbGFzc25hbWVzJztcblxuaW1wb3J0IE92ZXJsYXkgZnJvbSAnLi4vT3ZlcmxheS9PdmVybGF5JztcbmltcG9ydCBJY29uIGZyb20gJy4uL0ljb24vSWNvbic7XG5pbXBvcnQgc3R5bGVzIGZyb20gJy4vTG9hZGluZ1N0YXRlLnNjc3MnO1xuXG4vKipcbiAqIEBtZW1iZXJvZiBWaWV3YXJDb21wb25lbnRzXG4gKlxuICogQGNvbXBvbmVudFxuICovXG5jbGFzcyBMb2FkaW5nU3RhdGUgZXh0ZW5kcyBQdXJlQ29tcG9uZW50IHtcbiAgc3RhdGljIHByb3BUeXBlcyA9IHtcbiAgICAvKiB0ZXN0ICovXG4gICAgbGFiZWw6ICAgICAgICBQcm9wVHlwZXMuc3RyaW5nLFxuICAgIHdpdGhDb250cm9sczogUHJvcFR5cGVzLmJvb2wsXG4gICAgcHJvZ3Jlc3M6ICAgICBQcm9wVHlwZXMub25lT2ZUeXBlKFtcbiAgICAgIFByb3BUeXBlcy5udW1iZXIsXG4gICAgICBQcm9wVHlwZXMub25lT2YoWyBmYWxzZSBdKSxcbiAgICBdKSxcbiAgICBpc1Zpc2libGU6ICBQcm9wVHlwZXMuYm9vbCxcbiAgICBpc0NhbmNlbGVkOiBQcm9wVHlwZXMuYm9vbCxcbiAgICBpc092ZXJsYXk6ICBQcm9wVHlwZXMuYm9vbCxcbiAgICBvblJlc3RhcnQ6ICBQcm9wVHlwZXMuZnVuYyxcbiAgICBvbkNhbmNlbDogICBQcm9wVHlwZXMuZnVuYyxcbiAgICBvbkNsb3NlOiAgICBQcm9wVHlwZXMuZnVuYyxcbiAgfTtcblxuICBzdGF0aWMgZGVmYXVsdFByb3BzID0ge1xuICAgIGxhYmVsOiAgICAgICAgJycsXG4gICAgd2l0aENvbnRyb2xzOiB0cnVlLFxuICAgIHByb2dyZXNzOiAgICAgZmFsc2UsXG4gICAgaXNWaXNpYmxlOiAgICB0cnVlLFxuICAgIGlzQ2FuY2VsZWQ6ICAgZmFsc2UsXG4gICAgaXNPdmVybGF5OiAgICBmYWxzZSxcbiAgICBvblJlc3RhcnQ6ICAgICgpID0+IHt9LFxuICAgIG9uQ2FuY2VsOiAgICAgKCkgPT4ge30sXG4gICAgb25DbG9zZTogICAgICAoKSA9PiB7fSxcbiAgfTtcblxuICBjb25zdHJ1Y3Rvcihwcm9wcykge1xuICAgIHN1cGVyKHtcbiAgICAgIC4uLnByb3BzLFxuICAgICAgd2l0aENvbnRyb2xzOiAocHJvcHMud2l0aENvbnRyb2xzICYmXG4gICAgICAgICAvLyBubyBwcm9ncmVzcyAtPiBubyBjb250cm9sc1xuICAgICAgICAgcHJvcHMucHJvZ3Jlc3MgIT09IGZhbHNlXG4gICAgICApLFxuICAgIH0pO1xuICB9XG5cbiAgb25DbG9zZSA9ICgpID0+IHtcbiAgICB0aGlzLnByb3BzLm9uQ2xvc2UoKTtcbiAgfVxuXG4gIG9uQ2FuY2VsID0gKCkgPT4ge1xuICAgIHRoaXMucHJvcHMub25DYW5jZWwoKTtcbiAgfVxuXG4gIG9uUmVzdGFydCA9ICgpID0+IHtcbiAgICB0aGlzLnByb3BzLm9uUmVzdGFydCgpO1xuICB9XG5cbiAgcmVuZGVyKCkge1xuICAgIGNvbnN0IHsgd2l0aENvbnRyb2xzLCBwcm9ncmVzcywgbGFiZWwsIGlzQ2FuY2VsZWQsIGlzVmlzaWJsZSwgaXNPdmVybGF5IH0gPSB0aGlzLnByb3BzO1xuICAgIGxldCBsb2FkaW5nU3RhdGVDb21wb25lbnQgPSAnJztcblxuICAgIGlmIChwcm9ncmVzcyA9PT0gZmFsc2UpIHtcbiAgICAgIGxvYWRpbmdTdGF0ZUNvbXBvbmVudCA9IChcbiAgICAgICAgPGRpdiBjbGFzc05hbWU9e2N4KHN0eWxlcy5Mb2FkaW5nU3RhdGUsIHtcbiAgICAgICAgICBbc3R5bGVzLmlzSGlkZGVuXTogICFpc1Zpc2libGUsXG4gICAgICAgICAgW3N0eWxlcy5pc092ZXJsYXldOiBpc092ZXJsYXksXG4gICAgICAgIH0pfVxuICAgICAgICA+XG4gICAgICAgICAgPEljb24gaWNvbj1cInJlZnJlc2hcIiBjbGFzc05hbWU9e3N0eWxlcy5pbWd9IC8+XG4gICAgICAgICAgPGRpdiBjbGFzc05hbWU9e3N0eWxlcy50ZXh0fT5Mb2FkaW5nIC4uLjwvZGl2PlxuICAgICAgICA8L2Rpdj5cbiAgICAgICk7XG4gICAgfVxuICAgIGVsc2Uge1xuICAgICAgbG9hZGluZ1N0YXRlQ29tcG9uZW50ID0gKFxuICAgICAgICA8ZGl2IGNsYXNzTmFtZT17Y3goc3R5bGVzLkxvYWRpbmdTdGF0ZSwge1xuICAgICAgICAgIFtzdHlsZXMuaXNIaWRkZW5dOiAhaXNWaXNpYmxlLFxuICAgICAgICB9KX1cbiAgICAgICAgPlxuICAgICAgICAgIDxkaXYga2V5PVwiTG9hZGluZ1N0YXRlLnByb2dyZXNzQmFyXCIgY2xhc3NOYW1lPXtzdHlsZXMucHJvZ3Jlc3NCYXJ9PlxuICAgICAgICAgICAgPGRpdiBrZXk9XCJMb2FkaW5nU3RhdGUucHJvZ3Jlc3NcIiBjbGFzc05hbWU9e3N0eWxlcy5wcm9ncmVzc30gc3R5bGU9e3sgd2lkdGg6IGAke3Byb2dyZXNzfSVgIH19IC8+XG4gICAgICAgICAgPC9kaXY+XG5cbiAgICAgICAgICB7bGFiZWwgJiYgPGRpdiBrZXk9XCJMb2FkaW5nc3RhdGUubGFiZWxcIiBjbGFzc05hbWU9e3N0eWxlcy5sYWJlbH0+e2xhYmVsfTwvZGl2Pn1cblxuICAgICAgICAgIHt3aXRoQ29udHJvbHMgJiYgKFxuICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9e3N0eWxlcy5jb250cm9sc30+XG4gICAgICAgICAgICAgIHsoIWlzQ2FuY2VsZWQgJiYgcHJvZ3Jlc3MgIT09IDEwMCkgJiZcbiAgICAgICAgICAgICAgPGRpdiBrZXk9XCJMb2FkaW5nU3RhdGUuY2FuY2VsXCIgY2xhc3NOYW1lPXtzdHlsZXMuY2FuY2VsfSBvbkNsaWNrPXt0aGlzLm9uQ2FuY2VsfSByb2xlPVwiYnV0dG9uXCI+Q2FuY2VsPC9kaXY+fVxuICAgICAgICAgICAgICB7KGlzQ2FuY2VsZWQpICYmXG4gICAgICAgICAgICAgIDxkaXYga2V5PVwiTG9hZGluZ1N0YXRlLnJlc3RhcnRcIiBjbGFzc05hbWU9e3N0eWxlcy5yZXN0YXJ0fSBvbkNsaWNrPXt0aGlzLm9uUmVzdGFydH0gcm9sZT1cImJ1dHRvblwiPlJlc3RhcnQ8L2Rpdj59XG4gICAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgICApfVxuICAgICAgICA8L2Rpdj5cbiAgICAgICk7XG4gICAgfVxuXG4gICAgcmV0dXJuICFpc092ZXJsYXlcbiAgICAgID8gbG9hZGluZ1N0YXRlQ29tcG9uZW50XG4gICAgICA6IChcbiAgICAgICAgPE92ZXJsYXlcbiAgICAgICAgICBpc09wZW49e2lzVmlzaWJsZX1cbiAgICAgICAgICBjb250ZW50PXtsb2FkaW5nU3RhdGVDb21wb25lbnR9XG4gICAgICAgICAgb25DbG9zZT17dGhpcy5vbkNsb3NlfVxuICAgICAgICAvPlxuICAgICAgKTtcbiAgfVxufVxuXG5leHBvcnQgZGVmYXVsdCBMb2FkaW5nU3RhdGU7XG4iXX0=</code></pre>
+        </article>
+    </section>
+
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+<footer class="footer">
+    <div class="content has-text-centered">
+        <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.3</a> on Mon Dec 23 2019 21:33:59 GMT+0100 (GMT+01:00)</p>
+        <p class="sidebar-created-by">
+            <a href="https://github.com/SoftwareBrothers/better-docs" target="_blank">BetterDocs theme</a> provided with <i class="fas fa-heart"></i> by 
+            <a href="http://softwarebrothers.co" target="_blank">SoftwareBrothers - JavaScript Development Agency</a>
+        </p>
+    </div>
+</footer>
+
+
+<script src="scripts/app.min.js"></script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

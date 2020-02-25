@@ -6,8 +6,14 @@ import Overlay from '../Overlay/Overlay';
 import Icon from '../Icon/Icon';
 import styles from './LoadingState.scss';
 
+/**
+ * LoadingState
+ * @memberof ViewarComponents
+ * @component
+ */
 class LoadingState extends PureComponent {
   static propTypes = {
+    /* test */
     label:        PropTypes.string,
     withControls: PropTypes.bool,
     progress:     PropTypes.oneOfType([

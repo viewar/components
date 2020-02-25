@@ -1,0 +1,101 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <title>JSDoc: Overlay/Overlay.js</title>
+
+    <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="./build/entry.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link href="https://fonts.googleapis.com/css?family=Muli:100,400,700|Oswald:300|Inconsolata,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <link type="text/css" rel="stylesheet" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css">
+    <link type="text/css" rel="stylesheet" href="styles/app.min.css">
+    <link type="text/css" rel="stylesheet" href="styles/iframe.css">
+</head>
+
+<body>
+    <div id="stickyNavbarOverlay"></div>
+    <div class="top-navbar">
+        <div class="container">
+            <nav class="navbar" role="navigation" aria-label="main navigation">
+                <div class="navbar-brand">
+                    
+                    
+                        <h1 class="navbar-item">Documentation</h1>
+                    
+                    <a id="hamburger" role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+                        <span aria-hidden="true"></span>
+                        <span aria-hidden="true"></span>
+                        <span aria-hidden="true"></span>
+                    </a>
+                </div>
+                
+            </nav>
+        </div>
+    </div>
+    <div class="container">
+        <div class="columns">
+            <div class="column is-3" id="sidebarNav">
+                <div class="sidebar">
+                    <nav>
+                        <h2><a href="index.html">Home</a></h2><div class="category"><h3>Classes</h3><ul><li><a href="ViewarComponents.LoadingState.html">LoadingState</a></li></ul><h3>Global</h3><ul><li><a href="global.html#getFilteredProperties">getFilteredProperties</a></li><li><a href="global.html#Overlay">Overlay</a></li></ul></div>
+                    </nav>
+                </div>
+            </div>
+            <div class="column is-9-desktop">
+                <div class="content" id="main-content-wrapper">
+                    <header class="page-title">
+                        <p>Source</p>
+                        <h1>Overlay/Overlay.js</h1>
+                    </header>
+                    
+                    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>"use strict";Object.defineProperty(exports,"__esModule",{value:true});exports.default=void 0;var _react=_interopRequireDefault(require("react"));var _propTypes=_interopRequireDefault(require("prop-types"));var _classnames=_interopRequireDefault(require("classnames"));var _Overlay=_interopRequireDefault(require("./Overlay.scss"));function _interopRequireDefault(obj){return obj&amp;&amp;obj.__esModule?obj:{default:obj}}/**
+ * @function Overlay
+ * @component
+ * @description global page overlay, controlled by SceneStore
+ * @uses SceneStore.state.overlay
+ * @returns {JSX} &lt;Overlay /> component
+ */var Overlay=(_ref)=>{var{isOpen,content,onClose,className}=_ref;return _react.default.createElement("div",{id:"Overlay",className:(0,_classnames.default)(_Overlay.default.Overlay,{[_Overlay.default.isOpen]:isOpen},className)},_react.default.createElement("div",{className:_Overlay.default.close,onClick:onClose}),_react.default.createElement("div",{className:_Overlay.default.content},content||"CONTENT"))};Overlay.propTypes={content:_propTypes.default.node.isRequired,isOpen:_propTypes.default.bool,onClose:_propTypes.default.func,className:_propTypes.default.string};Overlay.defaultProps={isOpen:false,onClose:()=>{},className:""};var _default=Overlay;exports.default=_default;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uL3NyYy9jb21wb25lbnRzL092ZXJsYXkvT3ZlcmxheS5qc3giXSwibmFtZXMiOlsiT3ZlcmxheSIsImlzT3BlbiIsImNvbnRlbnQiLCJvbkNsb3NlIiwiY2xhc3NOYW1lIiwic3R5bGVzIiwiY2xvc2UiLCJwcm9wVHlwZXMiLCJQcm9wVHlwZXMiLCJub2RlIiwiaXNSZXF1aXJlZCIsImJvb2wiLCJmdW5jIiwic3RyaW5nIiwiZGVmYXVsdFByb3BzIl0sIm1hcHBpbmdzIjoiNkZBQUEsb0RBQ0EsNkRBQ0EsOERBRUEsK0Qsa0ZBRUE7Ozs7OztHQU9BLEdBQU1BLENBQUFBLE9BQU8sQ0FBRyxZQUFDLENBQ2ZDLE1BRGUsQ0FDUEMsT0FETyxDQUNFQyxPQURGLENBQ1dDLFNBRFgsQ0FBRCxZQUdkLHFDQUFLLEVBQUUsQ0FBQyxTQUFSLENBQWtCLFNBQVMsQ0FBRSx3QkFBR0MsaUJBQU9MLE9BQVYsQ0FBbUIsQ0FBRSxDQUFDSyxpQkFBT0osTUFBUixFQUFpQkEsTUFBbkIsQ0FBbkIsQ0FBZ0RHLFNBQWhELENBQTdCLEVBQ0Usb0NBQUssU0FBUyxDQUFFQyxpQkFBT0MsS0FBdkIsQ0FBOEIsT0FBTyxDQUFFSCxPQUF2QyxFQURGLENBRUUsb0NBQUssU0FBUyxDQUFFRSxpQkFBT0gsT0FBdkIsRUFDR0EsT0FBTyxFQUFJLFNBRGQsQ0FGRixDQUhjLENBQWhCLENBV0FGLE9BQU8sQ0FBQ08sU0FBUixDQUFvQixDQUNsQkwsT0FBTyxDQUFJTSxtQkFBVUMsSUFBVixDQUFlQyxVQURSLENBRWxCVCxNQUFNLENBQUtPLG1CQUFVRyxJQUZILENBR2xCUixPQUFPLENBQUlLLG1CQUFVSSxJQUhILENBSWxCUixTQUFTLENBQUVJLG1CQUFVSyxNQUpILENBQXBCLENBT0FiLE9BQU8sQ0FBQ2MsWUFBUixDQUF1QixDQUNyQmIsTUFBTSxDQUFLLEtBRFUsQ0FFckJFLE9BQU8sQ0FBSSxJQUFNLENBQUUsQ0FGRSxDQUdyQkMsU0FBUyxDQUFFLEVBSFUsQ0FBdkIsQyxhQU1lSixPIiwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IFJlYWN0IGZyb20gJ3JlYWN0JztcbmltcG9ydCBQcm9wVHlwZXMgZnJvbSAncHJvcC10eXBlcyc7XG5pbXBvcnQgY3ggZnJvbSAnY2xhc3NuYW1lcyc7XG5cbmltcG9ydCBzdHlsZXMgZnJvbSAnLi9PdmVybGF5LnNjc3MnO1xuXG4vKipcbiAqIEBmdW5jdGlvbiBPdmVybGF5XG4gKiBAY29tcG9uZW50XG4gKiBAZGVzY3JpcHRpb24gZ2xvYmFsIHBhZ2Ugb3ZlcmxheSwgY29udHJvbGxlZCBieSBTY2VuZVN0b3JlXG4gKiBAdXNlcyBTY2VuZVN0b3JlLnN0YXRlLm92ZXJsYXlcbiAqIEByZXR1cm5zIHtKU1h9IDxPdmVybGF5IC8+IGNvbXBvbmVudFxuICovXG5jb25zdCBPdmVybGF5ID0gKHtcbiAgaXNPcGVuLCBjb250ZW50LCBvbkNsb3NlLCBjbGFzc05hbWUsXG59KSA9PiAoXG4gIDxkaXYgaWQ9XCJPdmVybGF5XCIgY2xhc3NOYW1lPXtjeChzdHlsZXMuT3ZlcmxheSwgeyBbc3R5bGVzLmlzT3Blbl06IGlzT3BlbiB9LCBjbGFzc05hbWUpfT5cbiAgICA8ZGl2IGNsYXNzTmFtZT17c3R5bGVzLmNsb3NlfSBvbkNsaWNrPXtvbkNsb3NlfSAvPlxuICAgIDxkaXYgY2xhc3NOYW1lPXtzdHlsZXMuY29udGVudH0+XG4gICAgICB7Y29udGVudCB8fCAnQ09OVEVOVCd9XG4gICAgPC9kaXY+XG4gIDwvZGl2PlxuKTtcblxuT3ZlcmxheS5wcm9wVHlwZXMgPSB7XG4gIGNvbnRlbnQ6ICAgUHJvcFR5cGVzLm5vZGUuaXNSZXF1aXJlZCxcbiAgaXNPcGVuOiAgICBQcm9wVHlwZXMuYm9vbCxcbiAgb25DbG9zZTogICBQcm9wVHlwZXMuZnVuYyxcbiAgY2xhc3NOYW1lOiBQcm9wVHlwZXMuc3RyaW5nLFxufTtcblxuT3ZlcmxheS5kZWZhdWx0UHJvcHMgPSB7XG4gIGlzT3BlbjogICAgZmFsc2UsXG4gIG9uQ2xvc2U6ICAgKCkgPT4ge30sXG4gIGNsYXNzTmFtZTogJycsXG59O1xuXG5leHBvcnQgZGVmYXVsdCBPdmVybGF5O1xuIl19</code></pre>
+        </article>
+    </section>
+
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+<footer class="footer">
+    <div class="content has-text-centered">
+        <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.3</a> on Mon Dec 23 2019 21:33:59 GMT+0100 (GMT+01:00)</p>
+        <p class="sidebar-created-by">
+            <a href="https://github.com/SoftwareBrothers/better-docs" target="_blank">BetterDocs theme</a> provided with <i class="fas fa-heart"></i> by 
+            <a href="http://softwarebrothers.co" target="_blank">SoftwareBrothers - JavaScript Development Agency</a>
+        </p>
+    </div>
+</footer>
+
+
+<script src="scripts/app.min.js"></script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

@@ -54,7 +54,7 @@
       [
         "@babel/preset-env",
         {
-          "modules": "commonjs",
+          "modules": "auto",
           "targets": {
             "node": "current",
             "esmodules": true,
@@ -96,6 +96,7 @@
   },
   "homepage": "https://github.com/viewar/components#readme",
   "dependencies": {
+    "@sambego/storybook-state": "^2.0.1",
     "classnames": "^2.2.6",
     "glob": "^7.1.6",
     "lodash.debounce": "^4.0.8",

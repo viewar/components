@@ -137,7 +137,7 @@ class Slider extends PureComponent {
     if (newValue > this.props.max) newValue = this.props.max;
     if (newValue < this.props.min) newValue = this.props.min;
 
-    newValue = this.props.decimals
+    newValue = this.props.decimals // TBD: decimals={false} => 0
       ? parseFloat(parseFloat(newValue).toFixed(this.props.decimals))
       : parseFloat(newValue);
 

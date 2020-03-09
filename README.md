@@ -15,12 +15,15 @@
 
 <!--- /status badge url references ---->
 
-## BETA VERSION
+## Storybook
+> for more information on Storybook, have a look at [the official Documentation](https://storybook.js.org/docs/basics/introduction/)  
 
-> requires [@viewar/webpack](https://github.com/viewar/webpack)
+#### Usage
+`npm run storybook` or `npm run build-storybook` for static version
 
-## ComponentPresenter
-
+## ComponentPresenter (beta)
+> __OUTDATED as we continously migrate to Storybook!__
+> 
 ❗️ **This is just a provisional styleguide subtstitute**  
 🏗 **until we found the right component pattern libary to match our needs**
 

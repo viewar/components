@@ -19,8 +19,18 @@
   },
   "husky": {
     "hooks": {
-      "pre-push": "npm test"
+      "pre-push": "lint-staged"
     }
+  },
+  "lint-staged": {
+    "*.{css,scss,json,md}": [
+      "prettier --write",
+      "git add"
+    ],
+    "*.{js}": [
+      "eslint --fix --quiet",
+      "git add"
+    ]
   },
   "files": [
     "index.js",

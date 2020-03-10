@@ -16,16 +16,19 @@
 <!--- /status badge url references ---->
 
 ## Storybook
-> for more information on Storybook, have a look at [the official Documentation](https://storybook.js.org/docs/basics/introduction/)  
+
+> for more information on Storybook, have a look at [the official Documentation](https://storybook.js.org/docs/basics/introduction/)
 
 #### Usage
+
 `npm run storybook` or `npm run build-storybook` for static version
 
 ## ComponentPresenter (beta)
-> __OUTDATED as we continously migrate to Storybook!__
-> 
-❗️ **This is just a provisional styleguide subtstitute**  
-🏗 **until we found the right component pattern libary to match our needs**
+
+> **OUTDATED as we continously migrate to Storybook!**
+>
+> ❗️ **This is just a provisional styleguide subtstitute**  
+> 🏗 **until we found the right component pattern libary to match our needs**
 
 > _see [[feat] add styleguide](viewar/components#2) (issue#2)_
 

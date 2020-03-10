@@ -21,7 +21,9 @@ class Slider extends PureComponent {
     decimals: 2,
     min:      0,
     max:      100,
-    onChange: () => {},
+    onChange: (value) => {
+      this.setState({ value: value });
+    },
   }
 
   constructor(props) {
@@ -41,11 +43,15 @@ class Slider extends PureComponent {
     };
 
     // TODO: uncontrolled variant
-    // this.state = {};
+    if (this.props.value == null) {
+      this.state = {
+        value: props.value || min,
+      };
+    }
   }
 
   componentDidMount() {
-    const { value } = this.props;
+    const value = this.state && this.state.value || this.props.value;
     const {
       knob: { current: knobRef },
     } = this.elements;

@@ -1,21 +1,19 @@
 const path = require('path');
-// const webpackMerge = require('webpack-merge');
 const loaderUtils = require('loader-utils')
-const ViewArWebpack = require('@viewar/webpack');
+const ViewArWebpack = require('@viewar/webpack')
+const { resolve } = require('@viewar/webpack/src/webpack.config.resolve.js')
 
 const { PATHS, REGEXPS } = require('@viewar/webpack/src/constants')
-// import webpackMerge from 'webpack-merge';
-// import ViewArWebpack from '@viewar/webpack';
 
 module.exports = {
-  stories: ['../stories/**/*.stories.js', '../src/components/**/*.story.js'],
-  addons: ['@storybook/addon-actions', '@storybook/addon-links'],
+  stories: ['../stories/**/*.stories.js', '../src/components/**/*.story.js?'],
+  addons: ['@storybook/addon-notes/register-panel', '@storybook/addon-knobs/register', '@storybook/addon-actions', '@storybook/addon-links'],
+  // configType = DEVELOPMENT | PRODUCTION
   webpackFinal: async (storybookWebpack, { configType }) => {
-    // configType = DEVELOPMENT | PRODUCTION
-    // const webpackMerged = webpackMerge(storybookWebpack, ViewArWebpack(configType.toLowerCase()))
-    // webpackMerged.entry = storybookWebpack.entry
+    // add resolve config
+    storybookWebpack.resolve = resolve
 
-    // return webpackMerged
+    // add SASS support
     storybookWebpack.module.rules.push({
       test: /\.s?css$/,
       use:  [

@@ -84,12 +84,7 @@
           "legacy": true
         }
       ],
-      [
-        "transform-class-properties",
-        {
-          "spec": true
-        }
-      ],
+      "transform-class-properties",
       "@babel/plugin-transform-react-constant-elements",
       [
         "transform-inline-environment-variables"

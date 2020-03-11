@@ -114,7 +114,7 @@
     "@babel/preset-react": "^7.7.4",
     "@babel/register": "^7.7.7",
     "@viewar/config-eslint": "^1.10.0",
-    "@viewar/webpack": "^1.9.1",
+    "@viewar/webpack": "^1.10.6",
     "babel-plugin-transform-inline-environment-variables": "^0.4.3",
     "cross-env": "^6.0.3",
     "eslint": "^6.8.0",

@@ -85,7 +85,10 @@
         }
       ],
       [
-        "@babel/plugin-proposal-class-properties"
+        "transform-class-properties",
+        {
+          "spec": true
+        }
       ],
       "@babel/plugin-transform-react-constant-elements",
       [
@@ -115,7 +118,6 @@
   "devDependencies": {
     "@babel/cli": "^7.8.4",
     "@babel/core": "^7.8.7",
-    "@babel/plugin-proposal-class-properties": "^7.8.3",
     "@babel/plugin-proposal-decorators": "^7.8.3",
     "@babel/plugin-proposal-export-default-from": "^7.8.3",
     "@babel/plugin-proposal-export-namespace-from": "^7.8.3",
@@ -125,6 +127,7 @@
     "@babel/register": "^7.8.6",
     "@viewar/config-eslint": "^1.10.0",
     "@viewar/webpack": "^1.10.6",
+    "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-plugin-transform-inline-environment-variables": "^0.4.3",
     "cross-env": "^7.0.2",
     "eslint": "^6.8.0",

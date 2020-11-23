@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
-import viewarApi from 'viewar-api';
+import viewarApi from '@viewar/api';
 
 import styles from './PropertyPickerLight.scss';
 

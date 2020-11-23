@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import ViewarApi, { sceneManager } from 'viewar-api';
+import ViewarApi, { sceneManager } from '@viewar/api';
 
 import { PropertyPicker, LoadingState } from 'components';
 

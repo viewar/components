@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import viewarApi from 'viewar-api';
+import viewarApi from '@viewar/api';
 
 import LoadingState from '../LoadingState';
 import styles from './DownloadAll.scss';

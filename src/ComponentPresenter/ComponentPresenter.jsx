@@ -1,6 +1,5 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-
 import * as showcases from 'components/showcases';
 
 class ComponentPresenter extends PureComponent {

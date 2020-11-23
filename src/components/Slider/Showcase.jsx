@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-
 import { Slider } from 'components';
 
 const Showcase = () => {

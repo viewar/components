@@ -1,5 +1,4 @@
 import React, { PureComponent } from 'react';
-
 import { DownloadAll } from 'components';
 
 class DownloadAllShowcase extends PureComponent {

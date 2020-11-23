@@ -1,6 +1,5 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-
 import { LoadingState } from 'components';
 
 const getRandomInt = (max) =>

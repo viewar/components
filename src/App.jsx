@@ -7,7 +7,6 @@ import {
   Route,
   Link,
 } from 'react-router-dom';
-
 import * as showcases from 'components/showcases';
 
 import ComponentPresenter from './ComponentPresenter';

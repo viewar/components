@@ -1,6 +1,5 @@
 import React, { PureComponent } from 'react';
 import ViewarApi from '@viewar/api';
-
 import { SceneStateProgress } from 'components';
 
 import sceneState from './sceneState.mock.json';
